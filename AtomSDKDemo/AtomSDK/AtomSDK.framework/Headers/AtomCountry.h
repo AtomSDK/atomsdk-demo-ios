@@ -9,51 +9,62 @@
 
 /*!
  * @interface AtomCountry
- * @discussion The AtomCountry class declares the programmatic interface of an object that manages the country-specific portion of a VPN configuration. This class will be used for getting the serverAdress of the VPN configuration.
+ * @discussion Represents a Country.
  */
 @interface AtomCountry : NSObject
 
 /*!
  * @property countryId
- * @discussion The country id. Depending on the country.
+ * @discussion Gets or sets the integer id of the country. The valid Country id is required for VPN Dialing.
  */
 @property (nonatomic) int countryId;
 
 /*!
  * @property name
- * @discussion The name. Depending on the country, the name of the country.
+ * @discussion Gets or sets the name of the country.
  */
 @property (nonatomic, strong) NSString *name;
 
 /*!
  * @property iso_code
- * @discussion The iso code. Depending on the country, the iso code of the country.
+ * @discussion Gets or sets the ISO Alpha-2 Country code of the current country.
  */
 @property (nonatomic, strong) NSString *iso_code;
 
 /*!
  * @property latitude
- * @discussion The latitude. Depending on the country.
+ * @discussion Gets or sets the latitude of the country.
  */
-@property (nonatomic) double latitude;
+@property (nonatomic) NSString *latitude;
 
 /*!
  * @property longitude
- * @discussion The longitude. Depending on the country.
+ * @discussion Gets or sets the logitude of the country.
  */
-@property (nonatomic) double longitude;
+@property (nonatomic) NSString *longitude;
 
 /*!
  * @property protocol
- * @discussion The protocol. Depending on the country. The values will be dependant upon the country provided for connection, representing the available protocols.
+ * @discussion Gets the protocols supported by this country.
  */
-@property (nonatomic) NSArray *protocol;
+@property (nonatomic) NSArray *protocols;
+
+/*!
+ * @property dataCenters
+ * @discussion The dataCenters. Depending on the country. The values will be dependant upon the country provided for connection, representing the available data centers.
+ */
+@property (nonatomic) NSArray *dataCenters;
 
 /*!
  * @property latency
- * @discussion The latency. Depending on the country, the latency of the country used to represent the current health of the country.
-        Default value for this property will be 0 when calling through (Method) getCountriesWithSuccess:failure found in (Class) AtomManager. Otherwise this property will set to the value against the current VPN server health when calling through (Method) getOptimizedCountriesWithSuccess:failure found in (Class) AtomManager.
+ * @discussion Gets or sets the least time a packet takes to be sent to the server of this country plus the length of time it takes for an acknowledgment of that packet to be received at the client depending on user's network conditions. Default value for this property is 0 when calling Countries
  */
 @property (nonatomic) int latency;
+
+/*!
+ * @property isSmartDialingSupported
+ * @discussion The isSmartDialingSupported. Property to identify which country is Smart Country.
+ */
+@property (atomic) BOOL isSmartDialingSupported;
 
 @end

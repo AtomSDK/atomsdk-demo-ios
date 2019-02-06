@@ -6,35 +6,35 @@
 	<dict>
 		<key>Headers/AtomConfiguration.h</key>
 		<data>
-		zC5cw1CZuVaq/+Qs+VgzemagRYc=
+		Gyxs+CcbnR/jgbgEBN49uETcVs4=
 		</data>
 		<key>Headers/AtomConnectionDetails.h</key>
 		<data>
-		EaHsmCd1LwqFoo0ucFYIMpG8TyI=
+		MXxJhvh8FyLCdDEPyk9NzQdN5Gk=
 		</data>
 		<key>Headers/AtomCountry.h</key>
 		<data>
-		wdgDWe3BiI0qgA7cZ4RATRo1b8I=
+		7LS++HZ7ai5q8MS1Zp5aUC4L5f4=
 		</data>
 		<key>Headers/AtomCredential.h</key>
 		<data>
-		5H/JJDxAbgK+jlzQBElZYJWwvL8=
+		BQv1w3OW7anoEVCDcG6SXN6Jl2E=
 		</data>
 		<key>Headers/AtomManager.h</key>
 		<data>
-		Nhf92+MDya/Q/tYi6cKWspg5S84=
+		6HFyJ7yUTeOC3HxFUAzrldEoOKs=
 		</data>
 		<key>Headers/AtomProperties.h</key>
 		<data>
-		Plg1I8cPhqYF2ZIYGyq/Ze3uuUA=
+		Im7ndfD3KZm1KHWvJxenjKz0GA8=
 		</data>
 		<key>Headers/AtomProtocol.h</key>
 		<data>
-		iYpvF1Kw6egpyzm3te6E7OXoI6k=
+		dQ/oQoyYKNqXrT+4m3WF5Qq4J5Y=
 		</data>
 		<key>Headers/AtomSDK.h</key>
 		<data>
-		ThxiCne4TYetvL7Jra1ZN4pNAO8=
+		A1ZKk+6vwGr4fnHsu3HTzoh/ekk=
 		</data>
 		<key>Headers/AtomStatus.h</key>
 		<data>
@@ -42,11 +42,87 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nXoNwEZbRdwn4uE2inwB6Av0cis=
+		0vpysHMn5YYGG7aeTwl3DiEGa/w=
+		</data>
+		<key>MPArrowLeft.png</key>
+		<data>
+		utjFQq0o4fHNxocYTUAQ8dwBMXk=
+		</data>
+		<key>MPArrowLeft@2x.png</key>
+		<data>
+		0+iH8VQeaTOtCIDplHMf/GcfWf0=
+		</data>
+		<key>MPArrowRight.png</key>
+		<data>
+		p86Nv8rVygfixvr9IV2cZ/Sdbws=
+		</data>
+		<key>MPArrowRight@2x.png</key>
+		<data>
+		+03sdC9kzzNOVNJSvWZmnzRpv4s=
+		</data>
+		<key>MPCheckmark.png</key>
+		<data>
+		3gcX2ka+g00r4MWCJ9t8NrcTH60=
+		</data>
+		<key>MPCheckmark@2x.png</key>
+		<data>
+		f2o+30q0YWkOkVmFb2oaTgFHlXE=
+		</data>
+		<key>MPCloseButton.png</key>
+		<data>
+		Co6rbWkwW34r9bcG4oIb7QiaFRI=
+		</data>
+		<key>MPCloseButton@2x.png</key>
+		<data>
+		5PgqQpwWPQw1gRi4Ngma87zvi2s=
+		</data>
+		<key>MPCloseButton@3x.png</key>
+		<data>
+		wjSZD6yFrm4pMAEeqoH0wOcL3Bk=
+		</data>
+		<key>MPDismissKeyboard.png</key>
+		<data>
+		zMOqzxQxdmZEjZaafsuaZEV6XoM=
+		</data>
+		<key>MPDismissKeyboard@2x.png</key>
+		<data>
+		3HuU2vv5PFnIVt3TMqbiXQmTIW4=
+		</data>
+		<key>MPLogo.png</key>
+		<data>
+		DJotx7GWoW3xmZs4j7/koaG0FuA=
+		</data>
+		<key>MPLogo@2x.png</key>
+		<data>
+		xONTdUHs57rOy5ch/7HUgyFuMUI=
+		</data>
+		<key>MPTakeoverNotificationViewController~ipad.nib</key>
+		<data>
+		vT3f2U1XDLZnzJ5wLLLPQWf/GCA=
+		</data>
+		<key>MPTakeoverNotificationViewController~iphonelandscape.nib</key>
+		<data>
+		KqhRCJXdxY4x0H98b0yIZVycVAs=
+		</data>
+		<key>MPTakeoverNotificationViewController~iphoneportrait.nib</key>
+		<data>
+		vsPEma1SzbmPYPxn5fIiKPvLWzU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		NA1QEzHUoh9s/zZXoGu/+pQuYJw=
+		</data>
+		<key>placeholder-image.png</key>
+		<data>
+		AT1HRZNmcC6pwiuzaGBvyDDcbEg=
+		</data>
+		<key>snapshot_config.json</key>
+		<data>
+		Wcy4QK1RAbJrbjz1LbzD7HNU/Uw=
+		</data>
+		<key>test_variant.json</key>
+		<data>
+		ouWTknzWxFO14J/HV4HSJMDy+Nw=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -55,88 +131,88 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zC5cw1CZuVaq/+Qs+VgzemagRYc=
+			Gyxs+CcbnR/jgbgEBN49uETcVs4=
 			</data>
 			<key>hash2</key>
 			<data>
-			uT6XnjDTI55+ey4bmQbP9y5hxiTrQWbn2+rIo7A+Bao=
+			3tujqWTbN8B2Z9A0xdf/C5RiZCTCUlfRt/UUah6qdn4=
 			</data>
 		</dict>
 		<key>Headers/AtomConnectionDetails.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EaHsmCd1LwqFoo0ucFYIMpG8TyI=
+			MXxJhvh8FyLCdDEPyk9NzQdN5Gk=
 			</data>
 			<key>hash2</key>
 			<data>
-			P+jXRuG0laoT4ahuiBgAURKHiEdNp5qqNapvHO35dtg=
+			CUTcHbaxmd6ZnxVXekD/56cv/qE+xi9fJh44q5yIpuU=
 			</data>
 		</dict>
 		<key>Headers/AtomCountry.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wdgDWe3BiI0qgA7cZ4RATRo1b8I=
+			7LS++HZ7ai5q8MS1Zp5aUC4L5f4=
 			</data>
 			<key>hash2</key>
 			<data>
-			TDED6luTJUOQub89/faHdo6m+CoGlqGkMDAFIg0Sb5c=
+			JjjQ79au3rwe85UvtCqcqIYl1YKrog3MWJjLtAXBvA4=
 			</data>
 		</dict>
 		<key>Headers/AtomCredential.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5H/JJDxAbgK+jlzQBElZYJWwvL8=
+			BQv1w3OW7anoEVCDcG6SXN6Jl2E=
 			</data>
 			<key>hash2</key>
 			<data>
-			LirE1r/+i8TcIqliXPOgQjx0MwW6jZf6XqKN4LW8E60=
+			B6swoqAoKU2lAWAMt9Wg8DWwHTBGzdy10XAdnol5sy0=
 			</data>
 		</dict>
 		<key>Headers/AtomManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Nhf92+MDya/Q/tYi6cKWspg5S84=
+			6HFyJ7yUTeOC3HxFUAzrldEoOKs=
 			</data>
 			<key>hash2</key>
 			<data>
-			lgnd3X2ER4lIzyPFLAko91injvCnDAwDc8GYYMKyJu0=
+			ClrzJTczZ0YOVeMKmZFXERKxFLtYBOZNRU7a9ThSV1I=
 			</data>
 		</dict>
 		<key>Headers/AtomProperties.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Plg1I8cPhqYF2ZIYGyq/Ze3uuUA=
+			Im7ndfD3KZm1KHWvJxenjKz0GA8=
 			</data>
 			<key>hash2</key>
 			<data>
-			rI16E9FSD8GQCQIbjdp9pRXJdihg7ciMWRWhWpITHVE=
+			2NKFpilnizxFOzAqXatK7YBqzb9qXghozij+wKV2n2U=
 			</data>
 		</dict>
 		<key>Headers/AtomProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iYpvF1Kw6egpyzm3te6E7OXoI6k=
+			dQ/oQoyYKNqXrT+4m3WF5Qq4J5Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			q2s0nZbERKGuLfTIh4Tew4Kp/YKNty7ODlMctkLfeJ0=
+			sJrCYCe1fhErWuX9G/oG2E5E4J+JRD+LvdmWcVZC9Tg=
 			</data>
 		</dict>
 		<key>Headers/AtomSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ThxiCne4TYetvL7Jra1ZN4pNAO8=
+			A1ZKk+6vwGr4fnHsu3HTzoh/ekk=
 			</data>
 			<key>hash2</key>
 			<data>
-			ur1NTHNYgnf5G5gOeLay3tRdKBLqqIImwY/KKL0mZY0=
+			IOaU5DKE1NnLoVMrITsrVIfvurMpW679dVv8u7wmjNY=
 			</data>
 		</dict>
 		<key>Headers/AtomStatus.h</key>
@@ -150,6 +226,182 @@
 			Cc3so2LGDLU7iTn7Amzk7a3MWROIwqCNWcmDMVF7Djk=
 			</data>
 		</dict>
+		<key>MPArrowLeft.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			utjFQq0o4fHNxocYTUAQ8dwBMXk=
+			</data>
+			<key>hash2</key>
+			<data>
+			P6xERn7qKPhNO86xsIwqYsaE4Il2zStbhenLPBvEEFM=
+			</data>
+		</dict>
+		<key>MPArrowLeft@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0+iH8VQeaTOtCIDplHMf/GcfWf0=
+			</data>
+			<key>hash2</key>
+			<data>
+			4LijtjwoJOSL0I/uTp/kucdW8GE0ZLHkcJr1rq0eYEg=
+			</data>
+		</dict>
+		<key>MPArrowRight.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			p86Nv8rVygfixvr9IV2cZ/Sdbws=
+			</data>
+			<key>hash2</key>
+			<data>
+			9uHNiWUTbBZVOuR13XvBLrYS/GNvj8yk535VtV/xn5A=
+			</data>
+		</dict>
+		<key>MPArrowRight@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+03sdC9kzzNOVNJSvWZmnzRpv4s=
+			</data>
+			<key>hash2</key>
+			<data>
+			cmM3kcPTa8LcpMDaGGD/q1XcPy7jGyB+ZpMJntrMQ4U=
+			</data>
+		</dict>
+		<key>MPCheckmark.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3gcX2ka+g00r4MWCJ9t8NrcTH60=
+			</data>
+			<key>hash2</key>
+			<data>
+			AYRxlTtRSTE91qnG11d1zi5O1LA4Kj4jwFI5+oYBChw=
+			</data>
+		</dict>
+		<key>MPCheckmark@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			f2o+30q0YWkOkVmFb2oaTgFHlXE=
+			</data>
+			<key>hash2</key>
+			<data>
+			wnk7c0lF4japJaAvi1fADW1Y3t7VY1W9EwczsNVaUCI=
+			</data>
+		</dict>
+		<key>MPCloseButton.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Co6rbWkwW34r9bcG4oIb7QiaFRI=
+			</data>
+			<key>hash2</key>
+			<data>
+			qJyidlgS+aoMPDFCHpBBRWTnpmo9+2yrD/KHF7z9m+Y=
+			</data>
+		</dict>
+		<key>MPCloseButton@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5PgqQpwWPQw1gRi4Ngma87zvi2s=
+			</data>
+			<key>hash2</key>
+			<data>
+			F9cA6EyujJp59YFcDgSNN1cWTh64ACpEfweIGiDPd8E=
+			</data>
+		</dict>
+		<key>MPCloseButton@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wjSZD6yFrm4pMAEeqoH0wOcL3Bk=
+			</data>
+			<key>hash2</key>
+			<data>
+			8yZcbyQEBinX0fHfTT05fokzoEJHd/fEULRuDm6+JxY=
+			</data>
+		</dict>
+		<key>MPDismissKeyboard.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			zMOqzxQxdmZEjZaafsuaZEV6XoM=
+			</data>
+			<key>hash2</key>
+			<data>
+			fXtUpE72LTvtJ3Rbs9RchjWske7kjVcqFJ2oEApQfGQ=
+			</data>
+		</dict>
+		<key>MPDismissKeyboard@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3HuU2vv5PFnIVt3TMqbiXQmTIW4=
+			</data>
+			<key>hash2</key>
+			<data>
+			Izvlgu/j53ktUMyQp4Ll4fqGndn31jbO1i2NXU8KlGk=
+			</data>
+		</dict>
+		<key>MPLogo.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DJotx7GWoW3xmZs4j7/koaG0FuA=
+			</data>
+			<key>hash2</key>
+			<data>
+			YOoJl7oxKVpAdmhvnihPAWtZEas7YEyHNwk0WTVtdS8=
+			</data>
+		</dict>
+		<key>MPLogo@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xONTdUHs57rOy5ch/7HUgyFuMUI=
+			</data>
+			<key>hash2</key>
+			<data>
+			AAWYGUFh1EHvXziow8pKoY7lM+F3M8QXA4+ch3APZJE=
+			</data>
+		</dict>
+		<key>MPTakeoverNotificationViewController~ipad.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vT3f2U1XDLZnzJ5wLLLPQWf/GCA=
+			</data>
+			<key>hash2</key>
+			<data>
+			kM0NC6lCNU2skUgXfVhBJWvC8MEaZ7X/PGcS5AsjeLM=
+			</data>
+		</dict>
+		<key>MPTakeoverNotificationViewController~iphonelandscape.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			KqhRCJXdxY4x0H98b0yIZVycVAs=
+			</data>
+			<key>hash2</key>
+			<data>
+			BEOPztbUkWssvLV68/CCJvpR3GYIoXcc8W+KUTL7FIM=
+			</data>
+		</dict>
+		<key>MPTakeoverNotificationViewController~iphoneportrait.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vsPEma1SzbmPYPxn5fIiKPvLWzU=
+			</data>
+			<key>hash2</key>
+			<data>
+			lNuTlyD/Glsk4aZRO5Wu1068lWxasNCvwMK3b70ExYY=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
@@ -159,6 +411,39 @@
 			<key>hash2</key>
 			<data>
 			uW7JEyLaTevDToSgmDgo2Qt5EyGsN0/U+UX033iXRhs=
+			</data>
+		</dict>
+		<key>placeholder-image.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AT1HRZNmcC6pwiuzaGBvyDDcbEg=
+			</data>
+			<key>hash2</key>
+			<data>
+			6tWo6yQ0Ttp70huMLWmy15V4uznndxP2NMF4um/mrWQ=
+			</data>
+		</dict>
+		<key>snapshot_config.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Wcy4QK1RAbJrbjz1LbzD7HNU/Uw=
+			</data>
+			<key>hash2</key>
+			<data>
+			/l2Qja5p89GWFxQ1vgu6n+t/dfajjhkWPjkbZPr0d8U=
+			</data>
+		</dict>
+		<key>test_variant.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ouWTknzWxFO14J/HV4HSJMDy+Nw=
+			</data>
+			<key>hash2</key>
+			<data>
+			KzDv5SGx3Zv1mKUVPtGiAGJZRM/lqvATznDINDnwM5c=
 			</data>
 		</dict>
 	</dict>

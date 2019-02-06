@@ -2,8 +2,8 @@
 //  AtomConfiguration.h
 //  AtomSDK
 //
-//  Created by M. Hassan Ali on 4/3/18.
-//  Copyright © 2018 Hassan. All rights reserved.
+//
+//  Copyright © 2017 Atom. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -22,13 +22,13 @@
 
 /*!
  * @property baseUrl
- * @discussion The base Url of all the requests to be made by the ATOM SDK. It is optional and can be managed through ATOM Admin Panel.
+ * @discussion The base Url of all the requests to be made by the ATOM SDK. It is optional and can be managed through ATOM Console.
  */
 @property (nonatomic, strong) NSURL *baseUrl;
 
 /*!
  * @property vpnInterfaceName
- * @discussion Name of the VPN profile to be displayed under device Settings > VPN.
+ * @discussion Name of the VPN adapter to be displayed.
  */
 @property (nonatomic, strong) NSString *vpnInterfaceName;
 

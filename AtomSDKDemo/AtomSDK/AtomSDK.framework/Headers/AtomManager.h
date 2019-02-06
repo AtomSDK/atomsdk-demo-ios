@@ -18,23 +18,36 @@
 @protocol AtomManagerDelegate <NSObject>
 
 /*!
- * @method atomManagerDidConnect
+ * @method atomManagerDidConnect:
  * @discussion Invokes when a successful VPN Connection is made.
+ * @param atomConnectionDetails Provides the details of the connection attempt.
  */
-- (void)atomManagerDidConnect;
+
+- (void)atomManagerDidConnect:(AtomConnectionDetails *)atomConnectionDetails;
+
+/**
+ Invokes when a VPN Connection is successfully disconnected.
+ Note :
+ @param atomConnectionDetails Provides the details of the connection attempt.
+ */
+
+- (void)atomManagerDidDisconnect:(AtomConnectionDetails *)atomConnectionDetails;
+
 
 /*!
- * @method atomManagerDidDisconnect:
+ * @method atomManagerDidDisconnect:withConnectionDetails:
  * @discussion Invokes when a VPN Connection is successfully disconnected.
  * @param manuallyDisconnected Identifying if the connection has been cancelled manually. The return value will be YES when using -cancelVPN otherwise the default value will be NO.
+ * @param atomConnectionDetails Provides the details of the connection attempt.
  */
-- (void)atomManagerDidDisconnect:(BOOL)manuallyDisconnected;
+
+- (void)atomManagerDidDisconnect:(BOOL)manuallyDisconnected withConnectionDetails:(AtomConnectionDetails *)atomConnectionDetails __attribute__ ((unavailable("Don't use this method, instead use atomManagerDidDisconnect:")));
 
 /*!
  * @method atomManagerOnRedialing:withError:
  * @discussion Invokes whenever ATOM SDK tries to redial automatically in case of a failed connection attempt.
  * @param atomConnectionDetails Provides the details of the connection attempt.
- * @param error Contains the error occured during dialing.
+ * @param error Contains the exception occured during the dialing process.
  */
 - (void)atomManagerOnRedialing:(AtomConnectionDetails *)atomConnectionDetails withError:(NSError *)error;
 
@@ -48,11 +61,18 @@
 
 @optional
 
+
+/*!
+ * @method atomManagerDidConnect
+ * @discussion Invokes when a successful VPN Connection is made.
+ */
+- (void)atomManagerDidConnect __deprecated_msg("Use atomManagerDidConnect: instead.");
+
 /*!
  * @method disconnectVPN:
  * @discussion This function is used to stop the VPN tunnel. The VPN tunnel disconnect process is started and this function returns immediately.
  */
-- (void)VPNConnected:(id)sender __deprecated_msg("Use atomManagerDidConnect: instead.");
+- (void)VPNConnected:(id)sender __deprecated_msg("Use atomManagerDidConnect instead.");
 
 /* -VPNDisconnected:isCancelled
  * @optional
@@ -77,7 +97,7 @@
 
 /*!
  * @interface AtomManager
- * @discussion The AtomManager class is used to initialize the secret key. The AtomManager class declares the programmatic interface for an object that manages VPN connections. This class can also be used for getting countries, ping based optimized countries, and protocols.
+ * @discussion The main class used to connect and maintain VPN Connections.
  *
  * Instances of this class are thread safe.
  */
@@ -93,7 +113,7 @@
 
 /*!
  * @property stateDidChangedHandler
- * @discussion Invokes when Connection State is changed during dialing.
+ * @discussion Invokes when the VPNState changed during dialing.
  */
 @property (nonatomic, copy) StateDidChangedHandler stateDidChangedHandler;
 
@@ -105,19 +125,19 @@
 
 /*!
  * @property AtomCredential
- * @discussion Sets the VPN Credentials object to be used in a VPN Connection. It must be provided before calling -connectWithProperties:completion:errorBlock method or provide UUID alternatively.
+ * @discussion Gets and Sets the VPN Credentials object to be used in a VPN Connection. It must be provided before calling Connect method or provide UUID alternatively.
  */
 @property (nonatomic, strong) AtomCredential *atomCredential;
 
 /*!
  * @property AtomProperties
- * @discussion The AtomProperties class contains all the preferences required by the ATOM SDK to establish VPN connection.
+ * @discussion Gets or sets the AtomProperties which were used for the connection, or null if no connection has been made yet.
  */
 @property (nonatomic, strong) AtomProperties *atomProperties;
 
 /*!
  * @property UUID
- * @discussion Gets or Sets a Unique User identifier used to connect to a vpn server if Credentials object is not provided. ATOM SDK will generate a VPN account itself when this property is provided. This value will be ignored if Credentials are provided.
+ * @discussion Gets or Sets a Unique User identifier used to connect to a vpn server if Credentials object is not provided. ATOM SDK will generate VPN Credentials itself when this property is provided. This value will be ignored if Credentials are provided.
  */
 @property (nonatomic, strong) NSString* UUID;
 
@@ -130,7 +150,7 @@
 
 /*!
  * @method sharedInstanceWithAtomConfiguration:
- * @discussion Initializes a new instance of the ATOM SDK using AtomConfiguration. If the ATOM SDK was initialized previously the same object is returned.
+ * @discussion Initializes a new instance of the ATOM SDK using AtomConfiguration. If the SDK was initialized previously the same object is returned.
  * @param atomConfiguration An AtomConfiguration object which enables the developer to provide the custom configuration. SecretKey is mandatory in any case.
  */
 + (AtomManager *)sharedInstanceWithAtomConfiguration:(AtomConfiguration *)atomConfiguration;
@@ -149,14 +169,14 @@
 
 /*!
  * @method connectWithProperties:completion:errorBlock
- * @discussion Creates a VPN Connection.
- * @param propertiesObject The VPNProperties object used by the SDK to establish a VPN connection.
+ * @discussion Creates a VPN connection.This function is used to start the VPN tunnel using the current VPN configuration after validation of AtomProperties.
+ * @param propertiesObject The AtomProperties object used by the ATOM SDK to establish a VPN connection.
  */
 - (void)connectWithProperties:(AtomProperties *)propertiesObject completion:(void(^)(NSString* success))successBlock errorBlock:(void(^)(NSError *error))errorBlock;
 
 /*!
  * @method disconnectVPN:
- * @discussion Disconnects a VPN Connection.
+ * @discussion Disconnects existing VPN Connection. If AtomStatus is CONNECTING then use cancelVPN method.
  */
 - (void)disconnectVPN;
 
@@ -168,19 +188,19 @@
 
 /*!
  * @method cancelVPNConnection:
- * @discussion This function is used to cancel the ongoing VPN connection process. The VPN tunnel connection process is cancelled and this function returns immediately.
+ * @discussion Cancels a VPN connection process if a connection process is already started and not reached to Connected state.
  */
 - (void)cancelVPNConnection __deprecated_msg("Use cancelVPN instead.");
 
 /*!
  * @method cancelVPN:
- * @discussion Cancels a VPN Connection process if a connection process is already started and not reached to Connected state.
+ * @discussion Cancels a VPN connection process if a connection process is already started and not reached to Connected state.
  */
 - (void)cancelVPN;
 
 /*!
  * @property getCurrentVPNStatus
- * @discussion Gets the current status of the VPN SDK. Please refer to AtomVPNStatus in AtomStatus.h for the possible values.
+ * @discussion Gets the current status of the VPN SDK. Please refer to AtomVPNStatus Enum for the possible values.
  */
 - (AtomVPNStatus) getCurrentVPNStatus;
 
@@ -216,7 +236,7 @@
 
 /*!
  * @property atomConnectionDetails
- * @discussion An AtomConnectionDetails object containing the last dialed connection details.
+ * @discussion Gets the details of the last connection attempt.
  */
 @property (nonatomic, strong) AtomConnectionDetails *atomConnectionDetails;
 
@@ -236,25 +256,36 @@
 
 /*!
  * @method getProtocolsWithSuccess:errorBlock
- * @discussion Gets all the Protocols allowed to this reseller by Atom.
- * @param errorBlock If the protocolsList object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @discussion Gets all the Protocols allowed to the reseller by Atom.
+ * @param errorBlock If the array of AtomProtocol object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @param success Will be called with array of AtomProtocol
  */
 - (void)getProtocolsWithSuccess:(void (^)(NSArray <AtomProtocol *> *protocolsList))success
                         errorBlock:(void (^)(NSError *error))errorBlock;
 
 /*!
  * @method getCountriesWithSuccess:errorBlock
- * @discussion Gets all the Countries allowed to this reseller by Atom.
- * @param errorBlock If the countriesList object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @discussion Gets all the Countries allowed to the reseller by Atom.
+ * @param errorBlock  If the array of AtomCountry object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @param success Will be called with array of AtomCountry
  */
 - (void)getCountriesWithSuccess:(void (^)(NSArray <AtomCountry *> *countriesList))success
                         errorBlock:(void (^)(NSError *error))errorBlock;
 
+
+/*!
+ * @method getCountriesForSmartDialing:errorBlock
+ * @discussion Get all the Countries those support advanced mechanism of VPN Dialing on our network. This advanced mechanism of dialing will help in establishing a VPN Tunnel, quicker than the conventional (and recommended) method.
+ * @param errorBlock If the array of AtomCountry object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ */
+- (void)getCountriesForSmartDialing:(void (^)(NSArray <AtomCountry *> *countriesList))success
+                     errorBlock:(void (^)(NSError *error))errorBlock;
+
 /*!
  * @method getOptimizedCountriesWithSuccess:errorBlock
- * @discussion Ping the available datacenters and returns the countries with the current latency mapped to Models.Country.Latency.
- Gets all the Optimized Countries allowed to this reseller by Atom. Latency in AtomCountry object will be set to the pinged value.
- * @param errorBlock If the optimizedCountriesList object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @discussion Gets all the Countries optimized and sorted on the basis of realtime latency w.r.t. user's network conditions allowed to the reseller by Atom.
+ * @param errorBlock If the array of AtomCountry object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @param success Will be called with array of AtomCountry
  */
 - (void)getOptimizedCountriesWithSuccess:(void (^)(NSArray <AtomCountry *> *optimizedCountriesList))success
                                  errorBlock:(void (^)(NSError *error))errorBlock;
@@ -265,12 +296,12 @@
  * @param errorBlock If the connectionDetails object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
  */
 - (void)getConnectionDetailsWithSuccess:(void (^)(AtomConnectionDetails *connectionDetails))success
-                                errorBlock:(void (^)(NSError *error))errorBlock; __deprecated_msg("Use getLastConnectionDetailsWithSuccess instead.");
+                                errorBlock:(void (^)(NSError *error))errorBlock __deprecated_msg("Use getLastConnectionDetailsWithSuccess instead.");
 
 /*!
  * @method getLastConnectionDetailsWithSuccess:errorBlock
  * @discussion Gets the connection details of the last successful connection made using the provided Credentials or UUID.
- * @param errorBlock If the connectionDetails object is returned, this parameter is set to nil. Otherwise this parameter is set to the error that occurred.
+ * @param errorBlock when no connection details found for this session or invalid credentials/UUID are provided.
  */
 - (void)getLastConnectionDetailsWithSuccess:(void (^)(AtomConnectionDetails *connectionDetails))success
                              errorBlock:(void (^)(NSError *error))errorBlock;
