@@ -9,25 +9,25 @@
 
 /*!
  * @interface AtomCredential
- * @discussion The AtomCredential class declares the programmatic interface of an object that manages credential part of a VPN configuration.
+ * @discussion Represents the network credentials used to authenticate to the VPN server.
  */
 @interface AtomCredential : NSObject
 
 /*!
  * @property username
- * @discussion The username component of the VPN authentication credential.
+ * @discussion Gets or sets the username used to authenticate to the VPN server.
  */
 @property (nonatomic, strong) NSString *username;
 
 /*!
  * @property password
- * @discussion The password component of the VPN authentication credential.
+ * @discussion Gets or sets the password used to authenticate to the VPN server.
  */
 @property (nonatomic, strong) NSString *password;
 
 /*!
  * @method initWithUsername:password:
- * @discussion Initializes a newly-allocated AtomCredential object.
+ * @discussion Creates a AtomCredential object with a username and a password.
  * @param username The username component of the VPN authentication credential.
  * @param password The password component of the VPN authentication credential.
  */

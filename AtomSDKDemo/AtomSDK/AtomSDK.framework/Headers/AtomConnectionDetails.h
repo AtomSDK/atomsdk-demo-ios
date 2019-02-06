@@ -9,76 +9,130 @@
 
 /*!
  * @interface AtomConnectionDetails
- * @discussion The AtomConnectionDetails class declares the programmatic interface of an object that manages the connection specific details of the last connected vpn configuration of the session. This class will be handy in resolving details related to recently established connection.
+ * @discussion The AtomConnectionDetails class manages the connection specific details of the last connection vpn configuration of the session.This class will also be handy in resolving details related to recently dialed connection.
  */
 @interface AtomConnectionDetails : NSObject
 
 /*!
  * @property username
- * @discussion The username component of the VPN authentication credential used to establish the connection. The username will be nil if not set, non-nil otherwise
+ * @discussion The username with which last connection was made.
  */
 @property (nonatomic, strong) NSString *username;
 
 /*!
  * @property bandwidth
- * @discussion The bandwidth is used to represent the last connected VPN connection. The bandwidth will be nil if not set, non-nil otherwise
+ * @discussion The bandwidth consumed in the last session.
  */
 @property (nonatomic, strong) NSString *bandwidth;
 
 /*!
- * @property session_duration
- * @discussion The session_duration is used to represent the time duration of the last connected VPN connection. The session_duration will be nil if not set, non-nil otherwise
+ * @property sessionDuration
+ * @discussion The duration of last session in minutes.
  */
-@property (nonatomic, strong) NSString *session_duration;
+@property (nonatomic, strong) NSString *sessionDuration;
 
 /*!
  * @property country
- * @discussion The country component of the VPN configuration, representing where the last connected VPN connection was made. The country will be nil if not set, non-nil otherwise
+ * @discussion The name of the country to which the last connection was made.
  */
 @property (nonatomic, strong) NSString *country;
 
 /*!
- * @property protocol_no
- * @discussion The protocol_no component of the VPN configuration, representing the last used connected VPN interface. The protocol_no will be nil if not set, non-nil otherwise
+ * @property ipAddress
+ * @discussion The IP address assigned in last VPN connection.
  */
-@property (nonatomic, strong) NSString *protocol_no __deprecated_msg("no longer supported.");
+@property (nonatomic, strong) NSString *ipAddress;
 
 /*!
- * @property ip_address
- * @discussion The ip_address is used to represent the ip of the last connected VPN connection. The ip_address will be nil if not set, non-nil otherwise
+ * @property deviceType
+ * @discussion The device type is used to represent the device/platform on which the last connected VPN connection was made.
  */
-@property (nonatomic, strong) NSString *ip_address;
-
-/*!
- * @property device_type
- * @discussion The device_type is used to represent on which device the last connected VPN connection was made. The device_type will be nil if not set, non-nil otherwise
- */
-@property (nonatomic, strong) NSString *device_type;
+@property (nonatomic, strong) NSString *deviceType;
 
 /*!
  * @property serverAddress
- * @discussion A string identifying the host address at which the VPN connection is established. The serverAddress will be nil if not set, non-nil otherwise
+ * @discussion The host address at which the VPN connection was established.
  */
 @property (nonatomic, strong) NSString *serverAddress;
 
 /*!
- * @property speedTestMethod
- * @discussion A string identifying the method from which the host address is found. The speedTestMethod will be nil if not set, non-nil otherwise
+ * @property fastestServerFindingMethod
+ * @discussion The method used to find servers for the last VPN connection.
  */
-@property (nonatomic, strong) NSString* speedTestMethod;
+@property (nonatomic, strong) NSString* fastestServerFindingMethod;
 
 /*!
  * @property serverType
- * @discussion A string identifying the type of the host address. The serverType will be nil if not set, non-nil otherwise
+ * @discussion Representing the type of server host with which the VPN connection was made.
  */
 @property (nonatomic, strong) NSString* serverType;
 
 /*!
- * @property atomProtocol
- * @discussion An object identifying the protocol details. The atomProtocol object will be nil if not set, non-nil otherwise
+ * @property protocol
+ * @discussion The Protocol of the VPN configuration with which last VPN connection was made.
  */
-@property (nonatomic, strong) AtomProtocol* atomProtocol;
+@property (nonatomic, strong) AtomProtocol* protocol;
+
+/*!
+ * @property timeTakenToFindSpeedTest
+ * @discussion The time taken to find fastest server before starting connection to a server.
+ */
+@property (nonatomic) int timeTakenToFindFastestServer;
+
+/*!
+ * @property totalTimeTakenToConnect
+ * @discussion The total time taken to connect successfully in seconds.
+ */
+@property (nonatomic) int totalTimeTakenToConnect;
+
+/*!
+ * @property fastestServerFindingApiResponse
+ * @discussion The response of Fastest Server API.
+ */
+@property (nonatomic, strong) NSMutableDictionary* fastestServerFindingApiResponse;
+
+/*!
+ * @property connectionMethod
+ * @discussion The connection method type used to dialed VPN using ATOM SDK (Params, PSK, Manual)
+ */
+@property (nonatomic, strong) NSString* connectionMethod;
+
+/*!
+ * @property serverIp
+ * @discussion The IP address of the server with which VPN Connection is establish.
+ */
+@property (nonatomic, strong) NSString* serverIp;
 
 
+/*!
+ * @property isDisconnectedManually
+ * @discussion Returns true if VPN Connection was disconnected by user otherwise false.
+ */
+@property (nonatomic) BOOL isDisconnectedManually;
+
+
+/*!
+ * @property connectionAttempts
+ * @discussion The connection attempt tried to establish VPN Connection.
+ */
+@property (nonatomic) int connectionAttempts;
+
+/*!
+ * @property isCancelled
+ * @discussion Returns true if VPN Connection was cancelled before Connection is made successfully otherwise false.
+ */
+@property (nonatomic) BOOL isCancelled;
+
+/*!
+ * @property isDialedWithSmartDialing
+ * @discussion Returns true if VPN Connection was dialed with Smart Dialing otherwise false.
+ */
+@property (nonatomic) BOOL isDialedWithSmartDialing;
+
+/*!
+ * @property isDialedWithOptimization
+ * @discussion Returns true if VPN Connection was dialed with Optimization otherwise false
+ */
+@property (nonatomic) BOOL isDialedWithOptimization;
 
 @end

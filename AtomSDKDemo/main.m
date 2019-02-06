@@ -1,10 +1,6 @@
 //
-//  main.m
-//  AtomSDK Sample App
-//
-//  Created by Abdul Basit on 03/04/2018.
-//  Copyright © 2018 Abdul Basit. All rights reserved.
-//
+//  ConnectWithPskViewController.h
+//  AtomSDK Demo
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"

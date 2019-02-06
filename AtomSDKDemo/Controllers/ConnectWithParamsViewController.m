@@ -19,6 +19,7 @@
 @property (nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
 @property (nonatomic) IBOutlet UITableView *tableViewStatus;
 @property (nonatomic) IBOutlet UISwitch *optimizeCountry;
+@property (nonatomic) IBOutlet UISwitch *smartDialing;
 
 @property (nonatomic) NSMutableArray *vpnStatus;
 @property (assign) NSInteger selectedTextfield;
@@ -47,9 +48,8 @@
     [self statusDidChangedHandler];
     [self getProtocols];
     [self setupTextfields];
+    [AtomManager sharedInstance].delegate = self;
 }
-
-
 
 -(void)setupTextfields {
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
@@ -104,7 +104,7 @@
         [self getCountries];
         [self getOptimizeCountries];
     } errorBlock:^(NSError *error) {
-        NSLog(@"%@",error.description);
+        //NSLog(@"%@",error.description);
     }];
 }
 
@@ -113,17 +113,25 @@
         self.allCountriesList = countriesList;
         [_protocolPicker reloadAllComponents];
     } errorBlock:^(NSError *error) {
-        NSLog(@"%@",error.description);
+        //NSLog(@"%@",error.description);
+    }];
+}
+-(void)getSmartCountries {
+    [[AtomManager sharedInstance] getCountriesForSmartDialing:^(NSArray<AtomCountry *> *countriesList) {
+        self.allCountriesList = countriesList;
+        [_protocolPicker reloadAllComponents];
+    } errorBlock:^(NSError *error) {
+        //NSLog(@"%@",error.description);
     }];
 }
 
 -(void)getOptimizeCountries {
     [[AtomManager sharedInstance] getOptimizedCountriesWithSuccess:^(NSArray<AtomCountry *> *countriesList) {
-        for (AtomCountry *country in countriesList) {
-            NSLog(@"Country ID: %d, Country Name: %@, Latency: %d",country.countryId, country.name, country.latency);
-        }
+//        for (AtomCountry *country in countriesList) {
+            //NSLog(@"Country ID: %d, Country Name: %@, Latency: %d",country.countryId, country.name, country.latency);
+//        }
     } errorBlock:^(NSError *error) {
-        NSLog(@"%@",error.description);
+        //NSLog(@"%@",error.description);
     }];
 }
 
@@ -131,7 +139,7 @@
     NSMutableArray *temp_countries = [NSMutableArray new];
     
     for (AtomCountry *country in self.allCountriesList) {
-        for (AtomProtocol *protocol in country.protocol) {
+        for (AtomProtocol *protocol in country.protocols) {
             if (protocol.number == self.protocol1) {
                 [temp_countries addObject:country];
                 break;
@@ -139,13 +147,13 @@
         }
     }
     
-    NSLog(@"TOTAL FILTERED COUNTRIES %lu",(unsigned long)temp_countries.count);
+    //NSLog(@"TOTAL FILTERED COUNTRIES %lu",(unsigned long)temp_countries.count);
 }
 -(void)filterCountriesWithProtocol2:(NSInteger)protocol2 {
     for (AtomCountry *country in self.allCountriesList) {
-        for (AtomProtocol *protocol in country.protocol) {
+        for (AtomProtocol *protocol in country.protocols) {
             if (protocol.number == self.protocol2) {
-
+                
                 break;
             }
         }
@@ -153,9 +161,9 @@
 }
 -(void)filterCountriesWithProtocol3:(NSInteger)protocol3 {
     for (AtomCountry *country in self.allCountriesList) {
-        for (AtomProtocol *protocol in country.protocol) {
+        for (AtomProtocol *protocol in country.protocols) {
             if (protocol.number == self.protocol3) {
-
+                
                 break;
             }
         }
@@ -163,6 +171,22 @@
 }
 
 #pragma mark - IB Actions -
+
+-(IBAction)optimizedCountrySwitchAction {
+    if(self.optimizeCountry.isOn) {
+        [self.smartDialing setOn:false];
+    }
+}
+
+-(IBAction)filterSmartCountries {
+    if(self.smartDialing.isOn) {
+        [self getSmartCountries];
+        [self.optimizeCountry setOn:false];
+    }
+    else {
+        [self getCountries];
+    }
+}
 
 -(void)done {
     [self endEditing];
@@ -174,19 +198,19 @@
             protocol = self.protocolList[row];
             _textfieldProtocol1.text = protocol.name;
             _protocol1 = protocol.number;
-
+            
             break;
         case 1:
             protocol = self.protocolList[row];
             _textfieldProtocol2.text = protocol.name;
             _protocol2 = protocol.number;
-
+            
             break;
         case 2:
             protocol = self.protocolList[row];
             _textfieldProtocol3.text = protocol.name;
             _protocol3 = protocol.number;
-
+            
             break;
         case 3:
             country = self.allCountriesList[row];
@@ -275,7 +299,7 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     AtomProtocol *protocol = [AtomProtocol new];
     AtomCountry *country = [AtomCountry new];
-
+    
     switch (_selectedTextfield) {
         case 0:
             protocol = self.protocolList[row];
@@ -287,13 +311,13 @@
             protocol = self.protocolList[row];
             _textfieldProtocol2.text = protocol.name;
             _protocol2 = protocol.number;
-
+            
             break;
         case 2:
             protocol = self.protocolList[row];
             _textfieldProtocol3.text = protocol.name;
             _protocol3 = protocol.number;
-
+            
             break;
         case 3:
             country = self.allCountriesList[row];
@@ -339,8 +363,12 @@
 #pragma mark - Show Popover -
 
 -(IBAction)showPopOver:(UIButton *)sender {
+    UIButton *infoButton = sender;
     PopOverViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PopOverViewController"];
-    controller.tooltipText = @"If checked, fastest servers will be fetched based on the smartest ping response.";
+    if (infoButton.tag == 1)
+        controller.tooltipText = @"If enabled, fastest servers will be fetched based on the smartest ping response.";
+    else if (infoButton.tag == 2)
+        controller.tooltipText = @"If enabled, ATOM SDK will use smart dialing mechanism to connect to desired country.";
     controller.preferredContentSize = CGSizeMake(280,70);
     controller.modalPresentationStyle = UIModalPresentationPopover;
     UIPopoverPresentationController *popoverController = controller.popoverPresentationController;
@@ -389,7 +417,7 @@
     [AtomManager sharedInstance].delegate = self;
     AtomCredential *atomCredential;
     if ([AppDelegate sharedInstance].isAutoGeneratedUserCredentials) {
-        [AtomManager sharedInstance].UUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        [AtomManager sharedInstance].UUID = [AppDelegate sharedInstance].UDID;
         
     }
     else {
@@ -406,6 +434,7 @@
     
     AtomProperties *properties = [[AtomProperties alloc] initWithCountry:country protocol:protocol1];
     properties.useOptimization = self.optimizeCountry.isOn;
+    properties.useSmartDialing = self.smartDialing.isOn;
     if (self.protocol2 != 0) {
         AtomProtocol *protocol2 = [AtomProtocol new];
         protocol2.number = (int)self.protocol2;
@@ -417,34 +446,33 @@
         protocol3.number = (int)self.protocol3;
         properties.tertiaryProtocol = protocol3;
     }
-    
     [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
-        NSLog(@"%@",success);
+        //NSLog(@"%@",success);
     } errorBlock:^(NSError *error) {
-        NSLog(@"ERROR IN CONNECTING : %@",error.description);
+        //NSLog(@"ERROR IN CONNECTING : %@",error.description);
         [self normalUI];
     }];
 }
 
 #pragma mark - Atom Manager Delegates
 
--(void)atomManagerDidConnect {
-    NSLog(@"VPN CONNECTED");
+-(void)atomManagerDidConnect:(AtomConnectionDetails *)atomConnectionDetails {
+    //NSLog(@"VPN CONNECTED");
     [self connectedUI];
 }
 
--(void)atomManagerDidDisconnect:(BOOL)manuallyDisconnected {
-    NSLog(@"VPN DISCONNECTED");
+-(void)atomManagerDidDisconnect:(AtomConnectionDetails *)atomConnectionDetails {
+    //NSLog(@"VPN DISCONNECTED");
     [self normalUI];
 }
 
 -(void)atomManagerOnRedialing:(AtomConnectionDetails *)atomConnectionDetails withError:(NSError *)error {
-    NSLog(@"REDIALING CONNECTION");
+    //NSLog(@"REDIALING CONNECTION");
     [self connectingUI];
 }
 
 -(void)atomManagerDialErrorReceived:(NSError *)error withConnectionDetails:(AtomConnectionDetails *)atomConnectionDetails {
-    NSLog(@"DIALED ERROR: %@",error.description);
+    //NSLog(@"DIALED ERROR: %@",error.description);
     [_vpnStatus addObject:[NSString stringWithFormat:@"Error: %ld - %@",(long)error.code,error.localizedDescription]];
     [_tableViewStatus reloadData];
     [self normalUI];
@@ -500,3 +528,4 @@
 }
 
 @end
+

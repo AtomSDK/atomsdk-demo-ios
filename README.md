@@ -7,19 +7,20 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 * Connection with Dedicated IP
 * Connection with Multiple Protocols (Auto-Retry Functionality)
 * Connection with Real-time Optimized Servers (Countries based on latency from user in Real-time)
+* Connection with Smart Dialing (Use getCountriesForSmartDialing() to get the Advanced VPN Dialing supported countries)
 
 ## Compatibility
 * Compatible with Xcode 9 and iOS 9 and later
-* Compatible with ATOM SDK Version 1.0.4 and onwards
+* Compatible with ATOM SDK Version 2.0 and onwards
 
 
 ## Supported Protocols
 * IPSec
-* IKEV
+* IKEv2
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/1.0.4/AtomSDK-iOS.zip)
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.0/AtomSDK-iOS.zip)
 
 
 
@@ -57,19 +58,25 @@ It can be initialized using an instance of AtomConfiguration. It should have a v
     AtomConfiguration *atomConfiguration= [[AtomConfiguration alloc] init];
     atomConfig.secretKey = @"SECRETKEY_GOES_HERE";
     atomConfig.vpnInterfaceName = @"Atom";
-    atomConfig.baseUrl = [NSURL URLWithString:@"YOUR_BASE_URL"];
     [AtomManager sharedInstanceWithAtomConfiguration:atomConfig];
 ```
 
 PS: ATOM SDK is a singleton, and must be initialized before accessing its methods.
 
+## Enable Local Inventory Support
+ATOM SDK offers a feature to enable the local inventory support. This can help Application to fetch Countries and Protocols even when device network is not working.
+
+* To enable it, Log In to the Atom Console
+* Download the local data file in json format
+* File name should be localdata.json. Please rename the file to localdata.json if you find any discrepancy in the file name.
+* Paste the file in root of your application folder.
 
 ## Delegates to Register
 ATOM SDK offers four delegates to register for the ease of the developer.
-* atomManagerDidConnect
-* atomManagerDidDisconnect
-* atomManagerOnRedialing
-* atomManagerDialErrorReceived
+* atomManagerDidConnect:
+* atomManagerDidDisconnect:
+* atomManagerOnRedialing:
+* atomManagerDialErrorReceived:
 
 ## StateDidChangedHandler to monitor a VPN connection status
 ATOM SDK offers stateDidChangedHandler for the ease of the developer.
@@ -103,6 +110,14 @@ Countries can be obtained through ATOM SDK as well.
 [[AtomManager sharedInstance] getCountriesWithSuccess:^(NSArray<AtomCountry *> *success) {}
 } errorBlock:^(NSError *error) {}];
 ```
+
+## Fetch Countries For Smart Dialing
+You can get the Countries those support Smart Dialing through ATOM SDK.
+```
+[[AtomManager sharedInstance] getCountriesForSmartDialing:^(NSArray<AtomCountry *> *success) {}
+} errorBlock:^(NSError *error) {}];
+```
+
 ## Fetch Protocols
 Protocols can be obtained through ATOM SDK as well.
 
@@ -146,11 +161,20 @@ This one is same as the first one i.e. “Connection with Parameters” with a s
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 [properties setUseOptimization:YES];
 
-[[AtomManager sharedInstance] connectWithProperties:@"<#properties#>" completion:^(NSString *success) {}
+[[AtomManager sharedInstance] connectWithPropertiesconnectWithProperties:properties completion:^(NSString *success) {}
 errorBlock:^(NSError *error) {}];
 ```
 
 If you want to show your user the best location for him on your GUI then ATOM SDK have it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn’t blocks any of our datacenters). You can use this property to find the best speed countries from your user’s location.
+
+### Connection with Smart Dialing
+“Connection with Parameters” with a slight addition of using smart dialing to connect. You just need to call "withSmartDialing" and rest will handled by the ATOM SDK.
+```
+AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
+[properties setUseSmartDialing:YES];
+[[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
+errorBlock:^(NSError *error) {}];
+```
 
 For more information, please see the inline documentation of AtomProperties Class.
 
@@ -172,6 +196,32 @@ To disconnect, simply call the disconnectVPN method of AtomManager.
 ```
 [[AtomManager sharedInstance] disconnectVPN];
 ```
+
+# Distributing to App Store
+While distributing application to app store developer should add Run Script in Build phase before the app can be submitted to the iTunes App Store. This type of “Fat Binary” framework will not pass the App Store validation process, so we will need to strip the simulator architecture version from the framework using the following shell script. When you build and archive the app for release, the fat binaries will be stripped and the app can be submitted to the iTunes App Store.
+
+Select the Project in xcode, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase → Name the Script as “Remove Unused Architectures Script”.
+
+```
+FRAMEWORK=$1
+echo "Trimming $FRAMEWORK..."
+FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
+EXTRACTED_ARCHS=()
+for ARCH in $ARCHS
+do
+    echo "Extracting $ARCH..."
+    lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
+    EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
+done
+echo "Merging binaries..."
+lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
+rm "${EXTRACTED_ARCHS[@]}"
+rm "$FRAMEWORK_EXECUTABLE_PATH"
+mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
+echo "Done."
+```
+Thats all !!
+This run script removes the unused simulator architectures only while pushing the application to the App Store.
 ## Note:
 The current version of the VPN Atom SDK uses the following library under the hood:
 
