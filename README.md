@@ -203,7 +203,7 @@ While distributing application to app store developer should add Run Script in B
 Select the Project in xcode, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase → Name the Script as “Remove Unused Architectures Script”.
 
 ```
-FRAMEWORK=$1
+FRAMEWORK="AtomSDK"
 echo "Trimming $FRAMEWORK..."
 FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
 EXTRACTED_ARCHS=()
