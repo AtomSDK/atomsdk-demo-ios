@@ -17,10 +17,12 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 ## Supported Protocols
 * IPSec
 * IKEv2
+* TCP
+* UDP
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.0/AtomSDK.zip)
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.1.0/AtomSDK.zip). We have also introduced AtomSDKTunnel for Connecting VPN over TCP and UDP protocols. For detail information please follow [How to Integrate AtomSDKTunnel](#How-to-Integrate-AtomSDKTunnel-in-iOS-App)
 
 
 
@@ -56,9 +58,10 @@ It can be initialized using an instance of AtomConfiguration. It should have a v
 
 ```
     AtomConfiguration *atomConfiguration= [[AtomConfiguration alloc] init];
-    atomConfig.secretKey = @"SECRETKEY_GOES_HERE";
-    atomConfig.vpnInterfaceName = @"Atom";
-    [AtomManager sharedInstanceWithAtomConfiguration:atomConfig];
+    atomConfiguration.secretKey = @"SECRETKEY_GOES_HERE";
+    atomConfiguration.vpnInterfaceName = @"Atom";
+    atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR _NETWORK_EXTENSION_BUNDLE_ID”;
+    [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
 ```
 
 PS: ATOM SDK is a singleton, and must be initialized before accessing its methods.
@@ -197,6 +200,61 @@ To disconnect, simply call the disconnectVPN method of AtomManager.
 [[AtomManager sharedInstance] disconnectVPN];
 ```
 
+# How to Integrate AtomSDKTunnel in iOS App
+1.  Open your Xcode project. 
+2. Add your developer account to Xcode from Preferences -> Account if you didn't add before. 
+3. Select General tab from your app target and then set your developer account details. 
+4. Now add new target “Network extension” in your Xcode project. 
+
+![Network Extension](docs/1.png)
+
+
+5. From your app target and Extension target select capabilities tab and enable both Personal VPN and the Network Extension. Then select the capabilities you are going to use. 
+
+![Network Extension](docs/2.png)
+
+
+6. Drag and drop AtomSDK.framework and AtomSDKTunnel.framework into your project. 
+7. Select AtomSDKTunnel.framework for both App target and Extension target in Target Member ship section in right side of Xcode.
+
+8. Go to your project -> General tab from your app target, add both frameworks using ‘+’ to the Embedded Binaries section. 
+
+![Network Extension](docs/3.png)
+
+
+
+
+9. After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> and <AtomSDKTunnnel/AtomPacketTunnelProvider.h> directives in your App and extension target.
+
+
+10. Now in extension target NEPacketTunnelProvider.h class, inherit class with AtomPacketTunnelProvider instead of NEPacketTunnelProvider.
+ 
+![Network Extension](docs/4.1.png)
+
+**with**
+
+![Network Extension](docs/4.2.png)
+
+ 
+11. Also in NEPacketTunnelProvider.m file, remove all methods.
+
+![Network Extension](docs/5.png)
+
+AtomSDK can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. Also, there is tunnelProviderBundleIndentifier in which you have to enter the bundle ID of Network Extension of your project.
+
+AtomConfiguration *atomConfiguration = [AtomConfiguration alloc]init];
+atomConfiguration.secretKey = @” SECRETKEY_GOES_HERE”;
+atomConfiguration.vpnInterfaceName = @”Atom”;
+atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR _NETWORK_EXTENSION_BUNDLE_ID”;
+[atomConfiguration sharedInstanceWithAtomConfiguration: atomConfiguration];
+
+Note:
+
+If you are using these AtomSDK.framework and AtomSDKTunnel.framework in swift App, then in step 9 all mentioned directives should be included in the Objective - C bridging header file.
+
+![Network Extension](docs/6.png)
+
+
 # Distributing to App Store
 While distributing application to app store developer should add Run Script in Build phase before the app can be submitted to the iTunes App Store. This type of “Fat Binary” framework will not pass the App Store validation process, so we will need to strip the simulator architecture version from the framework using the following shell script. When you build and archive the app for release, the fat binaries will be stripped and the app can be submitted to the iTunes App Store.
 
@@ -210,8 +268,7 @@ EXTRACTED_ARCHS=()
 for ARCH in $ARCHS
 do
     echo "Extracting $ARCH..."
-    lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
-    EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
+    lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH" EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
 done
 echo "Merging binaries..."
 lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
@@ -222,8 +279,9 @@ echo "Done."
 ```
 Thats all !!
 This run script removes the unused simulator architectures only while pushing the application to the App Store.
+
 ## Note:
 The current version of the VPN Atom SDK uses the following library under the hood:
 
 * NEVPNManager
-
+* NEVPNTunnelProvider

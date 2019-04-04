@@ -4,7 +4,7 @@
 
 #import "AppDelegate.h"
 
-#define ATOM_SDK_SECRET_KEY @"<#YOUR_SECRET_KEY#>"
+#define ATOM_SDK_SECRET_KEY @"dab9cf530d2932f1bfe5572fcaa9fa3dc7bd32fb"
 
 @interface AppDelegate ()
 
@@ -17,17 +17,21 @@
     // Override point for customization after application launch.
     
 //  AtomManager instance with Secret key
-    [AtomManager sharedInstanceWithSecretKey:ATOM_SDK_SECRET_KEY];
+//  [AtomManager sharedInstanceWithSecretKey:ATOM_SDK_SECRET_KEY];
     self.secretKey = ATOM_SDK_SECRET_KEY;
     
 //    AtomManager instance with Atom Configuration
-//    AtomConfiguration *atomConfiguration = [[AtomConfiguration alloc] init];
-//    atomConfig.secretKey = @"<#SECRETKEY_GOES_HERE#>";
-//    atomConfig.vpnInterfaceName = @"<#Atom#>";
-//    atomConfig.baseUrl = [NSURL URLWithString:@"<#YOUR_BASE_URL#>"];
-//    [AtomManager sharedInstanceWithAtomConfiguration:atomConfig];
+    AtomConfiguration *atomConfiguration = [[AtomConfiguration alloc] init];
+    atomConfiguration.secretKey = ATOM_SDK_SECRET_KEY;
+    atomConfiguration.vpnInterfaceName = @"ATOMSDKSAMPLE";
     
-//Installing Profile in settings on Application launch
+    // In order to configure App Network Extension please follow README.
+    // tunnelProviderBundleIdentifier must be provided before connecting with TCP or UDP.
+   
+    atomConfiguration.tunnelProviderBundleIdentifier = @"com.atom.vpn.demo.AppTunnelProvider";
+    [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
+    
+//  Installing Profile in settings on Application launch
     
     [[AtomManager sharedInstance] installVPNProfileWithCompletion:^(NSString *success) {
         NSLog(@"profile installed");

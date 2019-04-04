@@ -32,4 +32,11 @@
  */
 @property (nonatomic, strong) NSString *vpnInterfaceName;
 
+/*!
+ * @property tunnelProviderBundleIdentifier
+ * @discussion Bundle identifier for tunnel Provider app extension.
+ */
+@property (nonatomic, strong) NSString *tunnelProviderBundleIdentifier;
+
+
 @end

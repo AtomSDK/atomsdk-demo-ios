@@ -43,4 +43,7 @@
  */
 @property (nonatomic, strong) NSArray *protocolSwitch;
 
+@property (nonatomic, strong) NSNumber *port_number;
+
+
 @end
