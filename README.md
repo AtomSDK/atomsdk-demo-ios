@@ -242,11 +242,13 @@ To disconnect, simply call the disconnectVPN method of AtomManager.
 
 AtomSDK can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. Also, there is tunnelProviderBundleIndentifier in which you have to enter the bundle ID of Network Extension of your project.
 
-AtomConfiguration *atomConfiguration = [AtomConfiguration alloc]init];
-atomConfiguration.secretKey = @” SECRETKEY_GOES_HERE”;
-atomConfiguration.vpnInterfaceName = @”Atom”;
-atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR _NETWORK_EXTENSION_BUNDLE_ID”;
-[atomConfiguration sharedInstanceWithAtomConfiguration: atomConfiguration];
+```
+    AtomConfiguration *atomConfiguration= [[AtomConfiguration alloc] init];
+    atomConfiguration.secretKey = @"SECRETKEY_GOES_HERE";
+    atomConfiguration.vpnInterfaceName = @"Atom";
+    atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR _NETWORK_EXTENSION_BUNDLE_ID”;
+    [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
+```
 
 Note:
 
