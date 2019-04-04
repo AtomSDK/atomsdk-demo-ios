@@ -13,6 +13,7 @@
 #import "AtomProtocol.h"
 #import "AtomConnectionDetails.h"
 #import "AtomConfiguration.h"
+#import "AtomOnDemandConfiguration.h"
 
 // This protocol represents the Atom Manager delegates. As such, it supplies information about connection and disconnection of the VPN tunnel.
 @protocol AtomManagerDelegate <NSObject>
@@ -124,22 +125,66 @@
 @property (nonatomic, copy) OnPacketsTransmitted onPacketsTransmitted;
 
 /*!
- * @property AtomCredential
+ * @property atomCredential
  * @discussion Gets and Sets the VPN Credentials object to be used in a VPN Connection. It must be provided before calling Connect method or provide UUID alternatively.
  */
 @property (nonatomic, strong) AtomCredential *atomCredential;
 
 /*!
- * @property AtomProperties
+ * @property atomProperties
  * @discussion Gets or sets the AtomProperties which were used for the connection, or null if no connection has been made yet.
  */
 @property (nonatomic, strong) AtomProperties *atomProperties;
+
+
+/*!
+ * @property onDemandConfiguration
+ * @discussion TODO://
+ */
+@property (nonatomic, strong) AtomOnDemandConfiguration *onDemandConfiguration;
+
 
 /*!
  * @property UUID
  * @discussion Gets or Sets a Unique User identifier used to connect to a vpn server if Credentials object is not provided. ATOM SDK will generate VPN Credentials itself when this property is provided. This value will be ignored if Credentials are provided.
  */
 @property (nonatomic, strong) NSString* UUID;
+
+/*!
+ * @property lastDialedHost
+ * @discussion The VPN server. Depending on the protocol, may be an IP address or host name. This value will be set to nil if no prior connection has been made.
+ */
+@property (nonatomic, strong) NSString *lastDialedHost __deprecated_msg("Use atomConnectionDetails instead.");
+
+/*!
+ * @property lastDialedHostMethod
+ * @discussion The VPN server method. Depending on the protocol, server method through which @lastDialedHost was fetched. This value will be set to nil if no prior connection has been made.
+ */
+@property (nonatomic, strong) NSString *lastDialedHostMethod __deprecated_msg("Use atomConnectionDetails instead.");
+
+/*!
+ * @property lastDialedHostMethod
+ * @discussion The VPN server type. Depending on the protocol, server type through which @lastDialedHost was fetched. This value will be set to nil if no prior connection has been made.
+ */
+@property (nonatomic, strong) NSString *lastDialedHostServerType __deprecated_msg("Use atomConnectionDetails instead.");
+
+/*!
+ * @property atomConnectionDetails
+ * @discussion Gets the details of the last connection attempt.
+ */
+@property (nonatomic, strong) AtomConnectionDetails *atomConnectionDetails;
+
+/*!
+ * @property isAlwaysOnEnabled
+ * @discussion Toggles VPN Always On feature. //-TODO update documentation
+ */
+@property (nonatomic) BOOL vpnAlwaysOn;
+
+/*!
+ * @property domainsArray
+ * @discussion An array of web domain objects. e.g: www.<domain_name>.com
+ */
+@property (nonatomic, strong) NSArray *vpnOnDemandWithDomains;
 
 /*!
  * @method sharedInstanceWithSecretKey:
@@ -216,41 +261,6 @@
  */
 - (NSDate*) getConnectedTime;
 
-/*!
- * @property lastDialedHost
- * @discussion The VPN server. Depending on the protocol, may be an IP address or host name. This value will be set to nil if no prior connection has been made.
- */
-@property (nonatomic, strong) NSString *lastDialedHost __deprecated_msg("Use atomConnectionDetails instead.");
-
-/*!
- * @property lastDialedHostMethod
- * @discussion The VPN server method. Depending on the protocol, server method through which @lastDialedHost was fetched. This value will be set to nil if no prior connection has been made.
- */
-@property (nonatomic, strong) NSString *lastDialedHostMethod __deprecated_msg("Use atomConnectionDetails instead.");
-
-/*!
- * @property lastDialedHostMethod
- * @discussion The VPN server type. Depending on the protocol, server type through which @lastDialedHost was fetched. This value will be set to nil if no prior connection has been made.
- */
-@property (nonatomic, strong) NSString *lastDialedHostServerType __deprecated_msg("Use atomConnectionDetails instead.");
-
-/*!
- * @property atomConnectionDetails
- * @discussion Gets the details of the last connection attempt.
- */
-@property (nonatomic, strong) AtomConnectionDetails *atomConnectionDetails;
-
-/*!
- * @property isAlwaysOnEnabled
- * @discussion Toggles VPN Always On feature. //-TODO update documentation
- */
-@property (nonatomic) BOOL vpnAlwaysOn;
-
-/*!
- * @property domainsArray
- * @discussion An array of web domain objects. e.g: www.<domain_name>.com
- */
-@property (nonatomic, strong) NSArray *vpnOnDemandWithDomains;
 
 #pragma mark - Request Inventory Methods
 

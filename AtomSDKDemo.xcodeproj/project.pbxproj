@@ -19,10 +19,25 @@
 		6E60CB9D2074ED9400AA31CA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */; };
 		6E8A28652087D43B008A7D9E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
 		6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9779402085ECAC009519EC /* PopOverViewController.m */; };
-		6EE012EE2087D4CF00B4B0A0 /* AtomSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */; };
 		6EE012EF2087D4D700B4B0A0 /* AtomSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */; };
 		6EE012F02087D4D700B4B0A0 /* AtomSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5C851902254A93700301F45 /* AtomSDKTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; };
+		B5C851912254A93700301F45 /* AtomSDKTunnel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5C8519A2254A99E00301F45 /* PacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C851992254A99E00301F45 /* PacketTunnelProvider.m */; };
+		B5C8519F2254A99E00301F45 /* TunnelProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5C851962254A99E00301F45 /* TunnelProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5C851A42254AA1500301F45 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
+		B5C851A52254AB6C00301F45 /* AtomSDKTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5C8519D2254A99E00301F45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E5BACFC207386B200895431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5C851952254A99E00301F45;
+			remoteInfo = TunnelProvider;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6E02146A2074CC8300AB1BE0 /* Embed Frameworks */ = {
@@ -31,9 +46,21 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B5C851912254A93700301F45 /* AtomSDKTunnel.framework in Embed Frameworks */,
 				6EE012F02087D4D700B4B0A0 /* AtomSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5C851A32254A99E00301F45 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B5C8519F2254A99E00301F45 /* TunnelProvider.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -61,6 +88,12 @@
 		6E97793F2085ECAC009519EC /* PopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopOverViewController.h; sourceTree = "<group>"; };
 		6E9779402085ECAC009519EC /* PopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopOverViewController.m; sourceTree = "<group>"; };
 		6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtomSDK.framework; sourceTree = "<group>"; };
+		B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtomSDKTunnel.framework; sourceTree = "<group>"; };
+		B5C851962254A99E00301F45 /* TunnelProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TunnelProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C851982254A99E00301F45 /* PacketTunnelProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PacketTunnelProvider.h; sourceTree = "<group>"; };
+		B5C851992254A99E00301F45 /* PacketTunnelProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacketTunnelProvider.m; sourceTree = "<group>"; };
+		B5C8519B2254A99E00301F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5C8519C2254A99E00301F45 /* TunnelProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TunnelProvider.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +101,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C851902254A93700301F45 /* AtomSDKTunnel.framework in Frameworks */,
 				6EE012EF2087D4D700B4B0A0 /* AtomSDK.framework in Frameworks */,
 				6E8A28652087D43B008A7D9E /* NetworkExtension.framework in Frameworks */,
 				6E60CB9D2074ED9400AA31CA /* MobileCoreServices.framework in Frameworks */,
-				6EE012EE2087D4CF00B4B0A0 /* AtomSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5C851932254A99E00301F45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5C851A52254AB6C00301F45 /* AtomSDKTunnel.framework in Frameworks */,
+				B5C851A42254AA1500301F45 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +132,7 @@
 		6E0214652074B3E300AB1BE0 /* AtomSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */,
 				6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */,
 			);
 			path = AtomSDK;
@@ -99,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				6E5BAD06207386B200895431 /* AtomSDKDemo */,
+				B5C851972254A99E00301F45 /* TunnelProvider */,
 				6E5BAD05207386B200895431 /* Products */,
 				6E0214612074B39600AB1BE0 /* Frameworks */,
 			);
@@ -108,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				6E5BAD04207386B200895431 /* AtomSDKDemo.app */,
+				B5C851962254A99E00301F45 /* TunnelProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +191,17 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		B5C851972254A99E00301F45 /* TunnelProvider */ = {
+			isa = PBXGroup;
+			children = (
+				B5C851982254A99E00301F45 /* PacketTunnelProvider.h */,
+				B5C851992254A99E00301F45 /* PacketTunnelProvider.m */,
+				B5C8519B2254A99E00301F45 /* Info.plist */,
+				B5C8519C2254A99E00301F45 /* TunnelProvider.entitlements */,
+			);
+			path = TunnelProvider;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,15 +213,34 @@
 				6E5BAD01207386B200895431 /* Frameworks */,
 				6E5BAD02207386B200895431 /* Resources */,
 				6E02146A2074CC8300AB1BE0 /* Embed Frameworks */,
+				B5C851A32254A99E00301F45 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5C8519E2254A99E00301F45 /* PBXTargetDependency */,
 			);
 			name = AtomSDKDemo;
 			productName = "AtomSDK Sample App";
 			productReference = 6E5BAD04207386B200895431 /* AtomSDKDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B5C851952254A99E00301F45 /* TunnelProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5C851A02254A99E00301F45 /* Build configuration list for PBXNativeTarget "TunnelProvider" */;
+			buildPhases = (
+				B5C851922254A99E00301F45 /* Sources */,
+				B5C851932254A99E00301F45 /* Frameworks */,
+				B5C851942254A99E00301F45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TunnelProvider;
+			productName = TunnelProvider;
+			productReference = B5C851962254A99E00301F45 /* TunnelProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -178,9 +253,24 @@
 				TargetAttributes = {
 					6E5BAD03207386B200895431 = {
 						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
+					};
+					B5C851952254A99E00301F45 = {
+						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
-							com.apple.VPNLite = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.NetworkExtensions.iOS = {
 								enabled = 1;
 							};
 						};
@@ -201,6 +291,7 @@
 			projectRoot = "";
 			targets = (
 				6E5BAD03207386B200895431 /* AtomSDKDemo */,
+				B5C851952254A99E00301F45 /* TunnelProvider */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +304,13 @@
 				6E5BAD14207386B200895431 /* LaunchScreen.storyboard in Resources */,
 				6E5BAD11207386B200895431 /* Assets.xcassets in Resources */,
 				6E5BAD0F207386B200895431 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5C851942254A99E00301F45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +331,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5C851922254A99E00301F45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5C8519A2254A99E00301F45 /* PacketTunnelProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5C8519E2254A99E00301F45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5C851952254A99E00301F45 /* TunnelProvider */;
+			targetProxy = B5C8519D2254A99E00301F45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E5BAD0D207386B200895431 /* Main.storyboard */ = {
@@ -364,8 +478,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YDUR67SED;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -377,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -386,8 +501,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YDUR67SED;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -399,6 +514,60 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B5C851A12254A99E00301F45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = TunnelProvider/TunnelProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
+				);
+				INFOPLIST_FILE = TunnelProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.AppTunnelProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5C851A22254A99E00301F45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = TunnelProvider/TunnelProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
+				);
+				INFOPLIST_FILE = TunnelProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.AppTunnelProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -420,6 +589,15 @@
 			buildConfigurations = (
 				6E5BAD1B207386B200895431 /* Debug */,
 				6E5BAD1C207386B200895431 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5C851A02254A99E00301F45 /* Build configuration list for PBXNativeTarget "TunnelProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5C851A12254A99E00301F45 /* Debug */,
+				B5C851A22254A99E00301F45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
