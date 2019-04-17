@@ -74,7 +74,7 @@
 @property (nonatomic, strong) AtomProtocol* protocol;
 
 /*!
- * @property timeTakenToFindSpeedTest
+ * @property timeTakenToFindFastestServer
  * @discussion The time taken to find fastest server before starting connection to a server.
  */
 @property (nonatomic) int timeTakenToFindFastestServer;

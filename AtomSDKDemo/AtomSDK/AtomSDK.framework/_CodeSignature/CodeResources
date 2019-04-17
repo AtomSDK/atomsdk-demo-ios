@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AtomConfiguration.h</key>
 		<data>
-		Wf4Y9HADaym70HpsiIpEhlLc94w=
+		Gyxs+CcbnR/jgbgEBN49uETcVs4=
 		</data>
 		<key>Headers/AtomConnectionDetails.h</key>
 		<data>
@@ -22,11 +22,7 @@
 		</data>
 		<key>Headers/AtomManager.h</key>
 		<data>
-		hDL4BxseV6QopYM24t+zeZx0qcU=
-		</data>
-		<key>Headers/AtomOnDemandConfiguration.h</key>
-		<data>
-		w1NofLU9Wms0sgTqGqdMNxKV/O4=
+		6HFyJ7yUTeOC3HxFUAzrldEoOKs=
 		</data>
 		<key>Headers/AtomProperties.h</key>
 		<data>
@@ -34,7 +30,7 @@
 		</data>
 		<key>Headers/AtomProtocol.h</key>
 		<data>
-		SnxfrJpgcVdZpvUnAE/CANhpRjU=
+		dQ/oQoyYKNqXrT+4m3WF5Qq4J5Y=
 		</data>
 		<key>Headers/AtomSDK.h</key>
 		<data>
@@ -46,7 +42,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		OpH/dZY3muTzP2JRjz929wgj5h4=
+		NDTTSDT9H/1RB0hAjsWZTydcLgU=
 		</data>
 		<key>MPArrowLeft.png</key>
 		<data>
@@ -102,15 +98,15 @@
 		</data>
 		<key>MPTakeoverNotificationViewController~ipad.nib</key>
 		<data>
-		a4Ghcax4ey09bxRN7CblsaRmXWY=
+		yLe+owrqYSxH1UVkLRTObdOmdY4=
 		</data>
 		<key>MPTakeoverNotificationViewController~iphonelandscape.nib</key>
 		<data>
-		kXZRLElTqx4eP8t+KEWIqlb6pbY=
+		vHbeAnMnmkDqtW0yNsEogV2DXgE=
 		</data>
 		<key>MPTakeoverNotificationViewController~iphoneportrait.nib</key>
 		<data>
-		D2ZrL50S/GUZizLWrDmev9PFU8g=
+		KU3l4pNySNWIEPXRDh0XQZE0spE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -135,11 +131,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Wf4Y9HADaym70HpsiIpEhlLc94w=
+			Gyxs+CcbnR/jgbgEBN49uETcVs4=
 			</data>
 			<key>hash2</key>
 			<data>
-			AHEjnoiym97DiLjmG+Z7TL7ABeAL/VaM1HfLpPFLRI8=
+			3tujqWTbN8B2Z9A0xdf/C5RiZCTCUlfRt/UUah6qdn4=
 			</data>
 		</dict>
 		<key>Headers/AtomConnectionDetails.h</key>
@@ -179,22 +175,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hDL4BxseV6QopYM24t+zeZx0qcU=
+			6HFyJ7yUTeOC3HxFUAzrldEoOKs=
 			</data>
 			<key>hash2</key>
 			<data>
-			z4HG8EFHtscoqEO+Enhs0fAeTTnVeZq5wpIJbXgB1zc=
-			</data>
-		</dict>
-		<key>Headers/AtomOnDemandConfiguration.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			w1NofLU9Wms0sgTqGqdMNxKV/O4=
-			</data>
-			<key>hash2</key>
-			<data>
-			hMMwtNnB/3ajBOvhJx0J+2zNh652Rvh2tgusvNNvl20=
+			ClrzJTczZ0YOVeMKmZFXERKxFLtYBOZNRU7a9ThSV1I=
 			</data>
 		</dict>
 		<key>Headers/AtomProperties.h</key>
@@ -212,11 +197,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SnxfrJpgcVdZpvUnAE/CANhpRjU=
+			dQ/oQoyYKNqXrT+4m3WF5Qq4J5Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			iyOK7SZPw0sHtD7Q42ewjlE1x0BoES1zzAmqQIPvGw8=
+			sJrCYCe1fhErWuX9G/oG2E5E4J+JRD+LvdmWcVZC9Tg=
 			</data>
 		</dict>
 		<key>Headers/AtomSDK.h</key>
@@ -388,33 +373,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a4Ghcax4ey09bxRN7CblsaRmXWY=
+			yLe+owrqYSxH1UVkLRTObdOmdY4=
 			</data>
 			<key>hash2</key>
 			<data>
-			y12JAHEdbfgwLC7EfvBK9h/bBonEoinZdqKsC35/OBY=
+			Nsh2v5a77f+jFk72mLFCVdP7I/EIvMrJftHe32PlwRw=
 			</data>
 		</dict>
 		<key>MPTakeoverNotificationViewController~iphonelandscape.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kXZRLElTqx4eP8t+KEWIqlb6pbY=
+			vHbeAnMnmkDqtW0yNsEogV2DXgE=
 			</data>
 			<key>hash2</key>
 			<data>
-			0M3O9CPBGmwpyOsZxGWNbZGW5EUZwFbEU7WgtCJwx+U=
+			b5570bcldTqZtrPavdVyXhacB9uVauvC7WKbiYwYdQ8=
 			</data>
 		</dict>
 		<key>MPTakeoverNotificationViewController~iphoneportrait.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			D2ZrL50S/GUZizLWrDmev9PFU8g=
+			KU3l4pNySNWIEPXRDh0XQZE0spE=
 			</data>
 			<key>hash2</key>
 			<data>
-			YIb5AP3xb1tgLUvV9rtHMwWwm4u8HiiT1AbYBxxd/RM=
+			FkemR3KnWmsTE9oDIc8gJ/MJ/mMGXdpOpWqcjoBoTV0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
