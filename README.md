@@ -22,7 +22,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.1.0/AtomSDK.zip). We have also introduced AtomSDKTunnel for Connecting VPN over TCP and UDP protocols. For detail information please follow [How to Integrate AtomSDKTunnel](#How-to-Integrate-AtomSDKTunnel-in-iOS-App)
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.1.1/AtomSDK.zip). We have also introduced AtomSDKTunnel for Connecting VPN over TCP and UDP protocols. For detail information please follow [How to Integrate AtomSDKTunnel](#How-to-Integrate-AtomSDKTunnel-in-iOS-App)
 
 
 
