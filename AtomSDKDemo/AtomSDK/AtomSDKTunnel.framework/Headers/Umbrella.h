@@ -2,8 +2,8 @@
 //  Umbrella.h
 //  Umbrella
 //
-//  Created by Munib Siddiqui on 16/03/2019.
-//  Copyright © 2018 Munib Siddiqui. All rights reserved.
+//  Created by ATOM on 16/03/2019.
+//  Copyright © 2018 ATOM. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

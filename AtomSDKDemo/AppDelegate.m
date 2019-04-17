@@ -4,7 +4,7 @@
 
 #import "AppDelegate.h"
 
-#define ATOM_SDK_SECRET_KEY @"dab9cf530d2932f1bfe5572fcaa9fa3dc7bd32fb"
+#define ATOM_SDK_SECRET_KEY @"ATOM_SDK_SECRET_KEY"
 
 @interface AppDelegate ()
 
