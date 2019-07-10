@@ -18,6 +18,8 @@ FOUNDATION_EXPORT const unsigned char AtomSDKVersionString[];
 #import <AtomSDK/AtomManager.h>
 #import <AtomSDK/AtomConfiguration.h>
 #import <AtomSDK/AtomCountry.h>
+#import <AtomSDK/AtomChannel.h>
+#import <AtomSDK/AtomCity.h>
 #import <AtomSDK/AtomCredential.h>
 #import <AtomSDK/AtomProperties.h>
 #import <AtomSDK/AtomProtocol.h>

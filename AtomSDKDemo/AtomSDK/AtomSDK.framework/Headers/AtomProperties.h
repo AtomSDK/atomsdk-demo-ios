@@ -8,7 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "AtomCountry.h"
 #import "AtomProtocol.h"
-
+#import "AtomChannel.h"
+#import "AtomCity.h"
 /*!
  * @interface AtomProperties
  * @discussion Contains all the properties required by the ATOM SDK to establish VPN connection.
@@ -25,7 +26,19 @@
  * @property Country
  * @discussion Gets the Country object if provided by the developer for the instance of AtomProperties.
  */
-@property (nonatomic, strong) AtomCountry *country;
+@property (nonatomic, strong,readonly) AtomCountry *country;
+
+/*!
+ * @property Channel
+ * @discussion Gets the Channel object if provided by the developer for the instance of AtomProperties.
+ */
+@property (nonatomic, strong,readonly) AtomChannel *channel;
+
+/*!
+ * @property City
+ * @discussion Gets the City object if provided by the developer for the instance of AtomProperties.
+ */
+@property (nonatomic, strong,readonly) AtomCity *city;
 
 /*!
  * @property Protocol
@@ -53,16 +66,17 @@
 @property (nonatomic, strong) NSString *dedicatedHostName;
 
 /*!
+ * @property customConfiguration
+ * @discussion Gets the configuration property if provided by the developer for the instance of AtomProperties. For TCP/UDP protocol only.
+ */
+@property (nonatomic, strong) NSString *configuration;
+
+/*!
  * @property useOptimization
  * @discussion When set to True, ATOM SDK will use real-time optimization mechanism to connect to your desired Country.
  */
 @property (nonatomic) BOOL useOptimization;
 
-/*!
- * @property skipUserVerification
- * @discussion Set this property to True while dialing through DedicatedHostName if you want to skip user verification process. It is recommended to keep it false to avoid any unauthorized usage of VPN. Default value is False.
- */
-@property (nonatomic) BOOL skipUserVerification;
 
 /*!
  * @property useSmartConnect
@@ -89,17 +103,47 @@
 /**
  Initializes a new instance of AtomProperties with a AtomCountry and AtomProtocol object obtained from -getCountriesWithSuccess:errorBlock and -getProtocolsWithSuccess:errorBlock methods of AtomManager.
 
- @param country The Country to which you need to make the connection on. Countries list can be obtained from GetCountries() method of AtomManager.
- @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from GetProtocols() method of AtomManager.
+ @param country The Country to which you need to make the connection on. Countries list can be obtained from -getCountriesWithSuccess:errorBlock method of AtomManager.
+ @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
  */
 - (instancetype)initWithCountry:(AtomCountry *)country protocol:(AtomProtocol *)protocol;
+
+/**
+ Initializes a new instance of AtomProperties with a AtomChannel and AtomProtocol object obtained from -getProtocolsWithSuccess:errorBlock methods of AtomManager.
+ 
+ @param channel The Channel to which you need to make the connection on.
+ @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
+ */
+- (instancetype)initWithChannel:(AtomChannel *)channel protocol:(AtomProtocol *)protocol;
+
+/**
+ Initializes a new instance of AtomProperties with a AtomCity and AtomProtocol object obtained from -getProtocolsWithSuccess:errorBlock methods of AtomManager.
+ 
+ @param country The Country to which you need to make the connection on. Countries list can be obtained from -getCountriesWithSuccess:errorBlock method of AtomManager.
+ @param city The city to which you need to make the connection on.
+ @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
+ */
+- (instancetype)initWithCountry:(AtomCountry *)country andCity:(AtomCity *)city andProtocol:(AtomProtocol *)protocol;
+
 
 /**
  Initializes a new instance of AtomProperties with a dedicatedHostName and the AtomProtocol object obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
 
  @param dedicatedHostName The Dedicated Host Name with which you want to make the connection.This should be a valid hostname or IP Address, Dial error with a validation exception will be thrown otherwise.
- @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from GetProtocols() method of AtomManager.
+ @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
  */
 - (instancetype)initWithDedicatedHostName:(NSString *)dedicatedHostName protocol:(AtomProtocol *)protocol;
+
+/**
+ Initializes a new instance of AtomProperties with a dedicatedHostName and the AtomProtocol object obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
+ 
+ @param dedicatedHostName The Dedicated Host Name with which you want to make the connection.This should be a valid hostname or IP Address, Dial error with a validation exception will be thrown otherwise.
+ @param protocol The Protocol with which you need to make the connection. Protocols list can be obtained from -getProtocolsWithSuccess:errorBlock method of AtomManager.
+ @param configuration Specify configuration while dialing using (For TCP & UDP Protocols only).
+ 
+ */
+- (instancetype)initWithDedicatedHostName:(NSString *)dedicatedHostName protocol:(AtomProtocol *)protocol customConfig:(NSString *)configuration;
+
+
 
 @end

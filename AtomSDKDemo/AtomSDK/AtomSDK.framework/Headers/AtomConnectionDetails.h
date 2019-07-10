@@ -135,4 +135,18 @@
  */
 @property (nonatomic) BOOL isDialedWithOptimization;
 
+/*!
+ * @property city
+ * @discussion The city to which the last connection was made. The city will be null if not dialed.
+ */
+@property (nonatomic ,strong) AtomCity *city;
+
+/*!
+ * @property channel
+ * @discussion The channel to which the last connection was made. The channel will be null if not dialed.
+ */
+@property (nonatomic ,strong) AtomChannel *channel;
+
+
+
 @end

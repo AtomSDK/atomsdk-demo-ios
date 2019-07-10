@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gjn-iU-22x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gjn-iU-22x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -248,7 +248,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moy-JA-NEx">
-                                <rect key="frame" x="77" y="163" width="220" height="43"/>
+                                <rect key="frame" x="77.5" y="163" width="220" height="43"/>
                                 <color key="backgroundColor" red="0.90469960059006205" green="0.90469960059006205" blue="0.90469960059006205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="KpT-vu-i99"/>
@@ -365,8 +365,8 @@
                                     <outlet property="delegate" destination="Amd-bL-ksL" id="Shy-z2-669"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip User Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-O3-Src">
-                                <rect key="frame" x="16" y="251" width="147.5" height="31"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip User Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG0-O3-Src">
+                                <rect key="frame" x="16" y="251" width="147" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="PIj-Jl-UVZ"/>
                                 </constraints>
@@ -374,8 +374,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrr-Jg-4MT">
-                                <rect key="frame" x="175" y="256" width="22" height="22"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrr-Jg-4MT">
+                                <rect key="frame" x="174.5" y="256" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="oTK-z9-eZe"/>
                                     <constraint firstAttribute="height" constant="22" id="tsx-6T-uCv"/>
@@ -384,7 +384,7 @@
                                     <action selector="showPopOver:" destination="Amd-bL-ksL" eventType="touchUpInside" id="4nt-3v-bfm"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-DP-f5o">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-DP-f5o">
                                 <rect key="frame" x="312" y="251" width="49" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="enl-CB-7yP"/>
@@ -395,7 +395,7 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MME-UK-uki">
-                                <rect key="frame" x="77" y="297" width="220" height="43"/>
+                                <rect key="frame" x="77.5" y="297" width="220" height="43"/>
                                 <color key="backgroundColor" red="0.90469960059999999" green="0.90469960059999999" blue="0.90469960059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="GQb-hq-aeN"/>
@@ -675,7 +675,7 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaV-xV-8HG">
-                                <rect key="frame" x="77" y="382" width="220" height="43"/>
+                                <rect key="frame" x="77.5" y="382" width="220" height="43"/>
                                 <color key="backgroundColor" red="0.90469960059999999" green="0.90469960059999999" blue="0.90469960059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="6e9-px-m6c"/>

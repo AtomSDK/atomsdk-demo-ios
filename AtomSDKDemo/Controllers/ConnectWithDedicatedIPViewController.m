@@ -19,7 +19,6 @@
 @property (nonatomic) UIPickerView *protocolPicker;
 @property (nonatomic) IBOutlet UIButton *buttonConnect;
 @property (nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
-@property (nonatomic) IBOutlet UISwitch *switchSkipUserVerification;
 
 @end
 
@@ -267,7 +266,6 @@
     protocol.number = (int)self.selectedProtocolNumber;
     
     AtomProperties *properties = [[AtomProperties alloc] initWithDedicatedHostName:self.textfieldDedicatedIP.text protocol:protocol];
-    properties.skipUserVerification = self.switchSkipUserVerification.isOn;
     
     [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
         

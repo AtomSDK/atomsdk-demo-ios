@@ -38,5 +38,10 @@
  */
 @property (nonatomic, strong) NSString *tunnelProviderBundleIdentifier;
 
+/*!
+ * @property appGroupIdentifier
+ * @discussion The name of the app group in which the tunnel extension lives in.
+ */
+@property (nonatomic, strong) NSString *appGroupIdentifier;
 
 @end
