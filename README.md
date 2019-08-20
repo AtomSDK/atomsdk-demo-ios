@@ -24,7 +24,13 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 ## SDK Installation
 Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/2.2.0/AtomSDK.zip). We have also introduced AtomSDKTunnel for Connecting VPN over TCP and UDP protocols. For detail information please follow [How to Integrate AtomSDKTunnel](#How-to-Integrate-AtomSDKTunnel-in-iOS-App)
 
+### CocoaPods
 
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate AtomSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'AtomSDKBySecure'
+```
 
 # Getting Started with the Code
 To add the SDK in Xcode:
