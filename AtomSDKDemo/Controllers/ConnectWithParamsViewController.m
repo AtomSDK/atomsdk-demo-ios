@@ -3,10 +3,11 @@
 //  AtomSDK Demo
 
 #import "ConnectWithParamsViewController.h"
-#import <AtomSDK/AtomManager.h>
-#import <AtomSDK/AtomProtocol.h>
+#import <AtomSDK/AtomSDK.h>
+#import <AtomCore/AtomCore.h>
 #import "AppDelegate.h"
 #import "PopOverViewController.h"
+
 
 @interface ConnectWithParamsViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, AtomManagerDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
 
@@ -14,6 +15,7 @@
 @property (nonatomic) IBOutlet UITextField *textfieldProtocol2;
 @property (nonatomic) IBOutlet UITextField *textfieldProtocol3;
 @property (nonatomic) IBOutlet UITextField *textfieldCountry;
+@property (weak, nonatomic) IBOutlet UITextField *textfieldCity;
 @property (nonatomic) UIPickerView *protocolPicker;
 @property (nonatomic) IBOutlet UIButton *buttonConnect;
 @property (nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
@@ -23,14 +25,21 @@
 
 @property (nonatomic) NSMutableArray *vpnStatus;
 @property (assign) NSInteger selectedTextfield;
-@property (assign) NSInteger protocol1;
-@property (assign) NSInteger protocol2;
-@property (assign) NSInteger protocol3;
-@property (assign) NSInteger countryId;
+@property (assign) NSString *protocol1;
+@property (assign) NSString * protocol2;
+@property (assign) NSString * protocol3;
+@property (nonatomic) NSString *countrySlug;
+
+@property (nonatomic) AtomCity *atomCity;
 
 @property (nonatomic) NSArray *protocolList;
 @property (nonatomic) NSArray *allCountriesList;
 @property (nonatomic) NSMutableArray *filteredCountriesList;
+
+@property (nonatomic) NSArray *allCitiesList;
+@property (nonatomic) NSArray *filteredCitiesListByCountry;
+
+@property (nonatomic) BOOL isCountryList;
 
 @end
 
@@ -41,7 +50,8 @@
     // Do any additional setup after loading the view.
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.title = @"Atom SDK Demo";
-    _countryId = _protocol1 = _protocol2 = _protocol3 = 0;
+    _countrySlug = @"";
+    _protocol1 = _protocol2 = _protocol3 = @"";
     self.filteredCountriesList = [NSMutableArray new];
     
     _vpnStatus = [NSMutableArray new];
@@ -49,6 +59,23 @@
     [self getProtocols];
     [self setupTextfields];
     [AtomManager sharedInstance].delegate = self;
+    _isCountryList = YES;
+    
+    
+    AtomVPNStatus state = [[AtomManager sharedInstance] getCurrentVPNStatus];
+    switch (state) {
+        case DISCONNECTED:
+            [self normalUI];
+            break;
+            
+        case CONNECTED:
+            [self connectedUI];
+        break;
+        
+        default:
+            [self connectingUI];
+            break;
+    }
 }
 
 -(void)setupTextfields {
@@ -75,6 +102,7 @@
     self.textfieldProtocol2.inputView = inputView;
     self.textfieldProtocol3.inputView = inputView;
     self.textfieldCountry.inputView = inputView;
+    self.textfieldCity.inputView = inputView;
     
     self.tableViewStatus.layer.borderWidth = 1.0;
     self.tableViewStatus.layer.borderColor = [[UIColor grayColor] CGColor];
@@ -87,6 +115,7 @@
     [self.textfieldProtocol2 resignFirstResponder];
     [self.textfieldProtocol3 resignFirstResponder];
     [self.textfieldCountry resignFirstResponder];
+    [self.textfieldCity resignFirstResponder];
 }
 
 #pragma mark - Get Protocols and Countries from Atom SDK
@@ -99,9 +128,10 @@
         AtomProtocol *protocol = [AtomProtocol new];
         protocol = self.protocolList[0];
         _textfieldProtocol1.text = protocol.name;
-        _protocol1 = protocol.number;
+        _protocol1 = protocol.protocol;
         
         [self getCountries];
+        [self getCities];
         [self getOptimizeCountries];
     } errorBlock:^(NSError *error) {
         //NSLog(@"%@",error.description);
@@ -135,12 +165,12 @@
     }];
 }
 
--(void)filterCountriesWithProtocol1:(NSInteger)protocol1 {
+-(void)filterCountriesWithProtocol1:(NSString *)protocol1 {
     NSMutableArray *temp_countries = [NSMutableArray new];
     
     for (AtomCountry *country in self.allCountriesList) {
         for (AtomProtocol *protocol in country.protocols) {
-            if (protocol.number == self.protocol1) {
+            if ([protocol.protocol isEqualToString: self.protocol1]) {
                 [temp_countries addObject:country];
                 break;
             }
@@ -152,7 +182,7 @@
 -(void)filterCountriesWithProtocol2:(NSInteger)protocol2 {
     for (AtomCountry *country in self.allCountriesList) {
         for (AtomProtocol *protocol in country.protocols) {
-            if (protocol.number == self.protocol2) {
+            if ([protocol.protocol isEqualToString:self.protocol2]) {
                 
                 break;
             }
@@ -162,12 +192,29 @@
 -(void)filterCountriesWithProtocol3:(NSInteger)protocol3 {
     for (AtomCountry *country in self.allCountriesList) {
         for (AtomProtocol *protocol in country.protocols) {
-            if (protocol.number == self.protocol3) {
+            if ([protocol.protocol isEqualToString: self.protocol3]) {
                 
                 break;
             }
         }
     }
+}
+
+#pragma mark Cities
+-(void) getCities {
+    [[AtomManager sharedInstance] getCitiesWithSuccess:^(NSArray<AtomCity *> *citiesList) {
+        self.allCitiesList = citiesList;
+    } errorBlock:^(NSError *error) {
+        //NSLog(@"%@",error.description);
+    }];
+}
+
+-(void) filterCitiesByCountry: (NSString *) countrySlug {
+    _filteredCitiesListByCountry = [_allCitiesList filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        AtomCity *city = (AtomCity*)evaluatedObject;
+        return [city.country isEqualToString:countrySlug];
+    }]];
+    
 }
 
 #pragma mark - IB Actions -
@@ -197,25 +244,30 @@
         case 0:
             protocol = self.protocolList[row];
             _textfieldProtocol1.text = protocol.name;
-            _protocol1 = protocol.number;
+            _protocol1 = protocol.protocol;
             
             break;
         case 1:
             protocol = self.protocolList[row];
             _textfieldProtocol2.text = protocol.name;
-            _protocol2 = protocol.number;
+            _protocol2 = protocol.protocol;
             
             break;
         case 2:
             protocol = self.protocolList[row];
             _textfieldProtocol3.text = protocol.name;
-            _protocol3 = protocol.number;
+            _protocol3 = protocol.protocol;
             
             break;
         case 3:
             country = self.allCountriesList[row];
             _textfieldCountry.text = country.name;
-            _countryId = country.countryId;
+            _countrySlug = country.country;
+            [self filterCitiesByCountry:_countrySlug];
+            break;
+        case 4:
+            _atomCity = _textfieldCountry.text != nil && [_textfieldCountry.text length] > 0 ? _filteredCitiesListByCountry[row] : _allCitiesList[row];
+            _textfieldCity.text = _atomCity.name;
             break;
         default:
             break;
@@ -230,14 +282,15 @@
     [self endEditing];
     switch (self.buttonConnect.tag) {
         case 0:
-            if (self.countryId == 0) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please select country" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                    [alert dismissViewControllerAnimated:true completion:nil];
-                }];
+            if ((_atomCity == nil || _atomCity.cityId <= 0)  &&
+                (_countrySlug == nil || _countrySlug.length == 0)) {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please select source (Country or City)" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                        [alert dismissViewControllerAnimated:true completion:nil];
+                    }];
                 
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion: nil];
             }
             else {
                 [_vpnStatus removeAllObjects];
@@ -267,6 +320,9 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     NSInteger count = 0;
     switch (_selectedTextfield) {
+        case 4:
+            count = _textfieldCountry.text != nil && [_textfieldCountry.text length] > 0 ? _filteredCitiesListByCountry.count : _allCitiesList.count;
+            break;
         case 3:
             count = self.allCountriesList.count;
             break;
@@ -282,8 +338,13 @@
     NSString * title = nil;
     AtomProtocol *protocol = [AtomProtocol new];
     AtomCountry *country = [AtomCountry new];
+    AtomCity *city = [AtomCity new];
     
     switch (_selectedTextfield) {
+        case 4:
+            city = _textfieldCountry.text != nil && [_textfieldCountry.text length] > 0 ? _filteredCitiesListByCountry[row] : self.allCitiesList[row];
+            title = city.name;
+            break;
         case 3:
             country = self.allCountriesList[row];
             title = country.name;
@@ -304,26 +365,33 @@
         case 0:
             protocol = self.protocolList[row];
             _textfieldProtocol1.text = protocol.name;
-            _protocol1 = protocol.number;
+            _protocol1 = protocol.protocol;
             [self filterCountriesWithProtocol1:self.protocol1];
             break;
         case 1:
             protocol = self.protocolList[row];
             _textfieldProtocol2.text = protocol.name;
-            _protocol2 = protocol.number;
+            _protocol2 = protocol.protocol;
             
             break;
         case 2:
             protocol = self.protocolList[row];
             _textfieldProtocol3.text = protocol.name;
-            _protocol3 = protocol.number;
+            _protocol3 = protocol.protocol;
             
             break;
         case 3:
             country = self.allCountriesList[row];
             _textfieldCountry.text = country.name;
-            _countryId = country.countryId;
+            _countrySlug = country.country;
+            [self filterCitiesByCountry:_countrySlug];
             break;
+            
+        case 4:
+            _atomCity = _textfieldCountry.text != nil && [_textfieldCountry.text length] > 0 ? _filteredCitiesListByCountry[row] : _allCitiesList[row];
+            _textfieldCity.text = _atomCity.name;
+            break;
+            
         default:
             break;
     }
@@ -411,45 +479,57 @@
 
 #pragma mark - Connection with Params -
 
--(void)connectionWithParams {
+-(void) connectionWithParams {
     [self connectingUI];
-    
     [AtomManager sharedInstance].delegate = self;
     AtomCredential *atomCredential;
     if ([AppDelegate sharedInstance].isAutoGeneratedUserCredentials) {
         [AtomManager sharedInstance].UUID = [AppDelegate sharedInstance].UDID;
-        
     }
     else {
         atomCredential = [[AtomCredential alloc] initWithUsername:[AppDelegate sharedInstance].username password:[AppDelegate sharedInstance].password];
         [[AtomManager sharedInstance] setAtomCredential:atomCredential];
-        
     }
     
+    AtomProperties *properties = nil;
+
     AtomProtocol *protocol1 = [AtomProtocol new];
-    protocol1.number = (int)self.protocol1;
+    protocol1.protocol = self.protocol1;
+    if (_atomCity != nil) {
+        properties = [[AtomProperties alloc] initWithCity: _atomCity protocol: protocol1];
+        properties.useSmartDialing = false;
+    }
     
-    AtomCountry *country = [AtomCountry new];
-    country.countryId = (int)self.countryId;
+    else if (_countrySlug != nil && _countrySlug.length > 0) {
+        AtomCountry *country = [AtomCountry new];
+        country.country = self.countrySlug;
+        properties = [[AtomProperties alloc] initWithCountry:country protocol:protocol1];
+        properties.useSmartDialing = self.smartDialing.isOn;
+    }
     
-    AtomProperties *properties = [[AtomProperties alloc] initWithCountry:country protocol:protocol1];
     properties.useOptimization = self.optimizeCountry.isOn;
-    properties.useSmartDialing = self.smartDialing.isOn;
-    if (self.protocol2 != 0) {
+    
+    if (self.protocol2.length != 0) {
         AtomProtocol *protocol2 = [AtomProtocol new];
-        protocol2.number = (int)self.protocol2;
+        protocol2.protocol = self.protocol2;
         properties.secondaryProtocol = protocol2;
     }
     
-    if (self.protocol3 != 0) {
+    if (self.protocol3.length != 0) {
         AtomProtocol *protocol3 = [AtomProtocol new];
-        protocol3.number = (int)self.protocol3;
+        protocol3.protocol = self.protocol3;
         properties.tertiaryProtocol = protocol3;
     }
+    
+    AtomOnDemandConfiguration *configuration = [[AtomOnDemandConfiguration alloc] init];
+    configuration.onDemandRulesEnabled = YES;
+    
+    [[AtomManager sharedInstance] setOnDemandConfiguration:configuration];
+    
     [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
-        //NSLog(@"%@",success);
+      
+      
     } errorBlock:^(NSError *error) {
-        //NSLog(@"ERROR IN CONNECTING : %@",error.description);
         [self normalUI];
     }];
 }
@@ -458,24 +538,37 @@
 
 -(void)atomManagerDidConnect:(AtomConnectionDetails *)atomConnectionDetails {
     //NSLog(@"VPN CONNECTED");
+    
+    
     [self connectedUI];
+    NSString *message = [NSString stringWithFormat:@"CONNECTED with IP\n%@", [[AtomManager sharedInstance] getConnectedIP]];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"VPN Status" message: message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [controller addAction:action];
+    [self presentViewController:controller animated:YES completion:nil];
+    NSLog(@"VPN Status: CONNECTED");
 }
 
 -(void)atomManagerDidDisconnect:(AtomConnectionDetails *)atomConnectionDetails {
     //NSLog(@"VPN DISCONNECTED");
+
     [self normalUI];
 }
 
 -(void)atomManagerOnRedialing:(AtomConnectionDetails *)atomConnectionDetails withError:(NSError *)error {
     //NSLog(@"REDIALING CONNECTION");
+    
     [self connectingUI];
 }
 
 -(void)atomManagerDialErrorReceived:(NSError *)error withConnectionDetails:(AtomConnectionDetails *)atomConnectionDetails {
     //NSLog(@"DIALED ERROR: %@",error.description);
+    
     [_vpnStatus addObject:[NSString stringWithFormat:@"Error: %ld - %@",(long)error.code,error.localizedDescription]];
     [_tableViewStatus reloadData];
-    [self normalUI];
+    if(error.code != 5043 && [[AtomManager sharedInstance]getCurrentVPNStatus] == CONNECTED)
+        [self normalUI];
 }
 
 #pragma mark - Atom Status Handler -

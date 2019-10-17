@@ -10,7 +10,7 @@
 @interface ConnectWithDedicatedIPViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, AtomManagerDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic) NSArray *protocolList;
-@property (assign) NSInteger selectedProtocolNumber;
+@property (assign) NSString * selectedProtocolNumber;
 @property (nonatomic) NSMutableArray *vpnStatus;
 
 @property (nonatomic) IBOutlet UITableView *tableViewStatus;
@@ -19,6 +19,7 @@
 @property (nonatomic) UIPickerView *protocolPicker;
 @property (nonatomic) IBOutlet UIButton *buttonConnect;
 @property (nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
+@property (nonatomic) IBOutlet UISwitch *switchSkipUserVerification;
 
 @end
 
@@ -35,11 +36,27 @@
     [self normalUI];
     [self setupTextfield];
     
-    _selectedProtocolNumber = 0;
-    
+    //_selectedProtocolNumber = 0;
+    self.textfieldDedicatedIP.text = @"us-ovpn-udp.ptoserver.com";
     self.tableViewStatus.layer.borderWidth = 1.0;
     self.tableViewStatus.layer.borderColor = [[UIColor grayColor] CGColor];
     self.tableViewStatus.layer.cornerRadius = 10.0;
+    
+    AtomVPNStatus state = [[AtomManager sharedInstance] getCurrentVPNStatus];
+    switch (state) {
+        case DISCONNECTED:
+            [self normalUI];
+            break;
+            
+        case CONNECTED:
+            [self connectedUI];
+        break;
+        
+        default:
+            [self connectingUI];
+            break;
+    }
+    
 }
 
 -(void)setupTextfield {
@@ -80,9 +97,9 @@
         AtomProtocol *protocol = [AtomProtocol new];
         protocol = self.protocolList[0];
         _textfieldProtocol.text = protocol.name;
-        _selectedProtocolNumber = protocol.number;
+        _selectedProtocolNumber = protocol.protocol;
     } errorBlock:^(NSError *error) {
-        NSLog(@"%@",error.description);
+        //NSLog(@"%@",error.description);
     }];
 }
 
@@ -161,7 +178,7 @@
     AtomProtocol *protocol = [AtomProtocol new];
     protocol = self.protocolList[row];
     _textfieldProtocol.text = protocol.name;
-    _selectedProtocolNumber = protocol.number;
+    _selectedProtocolNumber = protocol.protocol;
 }
 
 #pragma mark - UITextfield Delegate -
@@ -263,14 +280,15 @@
     }
     
     AtomProtocol *protocol = [AtomProtocol new];
-    protocol.number = (int)self.selectedProtocolNumber;
+    protocol.protocol = self.selectedProtocolNumber;
     
     AtomProperties *properties = [[AtomProperties alloc] initWithDedicatedHostName:self.textfieldDedicatedIP.text protocol:protocol];
+//    properties.skipUserVerification = self.switchSkipUserVerification.isOn;
     
     [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
         
     } errorBlock:^(NSError *error) {
-        //NSLog(@"ERROR IN CONNECTING : %@",error.description);
+        NSLog(@"ERROR IN CONNECTING : %@",error.description);
         [self normalUI];
     }];
 }
@@ -348,3 +366,4 @@
 }
 
 @end
+
