@@ -1,6 +1,0 @@
-framework module AtomSDK {
-  umbrella header "AtomSDK.h"
-
-  export *
-  module * { export * }
-}
