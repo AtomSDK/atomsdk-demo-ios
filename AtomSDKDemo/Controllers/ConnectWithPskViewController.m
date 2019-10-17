@@ -28,7 +28,20 @@
     self.title = @"Atom SDK Demo";
     _vpnStatus = [NSMutableArray new];
     [self statusDidChangedHandler];
-    [self normalUI];
+    AtomVPNStatus state = [[AtomManager sharedInstance] getCurrentVPNStatus];
+    switch (state) {
+        case DISCONNECTED:
+            [self normalUI];
+            break;
+            
+        case CONNECTED:
+            [self connectedUI];
+        break;
+        
+        default:
+            [self connectingUI];
+            break;
+    }
     
     self.tableViewStatus.layer.borderWidth = 1.0;
     self.tableViewStatus.layer.borderColor = [[UIColor grayColor] CGColor];
