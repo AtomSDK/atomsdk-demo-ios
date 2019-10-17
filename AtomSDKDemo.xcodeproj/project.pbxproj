@@ -16,49 +16,21 @@
 		6E5BAD20207394A200895431 /* ConnectWithPskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD1F207394A200895431 /* ConnectWithPskViewController.m */; };
 		6E5BAD23207394B700895431 /* ConnectWithParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD22207394B700895431 /* ConnectWithParamsViewController.m */; };
 		6E5BAD26207394D000895431 /* ConnectWithDedicatedIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD25207394D000895431 /* ConnectWithDedicatedIPViewController.m */; };
-		6E60CB9D2074ED9400AA31CA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */; };
-		6E8A28652087D43B008A7D9E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
 		6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9779402085ECAC009519EC /* PopOverViewController.m */; };
-		6EE012EF2087D4D700B4B0A0 /* AtomSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */; };
-		6EE012F02087D4D700B4B0A0 /* AtomSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5C851902254A93700301F45 /* AtomSDKTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; };
-		B5C851912254A93700301F45 /* AtomSDKTunnel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B5C8519A2254A99E00301F45 /* PacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C851992254A99E00301F45 /* PacketTunnelProvider.m */; };
-		B5C8519F2254A99E00301F45 /* TunnelProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5C851962254A99E00301F45 /* TunnelProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B5C851A42254AA1500301F45 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
-		B5C851A52254AB6C00301F45 /* AtomSDKTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */; };
+		B346DB4E27474207CB0065A3 /* Pods_AtomSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F53F085F42290EF55003BD2C /* Pods_AtomSDKDemo.framework */; };
+		BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
+		BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */; };
+		BA242591235759DD0058F721 /* ConnectWithTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */; };
+		BA40F63723584F5500D65981 /* ConnectWithChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B5C8519D2254A99E00301F45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E5BACFC207386B200895431 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5C851952254A99E00301F45;
-			remoteInfo = TunnelProvider;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		6E02146A2074CC8300AB1BE0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B5C851912254A93700301F45 /* AtomSDKTunnel.framework in Embed Frameworks */,
-				6EE012F02087D4D700B4B0A0 /* AtomSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B5C851A32254A99E00301F45 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B5C8519F2254A99E00301F45 /* TunnelProvider.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2022F2106555F70B298596BD /* Pods-AtomSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5681B7FBA2825C6AB4ADAD05 /* Pods-TunnelProvider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelProvider.release.xcconfig"; path = "Target Support Files/Pods-TunnelProvider/Pods-TunnelProvider.release.xcconfig"; sourceTree = "<group>"; };
 		6E5BAD04207386B200895431 /* AtomSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BAD07207386B200895431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E5BAD08207386B200895431 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,13 +61,14 @@
 		6E8A28662087D43B008A7D9E /* AtomSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtomSDKDemo.entitlements; sourceTree = "<group>"; };
 		6E97793F2085ECAC009519EC /* PopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopOverViewController.h; sourceTree = "<group>"; };
 		6E9779402085ECAC009519EC /* PopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopOverViewController.m; sourceTree = "<group>"; };
-		6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtomSDK.framework; sourceTree = "<group>"; };
-		B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AtomSDKTunnel.framework; sourceTree = "<group>"; };
-		B5C851962254A99E00301F45 /* TunnelProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TunnelProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5C851982254A99E00301F45 /* PacketTunnelProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PacketTunnelProvider.h; sourceTree = "<group>"; };
-		B5C851992254A99E00301F45 /* PacketTunnelProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacketTunnelProvider.m; sourceTree = "<group>"; };
-		B5C8519B2254A99E00301F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5C8519C2254A99E00301F45 /* TunnelProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TunnelProvider.entitlements; sourceTree = "<group>"; };
+		6F6B60B8659E826ADAF4FDE2 /* Pods_TunnelProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TunnelProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1ACC50432ABB94C5D54F7E5 /* Pods-AtomSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B31474F81968843068E5159C /* Pods-TunnelProvider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TunnelProvider.debug.xcconfig"; path = "Target Support Files/Pods-TunnelProvider/Pods-TunnelProvider.debug.xcconfig"; sourceTree = "<group>"; };
+		BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithTagsViewController.m; sourceTree = "<group>"; };
+		BA242590235759DD0058F721 /* ConnectWithTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithTagsViewController.h; sourceTree = "<group>"; };
+		BA40F63523584F5500D65981 /* ConnectWithChannelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithChannelViewController.h; sourceTree = "<group>"; };
+		BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectWithChannelViewController.m; sourceTree = "<group>"; };
+		F53F085F42290EF55003BD2C /* Pods_AtomSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtomSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,30 +76,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C851902254A93700301F45 /* AtomSDKTunnel.framework in Frameworks */,
-				6EE012EF2087D4D700B4B0A0 /* AtomSDK.framework in Frameworks */,
-				6E8A28652087D43B008A7D9E /* NetworkExtension.framework in Frameworks */,
-				6E60CB9D2074ED9400AA31CA /* MobileCoreServices.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5C851932254A99E00301F45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5C851A52254AB6C00301F45 /* AtomSDKTunnel.framework in Frameworks */,
-				B5C851A42254AA1500301F45 /* NetworkExtension.framework in Frameworks */,
+				BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */,
+				BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */,
+				B346DB4E27474207CB0065A3 /* Pods_AtomSDKDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00314320C9576CB72957997D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2022F2106555F70B298596BD /* Pods-AtomSDKDemo.debug.xcconfig */,
+				A1ACC50432ABB94C5D54F7E5 /* Pods-AtomSDKDemo.release.xcconfig */,
+				B31474F81968843068E5159C /* Pods-TunnelProvider.debug.xcconfig */,
+				5681B7FBA2825C6AB4ADAD05 /* Pods-TunnelProvider.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6E0214612074B39600AB1BE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6E8A28642087D43B008A7D9E /* NetworkExtension.framework */,
 				6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */,
+				F53F085F42290EF55003BD2C /* Pods_AtomSDKDemo.framework */,
+				6F6B60B8659E826ADAF4FDE2 /* Pods_TunnelProvider.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,8 +110,6 @@
 		6E0214652074B3E300AB1BE0 /* AtomSDK */ = {
 			isa = PBXGroup;
 			children = (
-				B5C8518E2254A91700301F45 /* AtomSDKTunnel.framework */,
-				6EE012ED2087D4CF00B4B0A0 /* AtomSDK.framework */,
 			);
 			path = AtomSDK;
 			sourceTree = "<group>";
@@ -142,9 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				6E5BAD06207386B200895431 /* AtomSDKDemo */,
-				B5C851972254A99E00301F45 /* TunnelProvider */,
 				6E5BAD05207386B200895431 /* Products */,
 				6E0214612074B39600AB1BE0 /* Frameworks */,
+				00314320C9576CB72957997D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				6E5BAD04207386B200895431 /* AtomSDKDemo.app */,
-				B5C851962254A99E00301F45 /* TunnelProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,6 +152,8 @@
 		6E5BAD1D2073943500895431 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA242590235759DD0058F721 /* ConnectWithTagsViewController.h */,
+				BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */,
 				6E5BAD0A207386B200895431 /* ViewController.h */,
 				6E5BAD0B207386B200895431 /* ViewController.m */,
 				6E5BAD1E207394A200895431 /* ConnectWithPskViewController.h */,
@@ -187,19 +164,10 @@
 				6E5BAD25207394D000895431 /* ConnectWithDedicatedIPViewController.m */,
 				6E97793F2085ECAC009519EC /* PopOverViewController.h */,
 				6E9779402085ECAC009519EC /* PopOverViewController.m */,
+				BA40F63523584F5500D65981 /* ConnectWithChannelViewController.h */,
+				BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		B5C851972254A99E00301F45 /* TunnelProvider */ = {
-			isa = PBXGroup;
-			children = (
-				B5C851982254A99E00301F45 /* PacketTunnelProvider.h */,
-				B5C851992254A99E00301F45 /* PacketTunnelProvider.m */,
-				B5C8519B2254A99E00301F45 /* Info.plist */,
-				B5C8519C2254A99E00301F45 /* TunnelProvider.entitlements */,
-			);
-			path = TunnelProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,39 +177,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E5BAD1A207386B200895431 /* Build configuration list for PBXNativeTarget "AtomSDKDemo" */;
 			buildPhases = (
+				71FF3BB489E51BB4A7FC0AF7 /* [CP] Check Pods Manifest.lock */,
 				6E5BAD00207386B200895431 /* Sources */,
 				6E5BAD01207386B200895431 /* Frameworks */,
 				6E5BAD02207386B200895431 /* Resources */,
-				6E02146A2074CC8300AB1BE0 /* Embed Frameworks */,
 				B5C851A32254A99E00301F45 /* Embed App Extensions */,
 				B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */,
+				C07EFA2A76B87624FFEBA58B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B5C8519E2254A99E00301F45 /* PBXTargetDependency */,
 			);
 			name = AtomSDKDemo;
 			productName = "AtomSDK Sample App";
 			productReference = 6E5BAD04207386B200895431 /* AtomSDKDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B5C851952254A99E00301F45 /* TunnelProvider */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B5C851A02254A99E00301F45 /* Build configuration list for PBXNativeTarget "TunnelProvider" */;
-			buildPhases = (
-				B5C851922254A99E00301F45 /* Sources */,
-				B5C851932254A99E00301F45 /* Frameworks */,
-				B5C851942254A99E00301F45 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TunnelProvider;
-			productName = TunnelProvider;
-			productReference = B5C851962254A99E00301F45 /* TunnelProvider.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -254,24 +205,12 @@
 				TargetAttributes = {
 					6E5BAD03207386B200895431 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 1;
 							};
 							com.apple.VPNLite = {
-								enabled = 1;
-							};
-						};
-					};
-					B5C851952254A99E00301F45 = {
-						CreatedOnToolsVersion = 10.1;
-						ProvisioningStyle = Manual;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
-							};
-							com.apple.NetworkExtensions.iOS = {
 								enabled = 1;
 							};
 						};
@@ -292,7 +231,6 @@
 			projectRoot = "";
 			targets = (
 				6E5BAD03207386B200895431 /* AtomSDKDemo */,
-				B5C851952254A99E00301F45 /* TunnelProvider */,
 			);
 		};
 /* End PBXProject section */
@@ -308,16 +246,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5C851942254A99E00301F45 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		71FF3BB489E51BB4A7FC0AF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AtomSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +289,26 @@
 			shellPath = /bin/sh;
 			shellScript = "FRAMEWORK=\"AtomSDK\"\necho \"Trimming $FRAMEWORK...\"\nFRAMEWORK_EXECUTABLE_PATH=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK\"\nEXTRACTED_ARCHS=()\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH...\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\necho \"Merging binaries...\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\necho \"Done.\"\n";
 		};
+		C07EFA2A76B87624FFEBA58B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh",
+				"${PODS_ROOT}/AtomCore/AtomCore-iOS/AtomCore.framework",
+				"${PODS_ROOT}/AtomSDKBySecure/AtomSDK/AtomSDK-iOS/AtomSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -343,33 +316,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA40F63723584F5500D65981 /* ConnectWithChannelViewController.m in Sources */,
 				6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */,
 				6E5BAD26207394D000895431 /* ConnectWithDedicatedIPViewController.m in Sources */,
 				6E5BAD20207394A200895431 /* ConnectWithPskViewController.m in Sources */,
 				6E5BAD23207394B700895431 /* ConnectWithParamsViewController.m in Sources */,
 				6E5BAD0C207386B200895431 /* ViewController.m in Sources */,
 				6E5BAD17207386B200895431 /* main.m in Sources */,
+				BA242591235759DD0058F721 /* ConnectWithTagsViewController.m in Sources */,
 				6E5BAD09207386B200895431 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5C851922254A99E00301F45 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B5C8519A2254A99E00301F45 /* PacketTunnelProvider.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B5C8519E2254A99E00301F45 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5C851952254A99E00301F45 /* TunnelProvider */;
-			targetProxy = B5C8519D2254A99E00301F45 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E5BAD0D207386B200895431 /* Main.storyboard */ = {
@@ -497,12 +456,13 @@
 		};
 		6E5BAD1B207386B200895431 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2022F2106555F70B298596BD /* Pods-AtomSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YDUR67SED;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -521,12 +481,13 @@
 		};
 		6E5BAD1C207386B200895431 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1ACC50432ABB94C5D54F7E5 /* Pods-AtomSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5YDUR67SED;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -539,59 +500,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		B5C851A12254A99E00301F45 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_ENTITLEMENTS = TunnelProvider/TunnelProvider.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
-				);
-				INFOPLIST_FILE = TunnelProvider/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.AppTunnelProvider;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B5C851A22254A99E00301F45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_ENTITLEMENTS = TunnelProvider/TunnelProvider.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
-				);
-				INFOPLIST_FILE = TunnelProvider/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.AppTunnelProvider;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -613,15 +521,6 @@
 			buildConfigurations = (
 				6E5BAD1B207386B200895431 /* Debug */,
 				6E5BAD1C207386B200895431 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B5C851A02254A99E00301F45 /* Build configuration list for PBXNativeTarget "TunnelProvider" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5C851A12254A99E00301F45 /* Debug */,
-				B5C851A22254A99E00301F45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
