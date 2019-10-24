@@ -60,7 +60,7 @@
     switch (state) {
         case DISCONNECTED:
             [self normalUI];
-            break;
+        break;
             
         case CONNECTED:
             [self connectedUI];
@@ -68,7 +68,7 @@
         
         default:
             [self connectingUI];
-            break;
+        break;
     }
 }
 
@@ -275,7 +275,7 @@
             _textfieldChannel.text = _atomChannel.name;
             break;
         default:
-            break;
+        break;
     }
 }
 
