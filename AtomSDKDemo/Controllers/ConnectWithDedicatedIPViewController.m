@@ -46,7 +46,7 @@
     switch (state) {
         case DISCONNECTED:
             [self normalUI];
-            break;
+        break;
             
         case CONNECTED:
             [self connectedUI];
@@ -54,7 +54,7 @@
         
         default:
             [self connectingUI];
-            break;
+        break;
     }
     
 }
