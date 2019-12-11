@@ -2,7 +2,7 @@
 This is a demo application for iOS Applications with basic usage of ATOM VPN SDK which will help the developers to create smooth applications over ATOM SDK quickly.
 
 ## SDK Features covered in this Demo
-* Connection with Parameters	
+* Connection with Parameters    
 * Connection with Pre-Shared Key (PSK)
 * Connection with Dedicated IP
 * Connection with Multiple Protocols (Auto-Retry Functionality)
@@ -21,7 +21,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/3.0.0/AtomSDK.zip). 
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/3.2.0/AtomSDK.zip). 
 
 ### CocoaPods
 
@@ -226,6 +226,12 @@ You can cancel connection between dialing process by calling the cancelVPN metho
 To disconnect, simply call the disconnectVPN method of AtomManager.
 ```
 [[AtomManager sharedInstance] disconnectVPN];
+```
+# Remove VPN Profile
+To remove VPN profile, simply call the removeVPNProfileWithCompletion method of AtomManager.
+```
+[[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
+}];
 ```
 
 # Distributing to App Store
