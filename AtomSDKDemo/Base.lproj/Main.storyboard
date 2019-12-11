@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect via" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-kS-Zqt">
-                                <rect key="frame" x="16" y="230" width="102" height="31"/>
+                                <rect key="frame" x="16" y="262" width="102" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="102" id="WU9-aR-QSn"/>
                                     <constraint firstAttribute="height" constant="31" id="bpk-Om-vm5"/>
@@ -80,6 +80,15 @@
                                     <action selector="switchChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Spy-o9-5pL"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJd-bF-45U">
+                                <rect key="frame" x="16" y="229" width="97" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="SgY-St-hpI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQU-i5-jZd">
                                 <rect key="frame" x="111" y="109" width="248" height="30"/>
                                 <constraints>
@@ -114,7 +123,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="caS-EJ-QwY">
-                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <rect key="frame" x="0.0" y="301" width="375" height="366"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -153,9 +162,21 @@
                                     <action selector="showPopOver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2V2-kO-H4Q"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EDz-pJ-jTL">
+                                <rect key="frame" x="312" y="229" width="49" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="0KB-Gz-MEN"/>
+                                    <constraint firstAttribute="height" constant="31" id="zS5-rU-TQf"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="3h8-tm-7dk"/>
+                                    <action selector="switchRemoveProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ru-aP-IqK"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fJd-bF-45U" firstAttribute="top" secondItem="BbD-hc-5zZ" secondAttribute="bottom" constant="12" id="11V-3r-Euh"/>
                             <constraint firstItem="kGg-zZ-t1E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="1fy-So-Bhg"/>
                             <constraint firstItem="BbD-hc-5zZ" firstAttribute="top" secondItem="WOq-hG-t2E" secondAttribute="bottom" constant="8" id="42L-lJ-eZj"/>
                             <constraint firstItem="CQU-i5-jZd" firstAttribute="top" secondItem="gdC-VK-j7r" secondAttribute="bottom" constant="9" id="5dv-qa-9yD"/>
@@ -164,12 +185,14 @@
                             <constraint firstItem="UVt-O1-beQ" firstAttribute="top" secondItem="CQU-i5-jZd" secondAttribute="bottom" constant="9" id="DQa-lx-xrR"/>
                             <constraint firstItem="gdC-VK-j7r" firstAttribute="top" secondItem="kGg-zZ-t1E" secondAttribute="bottom" constant="10" id="IRq-gc-Et8"/>
                             <constraint firstItem="GpC-54-NhN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Md1-W6-sAU"/>
-                            <constraint firstItem="ggb-kS-Zqt" firstAttribute="top" secondItem="BbD-hc-5zZ" secondAttribute="bottom" constant="13" id="OMl-uh-Ezr"/>
+                            <constraint firstItem="ggb-kS-Zqt" firstAttribute="top" secondItem="fJd-bF-45U" secondAttribute="bottom" constant="2" id="Nor-Tt-pFF"/>
+                            <constraint firstItem="fJd-bF-45U" firstAttribute="leading" secondItem="BbD-hc-5zZ" secondAttribute="leading" id="Npi-Hg-qQ5"/>
                             <constraint firstItem="WOq-hG-t2E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QlT-I4-mON"/>
                             <constraint firstItem="ggb-kS-Zqt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UfP-e5-AJe"/>
                             <constraint firstItem="BbD-hc-5zZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ux9-Bw-nJM"/>
                             <constraint firstItem="gdC-VK-j7r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ydh-Ft-v0v"/>
                             <constraint firstItem="WOq-hG-t2E" firstAttribute="top" secondItem="GpC-54-NhN" secondAttribute="bottom" constant="8" id="aac-ei-tAZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EDz-pJ-jTL" secondAttribute="trailing" constant="16" id="bNL-CU-bEg"/>
                             <constraint firstItem="dRU-TQ-ZkS" firstAttribute="top" secondItem="UVt-O1-beQ" secondAttribute="bottom" constant="9" id="cLA-tw-918"/>
                             <constraint firstItem="CQU-i5-jZd" firstAttribute="leading" secondItem="GpC-54-NhN" secondAttribute="trailing" constant="5" id="fDn-DR-ui9"/>
                             <constraint firstItem="kGg-zZ-t1E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="fwx-5H-2Ig"/>
@@ -183,6 +206,7 @@
                             <constraint firstItem="UVt-O1-beQ" firstAttribute="leading" secondItem="WOq-hG-t2E" secondAttribute="trailing" constant="5" id="o27-3u-LiE"/>
                             <constraint firstAttribute="trailing" secondItem="kGg-zZ-t1E" secondAttribute="trailing" constant="16" id="oY0-80-EoX"/>
                             <constraint firstItem="GpC-54-NhN" firstAttribute="top" secondItem="gdC-VK-j7r" secondAttribute="bottom" constant="8" id="r8H-JV-bnL"/>
+                            <constraint firstItem="EDz-pJ-jTL" firstAttribute="centerY" secondItem="fJd-bF-45U" secondAttribute="centerY" id="rkX-Lm-azA"/>
                             <constraint firstItem="KSK-SR-jtj" firstAttribute="top" secondItem="kGg-zZ-t1E" secondAttribute="bottom" constant="14" id="tK3-39-6sU"/>
                             <constraint firstItem="caS-EJ-QwY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="x5K-D4-BLE"/>
                             <constraint firstItem="62i-74-fTy" firstAttribute="top" secondItem="kGg-zZ-t1E" secondAttribute="bottom" constant="10" id="ykf-ow-SsS"/>
@@ -195,6 +219,7 @@
                         <outlet property="labelSecretKey" destination="kGg-zZ-t1E" id="u1m-DC-Sq7"/>
                         <outlet property="labelUDID" destination="BbD-hc-5zZ" id="Q27-5e-NbJ"/>
                         <outlet property="labelUsername" destination="GpC-54-NhN" id="0Hl-4K-eTv"/>
+                        <outlet property="switchRemoveProfile" destination="EDz-pJ-jTL" id="EWh-hn-Fq2"/>
                         <outlet property="switchUserCredentials" destination="62i-74-fTy" id="Qky-6y-v4z"/>
                         <outlet property="tableViewConnectionList" destination="caS-EJ-QwY" id="hQO-o7-81P"/>
                         <outlet property="textfieldPassword" destination="UVt-O1-beQ" id="RcW-lp-4Ia"/>
