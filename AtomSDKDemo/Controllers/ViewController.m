@@ -13,6 +13,7 @@
 
 @property (nonatomic) IBOutlet UITableView *tableViewConnectionList;
 @property (nonatomic) IBOutlet UISwitch *switchUserCredentials;
+@property (nonatomic) IBOutlet UISwitch *switchRemoveProfile;
 
 @property (nonatomic) IBOutlet UILabel *labelUsername;
 @property (nonatomic) IBOutlet UILabel *labelPassword;
@@ -104,6 +105,23 @@
         self.labelPassword.textColor = [UIColor whiteColor];
         self.labelUDID.textColor = [UIColor lightGrayColor];
     }
+}
+
+-(IBAction)switchRemoveProfile: (id)sender {
+    [[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
+        [self getAlertForRemovingProfileWithStatus: isSuccess ? @"YES" : @"NO"];
+    }];
+}
+
+- (void) getAlertForRemovingProfileWithStatus: (NSString *) status {
+    UIAlertController *controller = [UIAlertController new];
+    [controller setTitle:@"VPN Profile"];
+    [controller setMessage: [NSString stringWithFormat: @"VPN Profile Deleted: %@", status]];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self.switchRemoveProfile setOn:NO];
+    }];
+    [controller addAction:defaultAction];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark - UITableView DataSource -
