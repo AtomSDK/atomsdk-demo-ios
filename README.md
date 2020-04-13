@@ -21,7 +21,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/3.3.1/AtomSDK.zip). 
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/3.4.0/AtomSDK.zip). 
 
 ### CocoaPods
 
