@@ -21,14 +21,14 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 
 ## SDK Installation
-Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/3.4.0/AtomSDK.zip). 
+Although ATOM SDK Framework is already provided with the demo application but you can install the latest version through [this link](https://secure.com/atom/downloads/sdk/ios/4.0.0/AtomSDK.zip). 
 
 ### CocoaPods
 
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate AtomSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AtomSDKBySecure'
+pod 'AtomSDKBySecure', '~> 4.0.0'
 ```
 
 # Getting Started with the Code
@@ -87,10 +87,11 @@ ATOM SDK offers four delegates to register for the ease of the developer.
 * atomManagerOnRedialing:
 * atomManagerDialErrorReceived:
 * atomManagerOnUnableToAccessInternet:
+* atomManagerDidReceiveConnectedLocation:
 
 ## StateDidChangedHandler to monitor a VPN connection status
 ATOM SDK offers stateDidChangedHandler for the ease of the developer.
-```
+```b
 [AtomManager sharedInstance].stateDidChangedHandler = ^(AtomVPNState status) { };
 ```
 
@@ -109,7 +110,7 @@ Alternatively, if you don’t want to take hassle of creating users yourself, le
 ```
 You just need to provide a Unique User ID for your user e.g. any unique hash or even user’s email which you think remains consistent and unique for your user. ATOM SDK will generate VPN Account behind the scenes automatically and gets your user connected! Easy isn’t it?
 # VPN Connection
-You need to declare an object of “VPNProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
+You need to declare an object of “AtomProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
 
 ```
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<country>" protocol:@"<protocol>"];
@@ -128,6 +129,14 @@ You can get the Countries those support Smart Dialing through ATOM SDK.
 } errorBlock:^(NSError *error) {}];
 ```
 
+## Fetch Recommended Country
+You can get the Recommended Country for user's location through ATOM SDK.
+```
+[[AtomManager sharedInstance] getRecommendedCountry:^(AtomCountry *country) {
+} errorBlock:^(NSError *error) {
+}];
+```
+
 ## Fetch Protocols
 Protocols can be obtained through ATOM SDK as well.
 
@@ -135,6 +144,38 @@ Protocols can be obtained through ATOM SDK as well.
 [[AtomManager sharedInstance] getProtocolsWithSuccess:^(NSArray<AtomProtocol *> *success) {}
 errorBlock:^(NSError *error) {}];
 ```
+
+## VPN Connection Speed
+For VPN connection speed you need to registor onPacketsTransmitted handler from AtomManager class to get the VPN connection speed in bytes per second. This callback is recieve only in VPN connected state.
+```
+AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSNumber *bytesSent) {
+    NSLog(@"bytesIN: %ld | bytesOUT: %ld ",(long)bytesReceived.integerValue,bytesSent.integerValue);
+};
+```
+
+## Protocol switch
+You can enable or disable protocol switch from VPNProperties class. By default its value is set to true.
+```
+properties.enableProtocolSwitch = false;
+```
+or
+```
+properties.enableProtocolSwitch = true;
+```
+
+## Recommanded protocol
+If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It did not work in PSK, Smart connect dialing and dedicated IP.
+
+## Use Failover
+Failover is a mechanism in which Atom dialed with nearest server if requested server is busy or not found for any reason. You can control this mechanism from VPNPorperties class. By default its value is set to true.
+```
+properties.useFailover = false;
+```
+or
+```
+properties.useFailover = true;
+```
+
 ### How to Connect
 
 As soon as you call Connect method, the events you were listening to will get the updates about the states being changed and VPNDialedError  (if any occurs) as well.
@@ -149,7 +190,21 @@ AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country
 errorBlock:^(NSError *error) {}];
 ```
 
-From version 3.0 onwards, Atom has introduced connection with Cities and Channels. You can find their corresponding *_VPNProperties_* constructors in the Demo Application.
+From version 3.0 onwards, Atom has introduced connection with Cities and Channels. You can find their corresponding *AtomProperties* constructors in the Demo Application.
+
+## Include or Exclude Server with Nas Identifier
+When connecting with parameters, a server can be included or excluded with its Nas Identifier
+```
+AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
+
+NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
+[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here"" andFilter:INCLUDE]];
+[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here" andFilter:EXCLUDE]];
+[properties setServerFilters:serverFilters];
+
+[[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
+errorBlock:^(NSError *error) {}];
+``` 
 
 ### Connection with Pre-Shared Key (PSK)
 In this way of connection, it is pre-assumed that you have your own backend server which communicates with ATOM Backend APIs directly and creates a Pre-Shared Key (usually called as PSK) which you can then provide to the SDK for dialing. While providing PSK, no VPN Property other than PSK is required to make the connection. ATOM SDK will handle the rest.
