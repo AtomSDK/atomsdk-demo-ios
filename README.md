@@ -8,6 +8,8 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 * Connection with Multiple Protocols (Auto-Retry Functionality)
 * Connection with Real-time Optimized Servers (Countries based on latency from user in Real-time)
 * Connection with Smart Dialing (Use getCountriesForSmartDialing() to get the Advanced VPN Dialing supported countries)
+Connection with Smart Connect (Tags based dialing)
+
 
 ## Compatibility
 * Compatible with Xcode 12 and iOS 12 and later
@@ -39,13 +41,13 @@ To add the SDK in Xcode:
 
 2.    Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 
-3. Select General tab from your app target and then set your developer account details.
+3.    Select General tab from your app target and then set your developer account details.
 
-4. From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilties you are going to use.
+4.    From your app target select Capabilities tab and select the switch right of the Personal VPN.   Then select the capabilties you are going to use.
 
 5.    Drag and drop AtomSDK.framework into your project.
 
-6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section.
+6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the      Embedded Binaries section.
 
 8.    After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
 9.    ATOM SDK needs to be initialized with a “SecretKey” provided to you after you buy the subscription which is typically a hex-numeric literal.
@@ -86,6 +88,8 @@ ATOM SDK offers four delegates to register for the ease of the developer.
 * atomManagerDidDisconnect:
 * atomManagerOnRedialing:
 * atomManagerDialErrorReceived:
+* atomManagerOnUnableToAccessInternet:
+* atomManagerDidReceiveConnectedLocation:
 
 ## StateDidChangedHandler to monitor a VPN connection status
 ATOM SDK offers stateDidChangedHandler for the ease of the developer.
@@ -108,7 +112,7 @@ Alternatively, if you don’t want to take hassle of creating users yourself, le
 ```
 You just need to provide a Unique User ID for your user e.g. any unique hash or even user’s email which you think remains consistent and unique for your user. ATOM SDK will generate VPN Account behind the scenes automatically and gets your user connected! Easy isn’t it?
 # VPN Connection
-You need to declare an object of “VPNProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
+You need to declare an object of “AtomProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
 
 ```
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<country>" protocol:@"<protocol>"];
@@ -118,6 +122,14 @@ Countries can be obtained through ATOM SDK as well.
 ```
 [[AtomManager sharedInstance] getCountriesWithSuccess:^(NSArray<AtomCountry *> *success) {}
 } errorBlock:^(NSError *error) {}];
+```
+
+## Fetch Recommended Country
+You can get the Recommended Country for user's location through ATOM SDK.
+```
+[[AtomManager sharedInstance] getRecommendedCountry:^(AtomCountry *country) {
+} errorBlock:^(NSError *error) {
+}];
 ```
 
 ## Fetch Countries For Smart Dialing
@@ -134,6 +146,38 @@ Protocols can be obtained through ATOM SDK as well.
 [[AtomManager sharedInstance] getProtocolsWithSuccess:^(NSArray<AtomProtocol *> *success) {}
 errorBlock:^(NSError *error) {}];
 ```
+
+## VPN Connection Speed
+For VPN connection speed you need to registor onPacketsTransmitted handler from AtomManager class to get the VPN connection speed in bytes per second. This callback is recieve only in VPN connected state.
+```
+AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSNumber *bytesSent) {
+    NSLog(@"bytesIN: %ld | bytesOUT: %ld ",(long)bytesReceived.integerValue,bytesSent.integerValue);
+};
+```
+
+## Protocol switch
+You can enable or disable protocol switch from VPNProperties class. By default its value is set to true.
+```
+properties.enableProtocolSwitch = false;
+```
+or
+```
+properties.enableProtocolSwitch = true;
+```
+
+## Recommanded protocol
+If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It did not work in PSK, Smart connect dialing and dedicated IP.
+
+## Use Failover
+Failover is a mechanism in which Atom dialed with nearest server if requested server is busy or not found for any reason. You can control this mechanism from VPNPorperties class. By default its value is set to true.
+```
+properties.useFailover = false;
+```
+or
+```
+properties.useFailover = true;
+```
+
 ### How to Connect
 
 As soon as you call Connect method, the events you were listening to will get the updates about the states being changed and VPNDialedError  (if any occurs) as well.
@@ -147,6 +191,19 @@ AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country
 [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
 errorBlock:^(NSError *error) {}];
 ```
+
+### Include or Exclude Server with Nas Identifier
+When connecting with parameters, a server can be included or excluded with its Nas Identifier
+```
+AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
+NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
+[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here"" andFilter:INCLUDE]];
+[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here" andFilter:EXCLUDE]];
+[properties setServerFilters:serverFilters];
+[[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
+errorBlock:^(NSError *error) {}];
+``` 
+
 ### Connection with Pre-Shared Key (PSK)
 In this way of connection, it is pre-assumed that you have your own backend server which communicates with ATOM Backend APIs directly and creates a Pre-Shared Key (usually called as PSK) which you can then provide to the SDK for dialing. While providing PSK, no VPN Property other than PSK is required to make the connection. ATOM SDK will handle the rest.
 ```
@@ -195,6 +252,18 @@ properties.secondaryProtocol = @"<protocol2>";
 properties.tertiaryProtocol = @"<protocol3>";
 ```
 
+### Connection with Smart Connect
+If you want us to connect your user with what's best for him, you can now do it using *_SmartConnect_* feature. Atom has introduced an enum list of feature a.k.a *_Tags_* you want to apply over those smart connections which can be found under  *_Atom.Core.AtomSmartConnectTag_*. An example usage of SmartConnect is depicted below.
+```csharp
+NSArray *selectedAtomTags = [[NSArray alloc] initWithObjects: @(AtomSmartConnectTagFileSharing),@(AtomSmartConnectTagPaid), nil];
+AtomProperties *properties = [[AtomProperties alloc] initWithProtocol:selectedProtocol andTags:selectedAtomTags];
+[[AtomManager  sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
+} errorBlock:^(NSError *error) {
+}];
+```
+
+Tags aren't mandatory and are nil parameter. You can only provide Protocol to connect and rest Atom will manage.
+
 # Cancel VPN Connection
 You can cancel connection between dialing process by calling the cancelVPN method.
 ```
@@ -205,6 +274,12 @@ To disconnect, simply call the disconnectVPN method of AtomManager.
 ```
 [[AtomManager sharedInstance] disconnectVPN];
 ```
+
+# Remove VPN Profile
+To remove VPN profile, simply call the removeVPNProfileWithCompletion method of AtomManager.
+```
+[[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
+}];
 
 # How to Integrate AtomSDKTunnel in iOS App
 1.  Open your Xcode project. 
