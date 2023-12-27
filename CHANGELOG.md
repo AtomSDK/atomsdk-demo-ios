@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 5.2.1
+
+#### Added
+- Hotfix for `nslookup` issues:
+  - Addresses instances where some DNS are blocked during `nslookup`.
+
+#### Fixed
+- Exception handling for API responses:
+  - Specifically, when the response status key's body contains an empty array.
+
 ### Version 5.2.0
 
 #### Added
