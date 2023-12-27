@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 5.2.0
+
+#### Added
+- Dialing feature for `DedicatedVPS`.
+- Enhanced protocol selection:
+  - In scenarios where a "recommended protocol" is applicable, the system now considers the policy JSON recommended protocol.
+
 ### Version 5.1.0
 
 #### Added
