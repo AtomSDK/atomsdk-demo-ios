@@ -10,3 +10,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 #### Added
 - New property in `AtomConfiguration`:
   - `disableAnalytics`: Disables Mixpanel integration. Default value is `false`.
+
+### Version 5.1.0
+
+#### Added
+- New error code:
+  - `AtomSDKErrorVPNProfilePermissionDenied`: For Dedicated IP case scenarios.
+
+
