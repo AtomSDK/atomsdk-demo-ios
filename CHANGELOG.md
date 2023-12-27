@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 5.2.3
+
+#### Added
+- Handling for WireGuard UTC case.
+
+#### Fixed
+- Issue where the app did not disconnect on UTC while the adapter was disconnected.
+- Handling of error code 40003 from speed test.
+
 ### Version 5.2.2
 
 #### Changed
