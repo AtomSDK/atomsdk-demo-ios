@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.0.0
+
+#### Added
+- Compatibility for tvOS.
+- Call an API for disconnection on CoC from WireGuard.
+- `User-Agent` customisation in all Atom SDK APIs.
+- Handling of `TAG_OVPN_OBF` and `TAG_QR` in `aTagFilter`.
+
+#### Fixed
+- No recommended protocol found in inventory for macOS lower than 10.15.
+- Facing 404 on invalid URLs of country, protocol, and data centers when s3 call fails.
+- DedicatedVPS UTC Connection Loop Fix.
+
 ### Version 5.2.4
 
 #### Added
