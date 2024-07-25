@@ -8,11 +8,11 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 * Connection with Multiple Protocols (Auto-Retry Functionality)
 * Connection with Real-time Optimized Servers (Countries based on latency from user in Real-time)
 * Connection with Smart Dialing (Use getCountriesForSmartDialing() to get the Advanced VPN Dialing supported countries)
-Connection with Smart Connect (Tags based dialing)
+* Connection with Smart Connect (Tags based dialing)
 
 
 ## Compatibility
-* Compatible with Xcode 12 and iOS 12 and later
+* Compatible with Xcode 15.3, iOS 12.0, macOS 10.13, tvOS 17.0 and later
 * Compatible with ATOM SDK Version 5.0 and onwards
 
 
@@ -38,7 +38,7 @@ pod 'AtomSDKTunnel'
 ### Integrate AtomWireguardTunnel in iOS App for Wireguard Protocol
 You can add AtomWireguardTunnel package via Swift Package Manager
 
-1. Open your project in Xcode 12.0 or above
+1. Open your project in Xcode 15.3 or above
 2. Go to File > Swift Packages > Add Package Dependency...
 3. In the field Enter package repository URL, enter "https://github.com/AtomSDK/AtomWireguardTunnel"
 4. Choose Dependency Rule "Branch", and add the branch name "main"
@@ -50,8 +50,8 @@ To add the SDK in Xcode:
 2.    Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 3.    Select General tab from your app target and then set your developer account details.
 4.    From your app target select Capabilities tab and select the switch right of the Personal VPN.   Then select the capabilties you are going to use.
-5.    Drag and drop AtomSDK.framework into your project.
-6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the      Embedded Binaries section.
+5.    Drag and drop AtomSDK.framework into your project. (Skip if using Cocoapods)
+6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
 8.    After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
 9.    ATOM SDK needs to be initialized with a “SecretKey” provided to you after you buy the subscription which is typically a hex-numeric literal.
 
@@ -279,12 +279,18 @@ To remove VPN profile, simply call the removeVPNProfileWithCompletion method of 
 ```
 # How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
 
+## Compatibility For OpenVPN TCP & OpenVPN UDP
+* Compatible with Xcode 15.3, iOS 12.0, macOS 10.15, tvOS 17.0 and later
+
+## Compatibility For Wireguard
+* Compatible with Xcode 15.3, iOS 15.0, macOS 12.0, tvOS 17.0 and later
+
 **Note: Please follow the following steps to create two NetworkExtensions, One for OpenVPN TCP & UDP and other one for Wireguard.**
 
-1.  Open your Xcode project. 
-2. Add your developer account to Xcode from Preferences -> Account if you didn't add before. 
-3. Select General tab from your app target and then set your developer account details. 
-4. Now add new target “Network extension” in your Xcode project. 
+1. Open your Xcode project.
+2. Add your developer account to Xcode from Preferences -> Account if you didn't add before.
+3. Select General tab from your app target and then set your developer account details.
+4. Now add new target “Network extension” in your Xcode project.
 
 ![Network Extension](docs/1.png)
 
@@ -330,13 +336,6 @@ atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR_OPENVPN_NETWORK
 atomConfiguration.wireGuardTunnelProviderBundleIdentifier = "ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID"
 [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration]
 ```
-
-
-Note:
-
-If you are using these AtomSDK.framework and AtomSDKTunnel.framework in swift App, then in step 9 all mentioned directives should be included in the Objective - C bridging header file.
-
-![Network Extension](docs/6.png)
 
 
 ## Note:
