@@ -10,5 +10,9 @@
 	<array>
 		<string>allow-vpn</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.atom.sdk.demo.ios.app</string>
+	</array>
 </dict>
 </plist>
