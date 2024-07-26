@@ -1,10 +1,11 @@
 //
-//  PacketTunnelProvider.swift
-//  PacketTunnelWireGuardiOS
-//
-//  Created by Syed Faizan Ahmed on 26/07/2024.
-//  Copyright © 2024 Abdul Basit. All rights reserved.
-//
+/*
+ * Test1.m
+ * AtomSDKDemo
+ 
+ * Created by AtomSDK on 26/07/2024.
+ * Copyright © 2024 AtomSDK. All rights reserved.
+ */
 
 import NetworkExtension
 import AtomWireGuardAppExtension
