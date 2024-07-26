@@ -12,7 +12,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 
 ## Compatibility
-* Compatible with Xcode 15.3, iOS 12.0, macOS 10.13, tvOS 17.0 and later
+* Compatible with Xcode 15.3, iOS 12.0 and later
 * Compatible with ATOM SDK Version 5.0 and onwards
 
 
@@ -49,7 +49,7 @@ To add the SDK in Xcode:
 1.    Open your Xcode project.
 2.    Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 3.    Select General tab from your app target and then set your developer account details.
-4.    From your app target select Capabilities tab and select the switch right of the Personal VPN.   Then select the capabilties you are going to use.
+4.    From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilties you are going to use.
 5.    Drag and drop AtomSDK.framework into your project. (Skip if using Cocoapods)
 6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
 8.    After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
