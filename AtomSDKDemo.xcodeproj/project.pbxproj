@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30E0BB672C529CF900B7A187 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
+		30E0BB6A2C529CF900B7A187 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0BB692C529CF900B7A187 /* PacketTunnelProvider.swift */; };
+		30E0BB6F2C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		30E0BB782C53BF9800B7A187 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
+		30E0BB7B2C53BF9800B7A187 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0BB7A2C53BF9800B7A187 /* PacketTunnelProvider.swift */; };
+		30E0BB802C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30E0BB772C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		30E0BB862C53BFEB00B7A187 /* AtomWireguardTunnel in Frameworks */ = {isa = PBXBuildFile; productRef = 30E0BB852C53BFEB00B7A187 /* AtomWireguardTunnel */; };
+		30E0BB8D2C53C21A00B7A187 /* build_wireguard_go_bridge.sh in Resources */ = {isa = PBXBuildFile; fileRef = 30E0BB8B2C53C21A00B7A187 /* build_wireguard_go_bridge.sh */; };
+		660352CE2F987E220BE95D57 /* Pods_PacketTunnelOpenVPNiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E23F43F51F5119BAD2A27DE /* Pods_PacketTunnelOpenVPNiOS.framework */; };
 		6E5BAD09207386B200895431 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD08207386B200895431 /* AppDelegate.m */; };
 		6E5BAD0C207386B200895431 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD0B207386B200895431 /* ViewController.m */; };
 		6E5BAD0F207386B200895431 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BAD0D207386B200895431 /* Main.storyboard */; };
@@ -24,6 +33,30 @@
 		DF1AC0BB7A822F3869B6DCA6 /* Pods_AtomSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		30E0BB6D2C529CF900B7A187 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E5BACFC207386B200895431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30E0BB652C529CF900B7A187;
+			remoteInfo = PacketTunnelOpenVPNiOS;
+		};
+		30E0BB7E2C53BF9800B7A187 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E5BACFC207386B200895431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30E0BB762C53BF9800B7A187;
+			remoteInfo = PacketTunnelWireGuardiOS;
+		};
+		30E0BB8E2C53C34500B7A187 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E5BACFC207386B200895431 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30E0BB872C53C1FA00B7A187;
+			remoteInfo = AtomWireGuardGoBridgeiOS;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		B5C851A32254A99E00301F45 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -31,6 +64,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				30E0BB6F2C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex in Embed App Extensions */,
+				30E0BB802C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,7 +74,18 @@
 
 /* Begin PBXFileReference section */
 		0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtomSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelOpenVPNiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		30E0BB692C529CF900B7A187 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		30E0BB6B2C529CF900B7A187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30E0BB6C2C529CF900B7A187 /* PacketTunnelOpenVPNiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelOpenVPNiOS.entitlements; sourceTree = "<group>"; };
+		30E0BB772C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelWireGuardiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		30E0BB7A2C53BF9800B7A187 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		30E0BB7C2C53BF9800B7A187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30E0BB7D2C53BF9800B7A187 /* PacketTunnelWireGuardiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnelWireGuardiOS.entitlements; sourceTree = "<group>"; };
+		30E0BB8B2C53C21A00B7A187 /* build_wireguard_go_bridge.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build_wireguard_go_bridge.sh; sourceTree = "<group>"; };
+		5043A7900D7D473087F4A774 /* Pods-PacketTunnelOpenVPNiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelOpenVPNiOS.debug.xcconfig"; path = "Target Support Files/Pods-PacketTunnelOpenVPNiOS/Pods-PacketTunnelOpenVPNiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5A76D21048C8DFC500825087 /* Pods-AtomSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5E23F43F51F5119BAD2A27DE /* Pods_PacketTunnelOpenVPNiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacketTunnelOpenVPNiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BAD04207386B200895431 /* AtomSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BAD07207386B200895431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E5BAD08207386B200895431 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +108,7 @@
 		6E97793F2085ECAC009519EC /* PopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopOverViewController.h; sourceTree = "<group>"; };
 		6E9779402085ECAC009519EC /* PopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopOverViewController.m; sourceTree = "<group>"; };
 		7EC752E97BBEAB33544FA7B7 /* Pods-AtomSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		803484DCEE912CEEFC1541D5 /* Pods-PacketTunnelOpenVPNiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelOpenVPNiOS.release.xcconfig"; path = "Target Support Files/Pods-PacketTunnelOpenVPNiOS/Pods-PacketTunnelOpenVPNiOS.release.xcconfig"; sourceTree = "<group>"; };
 		BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithTagsViewController.m; sourceTree = "<group>"; };
 		BA242590235759DD0058F721 /* ConnectWithTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithTagsViewController.h; sourceTree = "<group>"; };
 		BA40F63523584F5500D65981 /* ConnectWithChannelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithChannelViewController.h; sourceTree = "<group>"; };
@@ -69,6 +116,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30E0BB632C529CF900B7A187 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30E0BB672C529CF900B7A187 /* NetworkExtension.framework in Frameworks */,
+				660352CE2F987E220BE95D57 /* Pods_PacketTunnelOpenVPNiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30E0BB742C53BF9800B7A187 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30E0BB862C53BFEB00B7A187 /* AtomWireguardTunnel in Frameworks */,
+				30E0BB782C53BF9800B7A187 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E5BAD01207386B200895431 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,8 +152,38 @@
 			children = (
 				5A76D21048C8DFC500825087 /* Pods-AtomSDKDemo.debug.xcconfig */,
 				7EC752E97BBEAB33544FA7B7 /* Pods-AtomSDKDemo.release.xcconfig */,
+				5043A7900D7D473087F4A774 /* Pods-PacketTunnelOpenVPNiOS.debug.xcconfig */,
+				803484DCEE912CEEFC1541D5 /* Pods-PacketTunnelOpenVPNiOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		30E0BB682C529CF900B7A187 /* PacketTunnelOpenVPNiOS */ = {
+			isa = PBXGroup;
+			children = (
+				30E0BB692C529CF900B7A187 /* PacketTunnelProvider.swift */,
+				30E0BB6B2C529CF900B7A187 /* Info.plist */,
+				30E0BB6C2C529CF900B7A187 /* PacketTunnelOpenVPNiOS.entitlements */,
+			);
+			path = PacketTunnelOpenVPNiOS;
+			sourceTree = "<group>";
+		};
+		30E0BB792C53BF9800B7A187 /* PacketTunnelWireGuardiOS */ = {
+			isa = PBXGroup;
+			children = (
+				30E0BB7A2C53BF9800B7A187 /* PacketTunnelProvider.swift */,
+				30E0BB7C2C53BF9800B7A187 /* Info.plist */,
+				30E0BB7D2C53BF9800B7A187 /* PacketTunnelWireGuardiOS.entitlements */,
+			);
+			path = PacketTunnelWireGuardiOS;
+			sourceTree = "<group>";
+		};
+		30E0BB8C2C53C21A00B7A187 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				30E0BB8B2C53C21A00B7A187 /* build_wireguard_go_bridge.sh */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		6E0214612074B39600AB1BE0 /* Frameworks */ = {
@@ -97,6 +192,7 @@
 				6E8A28642087D43B008A7D9E /* NetworkExtension.framework */,
 				6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */,
 				0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */,
+				5E23F43F51F5119BAD2A27DE /* Pods_PacketTunnelOpenVPNiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,7 +200,10 @@
 		6E5BACFB207386B100895431 = {
 			isa = PBXGroup;
 			children = (
+				30E0BB8C2C53C21A00B7A187 /* SupportingFiles */,
 				6E5BAD06207386B200895431 /* AtomSDKDemo */,
+				30E0BB682C529CF900B7A187 /* PacketTunnelOpenVPNiOS */,
+				30E0BB792C53BF9800B7A187 /* PacketTunnelWireGuardiOS */,
 				6E5BAD05207386B200895431 /* Products */,
 				6E0214612074B39600AB1BE0 /* Frameworks */,
 				00314320C9576CB72957997D /* Pods */,
@@ -115,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				6E5BAD04207386B200895431 /* AtomSDKDemo.app */,
+				30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */,
+				30E0BB772C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,7 +259,62 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		30E0BB872C53C1FA00B7A187 /* AtomWireGuardGoBridgeiOS */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 30E0BB882C53C1FA00B7A187 /* Build configuration list for PBXLegacyTarget "AtomWireGuardGoBridgeiOS" */;
+			buildPhases = (
+			);
+			buildToolPath = "$(PROJECT_DIR)/SupportingFiles/build_wireguard_go_bridge.sh";
+			dependencies = (
+			);
+			name = AtomWireGuardGoBridgeiOS;
+			passBuildSettingsInEnvironment = 1;
+			productName = AtomWireGuardGoBridgeiOS;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
+		30E0BB652C529CF900B7A187 /* PacketTunnelOpenVPNiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30E0BB702C529CF900B7A187 /* Build configuration list for PBXNativeTarget "PacketTunnelOpenVPNiOS" */;
+			buildPhases = (
+				9C0BD82462DEC311E2A4EA09 /* [CP] Check Pods Manifest.lock */,
+				30E0BB622C529CF900B7A187 /* Sources */,
+				30E0BB632C529CF900B7A187 /* Frameworks */,
+				30E0BB642C529CF900B7A187 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnelOpenVPNiOS;
+			productName = PacketTunnelOpenVPNiOS;
+			productReference = 30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		30E0BB762C53BF9800B7A187 /* PacketTunnelWireGuardiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30E0BB812C53BF9800B7A187 /* Build configuration list for PBXNativeTarget "PacketTunnelWireGuardiOS" */;
+			buildPhases = (
+				30E0BB732C53BF9800B7A187 /* Sources */,
+				30E0BB742C53BF9800B7A187 /* Frameworks */,
+				30E0BB752C53BF9800B7A187 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30E0BB8F2C53C34500B7A187 /* PBXTargetDependency */,
+			);
+			name = PacketTunnelWireGuardiOS;
+			packageProductDependencies = (
+				30E0BB852C53BFEB00B7A187 /* AtomWireguardTunnel */,
+			);
+			productName = PacketTunnelWireGuardiOS;
+			productReference = 30E0BB772C53BF9800B7A187 /* PacketTunnelWireGuardiOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6E5BAD03207386B200895431 /* AtomSDKDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E5BAD1A207386B200895431 /* Build configuration list for PBXNativeTarget "AtomSDKDemo" */;
@@ -174,6 +330,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				30E0BB6E2C529CF900B7A187 /* PBXTargetDependency */,
+				30E0BB7F2C53BF9800B7A187 /* PBXTargetDependency */,
 			);
 			name = AtomSDKDemo;
 			productName = "AtomSDK Sample App";
@@ -186,12 +344,21 @@
 		6E5BACFC207386B200895431 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Abdul Basit";
+				ORGANIZATIONNAME = AtomSDK;
 				TargetAttributes = {
+					30E0BB652C529CF900B7A187 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					30E0BB762C53BF9800B7A187 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					30E0BB872C53C1FA00B7A187 = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					6E5BAD03207386B200895431 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 1;
@@ -212,16 +379,36 @@
 				Base,
 			);
 			mainGroup = 6E5BACFB207386B100895431;
+			packageReferences = (
+				30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */,
+			);
 			productRefGroup = 6E5BAD05207386B200895431 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				6E5BAD03207386B200895431 /* AtomSDKDemo */,
+				30E0BB652C529CF900B7A187 /* PacketTunnelOpenVPNiOS */,
+				30E0BB762C53BF9800B7A187 /* PacketTunnelWireGuardiOS */,
+				30E0BB872C53C1FA00B7A187 /* AtomWireGuardGoBridgeiOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		30E0BB642C529CF900B7A187 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30E0BB752C53BF9800B7A187 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E5BAD02207386B200895431 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +416,7 @@
 				6E5BAD14207386B200895431 /* LaunchScreen.storyboard in Resources */,
 				6E5BAD11207386B200895431 /* Assets.xcassets in Resources */,
 				6E5BAD0F207386B200895431 /* Main.storyboard in Resources */,
+				30E0BB8D2C53C21A00B7A187 /* build_wireguard_go_bridge.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,13 +430,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/AtomCore/AtomCore-iOS/AtomCore.framework",
-				"${PODS_ROOT}/AtomSDKBySecure/AtomSDK-iOS/AtomSDK.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomCore/AtomCore.framework/AtomCore",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKBySecure/AtomSDK.framework/AtomSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKTunnel/AtomSDKTunnel.framework/AtomSDKTunnel",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKTunnel/AtomOVPNTunnel.framework/AtomOVPNTunnel",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDKTunnel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomOVPNTunnel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -277,6 +469,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9C0BD82462DEC311E2A4EA09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PacketTunnelOpenVPNiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,6 +512,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30E0BB622C529CF900B7A187 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30E0BB6A2C529CF900B7A187 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30E0BB732C53BF9800B7A187 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30E0BB7B2C53BF9800B7A187 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E5BAD00207386B200895431 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +545,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30E0BB6E2C529CF900B7A187 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30E0BB652C529CF900B7A187 /* PacketTunnelOpenVPNiOS */;
+			targetProxy = 30E0BB6D2C529CF900B7A187 /* PBXContainerItemProxy */;
+		};
+		30E0BB7F2C53BF9800B7A187 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30E0BB762C53BF9800B7A187 /* PacketTunnelWireGuardiOS */;
+			targetProxy = 30E0BB7E2C53BF9800B7A187 /* PBXContainerItemProxy */;
+		};
+		30E0BB8F2C53C34500B7A187 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30E0BB872C53C1FA00B7A187 /* AtomWireGuardGoBridgeiOS */;
+			targetProxy = 30E0BB8E2C53C34500B7A187 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E5BAD0D207386B200895431 /* Main.storyboard */ = {
@@ -336,6 +584,218 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		30E0BB712C529CF900B7A187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5043A7900D7D473087F4A774 /* Pods-PacketTunnelOpenVPNiOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelOpenVPNiOS/PacketTunnelOpenVPNiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PacketTunnelOpenVPNiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PacketTunnelOpenVPNiOS;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelopenvpn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30E0BB722C529CF900B7A187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 803484DCEE912CEEFC1541D5 /* Pods-PacketTunnelOpenVPNiOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelOpenVPNiOS/PacketTunnelOpenVPNiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PacketTunnelOpenVPNiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PacketTunnelOpenVPNiOS;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelopenvpn;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		30E0BB822C53BF9800B7A187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelWireGuardiOS/PacketTunnelWireGuardiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PacketTunnelWireGuardiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PacketTunnelWireGuardiOS;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelwireguard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30E0BB832C53BF9800B7A187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = PacketTunnelWireGuardiOS/PacketTunnelWireGuardiOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PacketTunnelWireGuardiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PacketTunnelWireGuardiOS;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelwireguard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		30E0BB892C53C1FA00B7A187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		30E0BB8A2C53C1FA00B7A187 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		6E5BAD18207386B200895431 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -384,9 +844,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PATH = "$(PATH):/opt/homebrew/bin:/usr/local/bin:/usr/local/go/bin";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -433,8 +894,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PATH = "$(PATH):/opt/homebrew/bin:/usr/local/bin:/usr/local/go/bin";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -444,11 +906,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A76D21048C8DFC500825087 /* Pods-AtomSDKDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YDUR67SED;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -456,8 +919,11 @@
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
 				);
 				INFOPLIST_FILE = AtomSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -469,11 +935,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EC752E97BBEAB33544FA7B7 /* Pods-AtomSDKDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YDUR67SED;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -481,8 +948,11 @@
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
 				);
 				INFOPLIST_FILE = AtomSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -493,6 +963,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30E0BB702C529CF900B7A187 /* Build configuration list for PBXNativeTarget "PacketTunnelOpenVPNiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30E0BB712C529CF900B7A187 /* Debug */,
+				30E0BB722C529CF900B7A187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30E0BB812C53BF9800B7A187 /* Build configuration list for PBXNativeTarget "PacketTunnelWireGuardiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30E0BB822C53BF9800B7A187 /* Debug */,
+				30E0BB832C53BF9800B7A187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30E0BB882C53C1FA00B7A187 /* Build configuration list for PBXLegacyTarget "AtomWireGuardGoBridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30E0BB892C53C1FA00B7A187 /* Debug */,
+				30E0BB8A2C53C1FA00B7A187 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6E5BACFF207386B200895431 /* Build configuration list for PBXProject "AtomSDKDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -512,6 +1009,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AtomSDK/AtomWireguardTunnel";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30E0BB852C53BFEB00B7A187 /* AtomWireguardTunnel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */;
+			productName = AtomWireguardTunnel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6E5BACFC207386B200895431 /* Project object */;
 }

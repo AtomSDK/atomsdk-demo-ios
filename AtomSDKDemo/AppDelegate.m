@@ -27,8 +27,14 @@
     
     // In order to configure App Network Extension please follow README.
     // tunnelProviderBundleIdentifier must be provided before connecting with TCP or UDP.
-   
-    atomConfiguration.tunnelProviderBundleIdentifier = @"com.atom.vpn.demo.AppTunnelProvider";
+    atomConfiguration.tunnelProviderBundleIdentifier = @"com.atom.vpn.demo.packettunnelopenvpn";
+    
+    // wireGuardTunnelProviderBundleIdentifier must be provided before connecting with WireGuard.
+    atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"com.atom.vpn.demo.packettunnelwireguard";
+    
+    // appGroupIdentifier must be provided before connecting with TCP, UPD and WireGuard.
+    atomConfiguration.appGroupIdentifier = @"group.com.atom.vpn.demo";
+    
     [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
     
 //  Installing Profile in settings on Application launch

@@ -453,12 +453,14 @@
 #pragma mark - VPN UI States
 
 -(void)normalUI {
-    [self.buttonConnect setTitle:@"CONNECT" forState:UIControlStateNormal];
-    self.buttonConnect.tag = 0;
-    self.navigationController.navigationItem.hidesBackButton = false;
-    self.navigationItem.leftBarButtonItem = self.leftBarButton;
-    self.navigationController.interactivePopGestureRecognizer.enabled = true;
-    self.navigationItem.hidesBackButton = false;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.buttonConnect setTitle:@"CONNECT" forState:UIControlStateNormal];
+        self.buttonConnect.tag = 0;
+        self.navigationController.navigationItem.hidesBackButton = false;
+        self.navigationItem.leftBarButtonItem = self.leftBarButton;
+        self.navigationController.interactivePopGestureRecognizer.enabled = true;
+        self.navigationItem.hidesBackButton = false;
+    });
 }
 
 -(void)connectedUI {
