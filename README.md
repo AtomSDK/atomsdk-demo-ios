@@ -161,7 +161,7 @@ or
 properties.enableProtocolSwitch = true;
 ```
 
-## Recommanded protocol
+## Recommended protocol
 If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It did not work in PSK, Smart connect dialing and dedicated IP.
 
 ## Use Failover
@@ -265,6 +265,7 @@ You can cancel connection between dialing process by calling the cancelVPN metho
 ```ruby
 [[AtomManager sharedInstance] cancelVPN];
 ```
+
 # Disconnect VPN Connection
 To disconnect, simply call the disconnectVPN method of AtomManager.
 ```ruby
@@ -277,6 +278,255 @@ To remove VPN profile, simply call the removeVPNProfileWithCompletion method of 
 [[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
 }];
 ```
+
+# Pause / Resume VPN Connection
+This section provides details about the VPN Pause and Resume feature in the Atom SDK, allowing users to temporarily pause VPN connections for a specified duration. This feature is useful when users need to suspend VPN activity without fully disconnecting.
+
+### Feature Overview
+The VPN Pause feature allows pausing a VPN connection under specific conditions and includes one mode:
+- **Timed Pause:** Pauses the VPN connection for a preset duration, after which it automatically resumes. Users can’t resume the connection manually before the timer completes.
+
+#### Key Rules and Conditions:
+1. VPN can be paused only when it is in Connected state.
+2. VPN can be resumed only when it is in Paused state.
+3. A paused VPN can still be disconnected using the SDK's Disconnect method.
+4. During a timed pause, users can manually resume the VPN at any time using the Resume method.
+
+### Integration Guide:
+
+#### Setup Tunnel Delegates:
+
+##### startTunnel:
+This delegate is being invoked when the VPN enters a start state. Implement this delegate in PacketTunnelProvider.swift.
+```
+override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+    super.startTunnel(options: options, completionHandler: completionHandler)
+}
+```
+
+##### stopTunnel:
+This delegate is being invoked when the VPN enters a stop state. Implement this delegate in PacketTunnelProvider.swift.
+```
+override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+    super.stopTunnel(with: reason, completionHandler: completionHandler)
+}
+```
+
+##### handleAppMessage:
+This delegate is being invoked for the communication between app and tunnel. Implement this delegate in PacketTunnelProvider.swift.
+```
+override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)? = nil) {
+    super.handleAppMessage(messageData, completionHandler: completionHandler)
+}
+```
+
+#### Pause VPN delegation:
+This delegate is being invoked when the VPN enters a pause state. Implement this delegate to handle any pause-specific operations.
+```
+func atomManagerDidPaused(_ atomConnectionDetails: AtomConnectionDetails?) {
+	//
+}
+```
+`atomManagerDidPaused` delegate contains one argument:
+- **ConnectionDetails:** Contains the connection related details.
+
+#### Pause / Resume VPN Methods:
+
+##### Pause VPN
+Pauses the VPN connection based on the interval provided. The available values for `PauseVPNTimer` include various timed options (e.g., 5, 10, 15, 20) as defined in the enum below.
+```
+AtomManager.sharedInstance()?.pause(with: .MINUTES_5, withCompletion: { error in
+	//
+})
+```
+```
+enum PauseVPNTimer 
+{
+    MINUTES_5, MINUTES_10, MINUTES_15, MINUTES_20
+}
+```
+
+##### Resume VPN
+Resumes the VPN connection if it is in the paused state. On successful resume, `atomManagerDidConnect` delegate will be invoked otherwise in case of an error `atomManagerDialErrorReceived` delegate will be invoked.
+```
+AtomManager.sharedInstance()?.resume(completion: { error in
+	//
+})
+```
+```
+func atomManagerDidConnect(_ atomConnectionDetails: AtomConnectionDetails?) {
+	//
+}
+```
+```
+func atomManagerDialErrorReceived(_ error: Error?, with atomConnectionDetails: AtomConnectionDetails?) {
+	//
+}
+```
+
+#### VPN State Management:
+The SDK provides additional VPN statuses
+
+- **PAUSING**
+- **PAUSED**
+
+You can request the current VPN state using the following method:
+
+```
+AtomManager.sharedInstance()?.getCurrentVPNStatus()
+```
+
+#### Handle State Changes:
+SDK also provides all VPN states via `StateDidChangedHandler` as below
+```
+AtomManager.sharedInstance()?.stateDidChangedHandler = AtomStateListener().stateChanged
+
+fileprivate let stateChanged: StateDidChangedHandler = { atomState in
+	//
+}
+```
+
+#### Pause/Resume Information in Connection Details:
+The following properties are available in the connection details related to this feature:
+- `pauseVPNTimer`: Returns a `PauseVPNTimer`, indicating the duration for which the VPN is paused.
+- `isVPNAutoResumed`: Returns a boolean indicating whether the VPN was resumed manually or automatically after the pause timer expired.
+
+#### Error Handling:
+Following are the error details for this feature:
+
+| Error Code | Error Message | Description |
+| :----------: | ------------- | ----------- |
+| 5194 | Unable to resume, the VPN connection is not in a paused state. | If VPN is not PAUSED and try to resume vpn, the error occurs and is notified via resume method. |
+| 5195 | Unable to pause, the VPN connection is not in a connected state. | If VPN is NOT connected and try to pause vpn, the error occurs and is notified via pause method. |
+| 5197 | Unable to pause, connected protocol is not supported. | If connected protocol is not supported for pause VPN, the error occurs and is notified via pause method. |
+| 5198 | Unable to pause, VPN is already paused. | When try to pause VPN that is already paused, the error occurs and is notified via pause method. |
+| 5199 | Unable to perform operation, invalid tunnel connection. | Error occurred when trying to Pause/Resume connection while tunnel connection is not valid. |
+| 5200 | Unable to perform operation, no response. | Error occurred when trying to Pause/Resume connection while no response occurred. |
+| 5201 | Unable to perform operation, invalid response. | Error occurred when trying to Pause/Resume connection while invalid response occurred. |
+
+#### Conclusion
+The VPN Pause feature in the Atom SDK offers flexible control over VPN connections, allowing timed pausing. By following the integration steps outlined, you can implement this feature in your application and efficiently manage VPN state transitions.
+
+---
+
+# Tracker / Ad Blocker
+This section provides details about the Tracker and Ad Blocker feature in the Atom VPN SDK. This feature enables VPN applications built with the Atom SDK to block tracking scripts and advertisements, enhancing both privacy and performance.
+
+### About This Feature
+As a VPN service provider, we offer a robust SDK that allows our clients to build custom VPN applications. In our latest release, we’ve introduced support for Tracker and Ad Blocker functionality. When enabled, this feature will actively block trackers and advertisements during a VPN session. It is supported across all connection types provided by the SDK:
+
+1. Connect with Param
+2. Connect with Dedicated IP
+3. Connect with Multiple Dedicated IPs
+4. Connect with Dedicated VPS
+
+### Integration Guide:
+
+#### Register a Delegate:
+Register the `AtomShieldDelegate`:
+```
+atomManager.atomShieldDelegate = AtomShieldStateListener()
+```
+
+#### Conform to Delegate Methods:
+Implement the following methods:
+
+- **Status Updates:** `onAtomShieldStatusChange(status: AtomShieldStatus, error: NSError?, message: String?)`
+- **Data Updates:** `onAtomShieldDataReceived(data: AtomShieldData?)`
+
+#### Request Features:
+Pass the feature list in `AtomProperties` when connecting:
+```
+properties.atomShieldFeatureList = [
+    NSNumber(value: AtomShieldFeature.TRACKER.rawValue),
+    NSNumber(value: AtomShieldFeature.AD_BLOCKER.rawValue)
+]
+```
+
+#### Sample Code:
+Attach the listener:
+```
+private static var atomShieldStateListener: AtomShieldStateListener!
+atomShieldStateListener = AtomShieldStateListener()
+atomManager.atomShieldDelegate = atomShieldStateListener
+```
+
+#### Data Monitoring:
+```
+class AtomShieldStateListener: NSObject, AtomShieldManagerDelegate {
+    func onAtomShieldStatusChange(status: AtomShieldStatus, error: NSError?, message: String?) {
+        print("Status: \(status), Error: \(String(describing: error)), Message: \(String(describing: message))")
+    }
+
+    func onAtomShieldDataReceived(data: AtomShieldData?) {
+        print("Blocked Count: \(String(describing: data?.getTotalCount()))")
+    }
+}
+```
+
+#### Requested status:
+```
+atomConnectionDetails.isTrackerBlockerRequested
+atomConnectionDetails.isAdBlockerRequested
+```
+
+**Status Updates (AtomShieldStatus)**
+| Status | Status Params | Description |
+| ------ | ------------- |----------- |
+| **Establishing(String)** | [String] Provide the Tracker/Ad Blocker establishing message. | Connecting the Tracker/Ad Blocker. |
+| **Established(String)** | [String] Provide the Tracker/Ad Blocker established message. | Tracker/Ad Blocker successfully connected. |
+| **Disconnected(String)** | [String] Provide the Tracker/Ad Blocker disconnected message. | Tracker/Ad Blocker disconnected. |
+| **Error(AtomException)** | [AtomException] Provide the Tracker/Ad Blocker exception information. | An error occurred. See error codes below for details. |
+
+#### Error Handling:
+Following are the error details for this feature:
+
+| Error Code | Error Message | Description |
+| :----------: | ------------- | ----------- |
+| 5179 | Connection type does not support AtomShield | When the VPN connection other than Params, Dedicated IP, Multiple Dedicated IPs and Dedicated VPS. |
+| 5180 | Unable to establish AtomShield connection | When the specified retry count has been attempted to the tracker blocker socket connection. |
+| 5181 | Unable to make request to AtomShield server | When sending request to socket server but socket connection lost/not established OR socket connection closed OR When unexpectedly fails the request Or When VPN disconnected gracefully. |
+| 5182 | Unable to enable AtomShield connection | When request to enable tracker/ad blocker service returns failure from server. |
+| 5183 | Unable to get AtomShield stats | When requested to get the stats of tracker/ad blocker service from the server. |
+
+#### Tracker / Ad Blocker Information in Connection Details:
+The following properties are available in the connection details related to this feature:
+- `isTrackerBlockerRequested`: Returns a boolean indicating whether the Tracker Blocker is requested.
+- `isAdBlockerRequested`: Returns a boolean indicating whether the Ad Blocker is requested.
+
+**NOTE:** The Tracker/Ad blocker connection will be established upon successful VPN Connection.
+
+#### Conclusion:
+The Tracker and Ad Blocker feature in the Atom SDK allows clients to offer users enhanced privacy and an improved browsing experience. This feature seamlessly integrates with all supported VPN connection types, ensuring consistent functionality across various configurations.
+
+---
+
+# LAN Access Feature
+Our VPN SDK now includes a new feature that enables users to access their locally connected devices over the internet while maintaining an active VPN connection. This functionality ensures seamless connectivity to local resources without compromising security.
+
+#### How it works:
+By default, VPN connections restrict access to locally connected devices. However, our SDK introduces the `allowLocalNetworkTraffic` property within the `AtomProperties` class, allowing users to toggle this capability on or off. You can enable this feature as shown below:
+
+In order to turn `ON` Allow LAN, please use as follows before the connection in Atom Properties:
+```
+atomProperties.featureFlagAllowLocalNetworkTraffic = true
+atomProperties.allowLocalNetworkTraffic = true
+```
+
+In order to turn `OFF` Allow LAN, please use as follows before the connection in Atom Properties:
+```
+atomProperties.featureFlagAllowLocalNetworkTraffic = false
+atomProperties.allowLocalNetworkTraffic = false
+```
+
+#### LAN Access Information in Connection Details:
+The following properties are available in the connection details related to this feature:
+- `isAllowLocalNetworkTrafficRequested`: Returns a boolean indicating whether the LAN access is requested.
+
+**NOTE:** The LAN access feature is available from `iOS 14.2` and `macOS 10.15`.
+
+---
+
 # How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
 
 ## Compatibility For OpenVPN TCP & OpenVPN UDP
