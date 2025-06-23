@@ -2,13 +2,11 @@
 This is a demo application for iOS Applications with basic usage of ATOM VPN SDK which will help the developers to create smooth applications over ATOM SDK quickly.
 
 ## SDK Features covered in this Demo
-* Connection with Parameters    
-* Connection with Pre-Shared Key (PSK)
+* Connection with Parameters
 * Connection with Dedicated IP
 * Connection with Multiple Protocols (Auto-Retry Functionality)
 * Connection with Real-time Optimized Servers (Countries based on latency from user in Real-time)
 * Connection with Smart Dialing (Use getCountriesForSmartDialing() to get the Advanced VPN Dialing supported countries)
-* Connection with Smart Connect (Tags based dialing)
 
 
 ## Compatibility
@@ -101,12 +99,7 @@ First one is to offer VPN Credentials directly to the SDK which you may create t
 ```ruby
 [AtomManager sharedInstance].atomCredential = [[AtomCredential alloc] initWithUsername:@"<username>" password:@"<password>"];
 ```
-Alternatively, if you don’t want to take hassle of creating users yourself, leave it on us and we will do the rest for you!
 
-```ruby
-[AtomManager sharedInstance].UUID = @<"[[[UIDevice currentDevice] identifierForVendor] UUIDString]>";
-```
-You just need to provide a Unique User ID for your user e.g. any unique hash or even user’s email which you think remains consistent and unique for your user. ATOM SDK will generate VPN Account behind the scenes automatically and gets your user connected! Easy isn’t it?
 # VPN Connection
 You need to declare an object of “AtomProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
 
@@ -162,7 +155,7 @@ properties.enableProtocolSwitch = true;
 ```
 
 ## Recommended protocol
-If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It did not work in PSK, Smart connect dialing and dedicated IP.
+If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It will not work for dedicated IP.
 
 ## Use Failover
 Failover is a mechanism in which Atom dialed with nearest server if requested server is busy or not found for any reason. You can control this mechanism from VPNPorperties class. By default its value is set to true.
@@ -200,14 +193,6 @@ NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
 errorBlock:^(NSError *error) {}];
 ``` 
 
-### Connection with Pre-Shared Key (PSK)
-In this way of connection, it is pre-assumed that you have your own backend server which communicates with ATOM Backend APIs directly and creates a Pre-Shared Key (usually called as PSK) which you can then provide to the SDK for dialing. While providing PSK, no VPN Property other than PSK is required to make the connection. ATOM SDK will handle the rest.
-```ruby
-AtomProperties *properties = [[AtomProperties alloc] initWithPreSharedKey:@"<#PSK#>"];
-
-[[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
-errorBlock:^(NSError *error) {}];
-```
 ### Connection with Dedicated IP
 You can also make your user comfortable with this type of connection by just providing them with a Dedicated IP/Host and they will always connect to a dedicated server! For this purpose, ATOM SDK provides you with the following constructor.
 ```ruby
@@ -247,18 +232,6 @@ You can provide three protocols at max so ATOM SDK can attempt automatically on 
 properties.secondaryProtocol = @"<protocol2>";
 properties.tertiaryProtocol = @"<protocol3>";
 ```
-
-### Connection with Smart Connect
-If you want us to connect your user with what's best for him, you can now do it using *_SmartConnect_* feature. Atom has introduced an enum list of feature a.k.a *_Tags_* you want to apply over those smart connections which can be found under  *_Atom.Core.AtomSmartConnectTag_*. An example usage of SmartConnect is depicted below.
-```ruby
-NSArray *selectedAtomTags = [[NSArray alloc] initWithObjects: @(AtomSmartConnectTagFileSharing),@(AtomSmartConnectTagPaid), nil];
-AtomProperties *properties = [[AtomProperties alloc] initWithProtocol:selectedProtocol andTags:selectedAtomTags];
-[[AtomManager  sharedInstance] connectWithProperties:properties completion:^(NSString *success) {
-} errorBlock:^(NSError *error) {
-}];
-```
-
-Tags aren't mandatory and are nil parameter. You can only provide Protocol to connect and rest Atom will manage.
 
 # Cancel VPN Connection
 You can cancel connection between dialing process by calling the cancelVPN method.
