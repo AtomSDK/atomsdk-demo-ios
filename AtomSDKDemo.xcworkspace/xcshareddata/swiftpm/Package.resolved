@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AtomSDK/AtomWireguardTunnel",
       "state" : {
-        "branch" : "main",
-        "revision" : "b17df5a61c75c45d17ca857edd696b90e30f7672"
+        "revision" : "8c1755f9756f85e122ce0daee779b33d8421333e",
+        "version" : "2.3.0"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AtomSDK/wireguard-apple",
       "state" : {
-        "branch" : "master",
-        "revision" : "cfbfb32f2092996e47ab5dabfdbdf93619f5cd5c"
+        "revision" : "106698090f9d1edee8d4f3f3689d18539fcdbf15",
+        "version" : "3.2.0"
       }
     }
   ],
