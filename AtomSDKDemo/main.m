@@ -1,5 +1,5 @@
 //
-//  ConnectWithPskViewController.h
+//  main.m
 //  AtomSDK Demo
 
 #import <UIKit/UIKit.h>

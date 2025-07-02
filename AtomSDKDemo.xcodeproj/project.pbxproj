@@ -22,13 +22,11 @@
 		6E5BAD11207386B200895431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BAD10207386B200895431 /* Assets.xcassets */; };
 		6E5BAD14207386B200895431 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BAD12207386B200895431 /* LaunchScreen.storyboard */; };
 		6E5BAD17207386B200895431 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD16207386B200895431 /* main.m */; };
-		6E5BAD20207394A200895431 /* ConnectWithPskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD1F207394A200895431 /* ConnectWithPskViewController.m */; };
 		6E5BAD23207394B700895431 /* ConnectWithParamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD22207394B700895431 /* ConnectWithParamsViewController.m */; };
 		6E5BAD26207394D000895431 /* ConnectWithDedicatedIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD25207394D000895431 /* ConnectWithDedicatedIPViewController.m */; };
 		6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9779402085ECAC009519EC /* PopOverViewController.m */; };
 		BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
 		BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */; };
-		BA242591235759DD0058F721 /* ConnectWithTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */; };
 		BA40F63723584F5500D65981 /* ConnectWithChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */; };
 		DF1AC0BB7A822F3869B6DCA6 /* Pods_AtomSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */; };
 /* End PBXBuildFile section */
@@ -96,8 +94,6 @@
 		6E5BAD13207386B200895431 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E5BAD15207386B200895431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5BAD16207386B200895431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6E5BAD1E207394A200895431 /* ConnectWithPskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithPskViewController.h; sourceTree = "<group>"; };
-		6E5BAD1F207394A200895431 /* ConnectWithPskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectWithPskViewController.m; sourceTree = "<group>"; };
 		6E5BAD21207394B700895431 /* ConnectWithParamsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithParamsViewController.h; sourceTree = "<group>"; };
 		6E5BAD22207394B700895431 /* ConnectWithParamsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectWithParamsViewController.m; sourceTree = "<group>"; };
 		6E5BAD24207394D000895431 /* ConnectWithDedicatedIPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithDedicatedIPViewController.h; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 		6E9779402085ECAC009519EC /* PopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopOverViewController.m; sourceTree = "<group>"; };
 		7EC752E97BBEAB33544FA7B7 /* Pods-AtomSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		803484DCEE912CEEFC1541D5 /* Pods-PacketTunnelOpenVPNiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelOpenVPNiOS.release.xcconfig"; path = "Target Support Files/Pods-PacketTunnelOpenVPNiOS/Pods-PacketTunnelOpenVPNiOS.release.xcconfig"; sourceTree = "<group>"; };
-		BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectWithTagsViewController.m; sourceTree = "<group>"; };
-		BA242590235759DD0058F721 /* ConnectWithTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectWithTagsViewController.h; sourceTree = "<group>"; };
 		BA40F63523584F5500D65981 /* ConnectWithChannelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectWithChannelViewController.h; sourceTree = "<group>"; };
 		BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectWithChannelViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,12 +233,8 @@
 		6E5BAD1D2073943500895431 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BA242590235759DD0058F721 /* ConnectWithTagsViewController.h */,
-				BA24258D235759DD0058F721 /* ConnectWithTagsViewController.m */,
 				6E5BAD0A207386B200895431 /* ViewController.h */,
 				6E5BAD0B207386B200895431 /* ViewController.m */,
-				6E5BAD1E207394A200895431 /* ConnectWithPskViewController.h */,
-				6E5BAD1F207394A200895431 /* ConnectWithPskViewController.m */,
 				6E5BAD21207394B700895431 /* ConnectWithParamsViewController.h */,
 				6E5BAD22207394B700895431 /* ConnectWithParamsViewController.m */,
 				6E5BAD24207394D000895431 /* ConnectWithDedicatedIPViewController.h */,
@@ -325,7 +315,7 @@
 				6E5BAD02207386B200895431 /* Resources */,
 				B5C851A32254A99E00301F45 /* Embed App Extensions */,
 				B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */,
-				01B2339321A3BC2298ADEE20 /* [CP] Embed Pods Frameworks */,
+				386A1E27E2E06CF7C35BC185 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -423,7 +413,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01B2339321A3BC2298ADEE20 /* [CP] Embed Pods Frameworks */ = {
+		386A1E27E2E06CF7C35BC185 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -535,11 +525,9 @@
 				BA40F63723584F5500D65981 /* ConnectWithChannelViewController.m in Sources */,
 				6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */,
 				6E5BAD26207394D000895431 /* ConnectWithDedicatedIPViewController.m in Sources */,
-				6E5BAD20207394A200895431 /* ConnectWithPskViewController.m in Sources */,
 				6E5BAD23207394B700895431 /* ConnectWithParamsViewController.m in Sources */,
 				6E5BAD0C207386B200895431 /* ViewController.m in Sources */,
 				6E5BAD17207386B200895431 /* main.m in Sources */,
-				BA242591235759DD0058F721 /* ConnectWithTagsViewController.m in Sources */,
 				6E5BAD09207386B200895431 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,9 +584,11 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnelOpenVPNiOS/PacketTunnelOpenVPNiOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -615,9 +605,10 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelopenvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app.packettunnelopenvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App Packet Tunnel OpenVPN";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -639,9 +630,11 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnelOpenVPNiOS/PacketTunnelOpenVPNiOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -657,9 +650,10 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelopenvpn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app.packettunnelopenvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App Packet Tunnel OpenVPN";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -679,9 +673,11 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnelWireGuardiOS/PacketTunnelWireGuardiOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -698,9 +694,10 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelwireguard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app.packettunnelwireguard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App Packet Tunnel WireGuar";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -721,9 +718,11 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnelWireGuardiOS/PacketTunnelWireGuardiOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -739,9 +738,10 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo.packettunnelwireguard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app.packettunnelwireguard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App Packet Tunnel WireGuar";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -910,8 +910,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -924,9 +926,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -939,8 +942,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AtomSDKDemo/AtomSDKDemo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4H849Z7V2K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
@@ -953,9 +958,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.atom.vpn.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atom.demo.public.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AtomSDK Demo Public iOS App";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1015,8 +1021,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AtomSDK/AtomWireguardTunnel";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 2.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
