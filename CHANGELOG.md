@@ -4,6 +4,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.2.0
+
+#### Updated
+- Deprecate unsupported dialing features.
+
+### Version 6.1.0
+
+#### Added
+- SDK to perform LFO dialing based on provided filters.
+- Enable Tracker/Ad Blocker on Dedicated Server (VPS).
+- Add Missing 'slug' Property In AtomChannel Object.
+- Implement WireGuard For Multi DNS.
+- Implement VPN Pause Functionality.
+- [Ad Blocker with VPN] Enable Ad Blocker.
+- Persist Atom Connection Details When App Instance Is Killed.
+- Integration of AES-GCM cipher for IKEv2 protocols at the client end.
+- Enable Gateways with WireGuard.
+- Allow / By Pass User To Access Local Area Network.
+- Implement Error Handling for Last Tunnel Error.
+- Add Privacy Info Manifest File As Per Apple Requirements.
+- SDK independence from LFO sequence.
+- Enable Tracker Blocker for Dedicated IP.
+- Tracker Blocker with VPN.
+
+#### Improved
+- Cities Should Be Available On Countries Call.
+- Improve Error Message For OpenVPN For UTC.
+
+#### Updated
+- Increase minimum OS support for WireGuard.
+
 ### Version 6.0.3
 
 #### Updated
