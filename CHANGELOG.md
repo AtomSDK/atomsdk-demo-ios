@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.6.0
+
+#### Improved
+- Separate Module for Analytics as AtomSDKAnalytics.
+
 ### Version 6.5.0
 
 #### Improved
