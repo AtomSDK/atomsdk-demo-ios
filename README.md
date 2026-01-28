@@ -100,7 +100,7 @@ First one is to offer VPN Credentials directly to the SDK which you may create t
 [AtomManager sharedInstance].atomCredential = [[AtomCredential alloc] initWithUsername:@"<username>" password:@"<password>"];
 ```
 
-# VPN Connection
+## VPN Connection
 You need to declare an object of “AtomProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
 
 ```ruby
@@ -167,7 +167,7 @@ or
 properties.useFailover = true;
 ```
 
-### How to Connect
+## How to Connect
 
 As soon as you call Connect method, the events you were listening to will get the updates about the states being changed and VPNDialedError  (if any occurs) as well.
 
@@ -233,26 +233,181 @@ properties.secondaryProtocol = @"<protocol2>";
 properties.tertiaryProtocol = @"<protocol3>";
 ```
 
-# Cancel VPN Connection
+### Connection with On Demand Custom Rules
+On Demand Custom Rules allow you to configure automatic VPN connection and disconnection based on network conditions, Wi-Fi SSIDs, DNS settings, and other network parameters. This feature provides fine-grained control over when the VPN should automatically connect or disconnect.
+
+#### Key Properties
+The On Demand Custom Rules feature is controlled through the `AtomOnDemandConfiguration` class with two main properties:
+
+1. **isOnDemandCustomRulesEnabled** (BOOL): A boolean flag that enables or disables the use of custom On-Demand VPN rules. When set to `YES`, the SDK will apply the rules provided in `OnDemandCustomRules`. Default value is `NO`.
+
+2. **OnDemandCustomRules** (NSArray): An array of `AtomOnDemandRule` objects representing custom On-Demand VPN rules. These rules are applied automatically by the SDK when `isOnDemandCustomRulesEnabled` is set to `YES`.
+
+#### Rule Types
+ATOM SDK supports four types of On-Demand rules:
+
+1. **AtomOnDemandConnectRule**: Automatically connects the VPN when the rule conditions are met.
+2. **AtomOnDemandDisconnectRule**: Automatically disconnects the VPN when the rule conditions are met.
+3. **AtomOnDemandIgnoreRule**: Leaves the VPN connection state unchanged when the rule matches.
+4. **AtomOnDemandEvaluateConnectionRule**: Evaluates network connections and determines whether the VPN should connect based on defined connection rule items.
+
+#### Integration Steps
+
+**Step 1: Create On-Demand Configuration**
+Create an instance of `AtomOnDemandConfiguration` and enable custom rules:
+
+```ruby
+AtomOnDemandConfiguration *onDemandConfiguration = [[AtomOnDemandConfiguration alloc] init];
+onDemandConfiguration.onDemandRulesEnabled = YES;
+onDemandConfiguration.isOnDemandCustomRulesEnabled = YES;
+```
+
+**Step 2: Create Custom Rules**
+Create the desired rule objects and add them to the configuration:
+
+```ruby
+// Example: Connect rule for specific Wi-Fi SSIDs
+AtomOnDemandConnectRule *connectRule = [[AtomOnDemandConnectRule alloc] 
+    initWithSSIDMatch:@[@"PublicWiFi", @"AirportWiFi"] 
+    interfaceType:AtomOnDemandInterfaceTypeWifi];
+
+// Example: Disconnect rule for trusted Wi-Fi networks
+AtomOnDemandDisconnectRule *disconnectRule = [[AtomOnDemandDisconnectRule alloc] 
+    initWithSSIDMatch:@[@"HomeWiFi", @"OfficeWiFi"] 
+    interfaceType:AtomOnDemandInterfaceTypeWifi];
+
+// Example: Ignore rule to maintain VPN state on specific networks
+AtomOnDemandIgnoreRule *ignoreRule = [[AtomOnDemandIgnoreRule alloc] 
+    initWithSSIDMatch:@[@"GuestNetwork"] 
+    interfaceType:AtomOnDemandInterfaceTypeWifi];
+
+// Add rules to configuration
+onDemandConfiguration.OnDemandCustomRules = @[connectRule, disconnectRule, ignoreRule];
+```
+
+**Step 3: Apply Configuration**
+Set the configuration to AtomManager and update it:
+
+```ruby
+[[AtomManager sharedInstance] setOnDemandConfiguration:onDemandConfiguration];
+[[AtomManager sharedInstance] updateOnDemandVpnStatusWithCompletion:^(NSString * _Nullable success) {
+    NSLog(@"On Demand Custom Rules updated successfully");
+} errorBlock:^(NSError * _Nullable error) {
+    NSLog(@"Error updating On Demand Rules: %@", error.localizedDescription);
+}];
+```
+
+#### Advanced Rule Configuration
+
+**Rule with DNS Settings**
+You can configure rules with DNS search domains and DNS server addresses:
+
+```ruby
+AtomOnDemandConnectRule *connectRule = [[AtomOnDemandConnectRule alloc] 
+    initWithSSIDMatch:nil 
+    interfaceType:AtomOnDemandInterfaceTypeAny];
+connectRule.dnsSearchDomains = @[@"example.com", @"internal.company.com"];
+connectRule.dnsServerAddresses = @[@"8.8.8.8", @"8.8.4.4"];
+connectRule.probeURL = [NSURL URLWithString:@"https://www.example.com/probe"];
+```
+
+**Evaluate Connection Rule**
+Use `AtomOnDemandEvaluateConnectionRule` for more complex scenarios where you need to evaluate connections to specific domains:
+
+```ruby
+AtomOnDemandEvaluateConnectionRuleItem *ruleItem = [[AtomOnDemandEvaluateConnectionRuleItem alloc] 
+    initWithMatchDomains:@[@"restricted-site.com", @"blocked-domain.com"] 
+    action:AtomOnDemandEvaluateConnectionRuleActionConnectIfNeeded 
+    dnsServers:@[@"1.1.1.1"] 
+    probeURL:[NSURL URLWithString:@"https://www.example.com/connectivity-check"]];
+
+AtomOnDemandEvaluateConnectionRule *evaluateRule = [[AtomOnDemandEvaluateConnectionRule alloc] 
+    initWithConnectionRules:@[ruleItem] 
+    interfaceType:AtomOnDemandInterfaceTypeAny];
+
+onDemandConfiguration.OnDemandCustomRules = @[evaluateRule];
+```
+
+#### Interface Types
+Rules can be applied to different network interfaces:
+
+- `AtomOnDemandInterfaceTypeAny`: Applies to any network interface (default)
+- `AtomOnDemandInterfaceTypeWifi`: Applies only to Wi-Fi connections
+- `AtomOnDemandInterfaceTypeCellular`: Applies only to cellular connections (iOS only)
+- `AtomOnDemandInterfaceTypeEthernet`: Applies only to Ethernet connections (macOS/tvOS only)
+
+**Note:** The interface type enum values are exposed from Swift to Objective-C. Use the full enum name as shown in the examples above.
+
+#### Complete Example
+Here's a complete example showing how to set up On Demand Custom Rules:
+
+```ruby
+// Create and configure On-Demand settings
+AtomOnDemandConfiguration *onDemandConfiguration = [[AtomOnDemandConfiguration alloc] init];
+onDemandConfiguration.onDemandRulesEnabled = YES;
+onDemandConfiguration.isOnDemandCustomRulesEnabled = YES;
+
+// Create rules array
+NSMutableArray *rules = [NSMutableArray new];
+
+// Rule 1: Connect VPN on untrusted Wi-Fi networks
+AtomOnDemandConnectRule *connectRule = [[AtomOnDemandConnectRule alloc] 
+    initWithSSIDMatch:@[@"PublicWiFi", @"CoffeeShop"] 
+    interfaceType:AtomOnDemandInterfaceTypeWifi];
+[rules addObject:connectRule];
+
+// Rule 2: Disconnect VPN on trusted Wi-Fi networks
+AtomOnDemandDisconnectRule *disconnectRule = [[AtomOnDemandDisconnectRule alloc] 
+    initWithSSIDMatch:@[@"HomeNetwork", @"OfficeNetwork"] 
+    interfaceType:AtomOnDemandInterfaceTypeWifi];
+[rules addObject:disconnectRule];
+
+// Rule 3: Connect VPN on cellular networks
+AtomOnDemandConnectRule *cellularRule = [[AtomOnDemandConnectRule alloc] 
+    initWithSSIDMatch:nil 
+    interfaceType:AtomOnDemandInterfaceTypeCellular];
+[rules addObject:cellularRule];
+
+// Set rules
+onDemandConfiguration.OnDemandCustomRules = rules;
+
+// Apply configuration
+[[AtomManager sharedInstance] setOnDemandConfiguration:onDemandConfiguration];
+[[AtomManager sharedInstance] updateOnDemandVpnStatusWithCompletion:^(NSString * _Nullable success) {
+    NSLog(@"On Demand Custom Rules updated successfully");
+} errorBlock:^(NSError * _Nullable error) {
+    NSLog(@"Error updating On Demand Rules: %@", error.localizedDescription);
+}];
+```
+
+#### Important Notes
+- Rules are evaluated in the order they are added to the `OnDemandCustomRules` array.
+- If `SSIDMatch` is `nil` or empty, the rule applies to all networks of the specified interface type.
+- The `probeURL` is used to test connectivity before applying connection rules.
+- Ensure that `onDemandRulesEnabled` is set to `YES` for any On-Demand functionality to work.
+
+For more information, please see the inline documentation of `AtomOnDemandConfiguration` and `AtomOnDemandRule` classes.
+
+## Cancel VPN Connection
 You can cancel connection between dialing process by calling the cancelVPN method.
 ```ruby
 [[AtomManager sharedInstance] cancelVPN];
 ```
 
-# Disconnect VPN Connection
+## Disconnect VPN Connection
 To disconnect, simply call the disconnectVPN method of AtomManager.
 ```ruby
 [[AtomManager sharedInstance] disconnectVPN];
 ```
 
-# Remove VPN Profile
+## Remove VPN Profile
 To remove VPN profile, simply call the removeVPNProfileWithCompletion method of AtomManager.
 ```ruby
 [[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
 }];
 ```
 
-# Pause / Resume VPN Connection
+## Pause / Resume VPN Connection
 This section provides details about the VPN Pause and Resume feature in the Atom SDK, allowing users to temporarily pause VPN connections for a specified duration. This feature is useful when users need to suspend VPN activity without fully disconnecting.
 
 ### Feature Overview
@@ -382,7 +537,7 @@ The VPN Pause feature in the Atom SDK offers flexible control over VPN connectio
 
 ---
 
-# Tracker / Ad Blocker
+## Tracker / Ad Blocker
 This section provides details about the Tracker and Ad Blocker feature in the Atom VPN SDK. This feature enables VPN applications built with the Atom SDK to block tracking scripts and advertisements, enhancing both privacy and performance.
 
 ### About This Feature
@@ -474,7 +629,7 @@ The Tracker and Ad Blocker feature in the Atom SDK allows clients to offer users
 
 ---
 
-# LAN Access Feature
+## LAN Access Feature
 Our VPN SDK now includes a new feature that enables users to access their locally connected devices over the internet while maintaining an active VPN connection. This functionality ensures seamless connectivity to local resources without compromising security.
 
 #### How it works:
@@ -500,7 +655,7 @@ The following properties are available in the connection details related to this
 
 ---
 
-# How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
+## How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
 
 ## Compatibility For OpenVPN TCP & OpenVPN UDP
 * Compatible with Xcode 15.3, iOS 12.0, macOS 10.15, tvOS 17.0 and later
