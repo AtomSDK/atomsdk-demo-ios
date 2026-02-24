@@ -41,6 +41,64 @@ You can add AtomWireguardTunnel package via Swift Package Manager
 3. In the field Enter package repository URL, enter "https://github.com/AtomSDK/AtomWireguardTunnel"
 4. Choose Dependency Rule "Branch", and add the branch name "main"
 
+### Integrate AtomSDKAnalytics (Optional - for Resellers)
+
+AtomSDKAnalytics is an optional module that implements third-party analytics for AtomSDK. AtomSDK works without it; if you do not include it, analytics events are silently ignored.
+
+#### Overview
+
+- **With AtomSDKAnalytics:** VPN-related events (connect, disconnect, errors, etc.) can be sent to analytics provider.
+- **Without AtomSDKAnalytics:** AtomSDK behaves the same; analytics events are not sent and no errors are raised.
+
+#### Installation
+
+**CocoaPods**
+
+Add the following to your `Podfile`:
+
+```ruby
+pod 'AtomSDKBySecure'
+pod 'AtomSDKTunnel'
+pod 'AtomSDKAnalytics'   # Optional - only if you want analytics
+```
+
+Then run:
+
+```bash
+pod install
+```
+
+**Swift Package Manager**
+
+Add the AtomSDKAnalytics package dependency (e.g. in Xcode: File → Add Packages..., then add the AtomSDKAnalytics repository). Ensure AtomSDK and AtomCore are already added as required by AtomSDKAnalytics.
+
+#### Integration Steps for Resellers
+
+**Step 1: Add the dependency**
+
+- **CocoaPods:** Add `pod 'AtomSDKAnalytics'` to your Podfile and run `pod install`.
+- **Swift Package Manager:** Add the AtomSDKAnalytics package to your project.
+
+**Step 2: No extra code required**
+
+Once AtomSDKAnalytics is linked to your app, AtomSDK will use it automatically. Events are forwarded to the analytics provider; you do not need to register a provider or call analytics APIs yourself.
+
+#### Use Cases
+
+| Scenario | Podfile / Dependencies | Result |
+|--------|-------------------------|--------|
+| Reseller wants analytics | `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` + `pod 'AtomSDKAnalytics'` | Events sent to third-party analytics. |
+| Reseller does not want analytics | Only `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` (no AtomSDKAnalytics) | Events silently ignored; no errors. |
+
+#### Requirements (when using AtomSDKAnalytics)
+
+- iOS 12.0+ / macOS 10.13+ / tvOS 17.0+
+- AtomSDK 6.5.0+
+- AtomCore 2.2.0+
+- Mixpanel SDK 5.1.2+ (or as required by the analytics implementation)
+
+For more details, see the AtomSDKAnalytics README and the `AtomAnalyticsProvider` protocol in AtomCore.
+
 # Getting Started with the Code
 To add the SDK in Xcode:
 
