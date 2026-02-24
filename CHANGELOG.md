@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.7.1
+
+#### Improved
+- Improvements in On Demand Rules.
+
 ### Version 6.7.0
 
 #### Improved
