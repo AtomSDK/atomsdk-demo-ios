@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.7.2
+
+#### Improved
+- Improvements in compilation of framework.
+
 ### Version 6.7.1
 
 #### Improved
