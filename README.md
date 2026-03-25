@@ -41,9 +41,9 @@ You can add AtomWireguardTunnel package via Swift Package Manager
 3. In the field Enter package repository URL, enter "https://github.com/AtomSDK/AtomWireguardTunnel"
 4. Choose Dependency Rule "Branch", and add the branch name "main"
 
-### Integrate AtomSDKAnalytics (Optional - for Resellers)
+### Integrate AtomSDKAnalytics
 
-AtomSDKAnalytics is an optional module that implements third-party analytics for AtomSDK. AtomSDK works without it; if you do not include it, analytics events are silently ignored.
+AtomSDKAnalytics is a separate module that implements third-party analytics for AtomSDK. AtomSDK works without it; if you do not include it, analytics events are silently ignored.
 
 #### Overview
 
