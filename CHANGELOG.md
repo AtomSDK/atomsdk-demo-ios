@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.9.0
+
+#### Added
+- Custom Port Number support in Multi Dedicated DNS.
+
+#### Improved
+- Improvements in disconnection of VPN.
+
+### Version 6.8.0
+
+#### Improved
+- Improvements in threads management.
+
 ### Version 6.7.3
 
 #### Improved
