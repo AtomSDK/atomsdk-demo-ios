@@ -6,6 +6,7 @@ target 'AtomSDKDemo' do
     use_frameworks!
     
     pod 'AtomSDKBySecure'
+    pod 'AtomSDKAnalytics'
     
 end
 

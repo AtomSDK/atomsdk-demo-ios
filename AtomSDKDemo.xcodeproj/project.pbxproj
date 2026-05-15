@@ -420,6 +420,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AtomSDKAnalytics/AtomSDKAnalytics.framework",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomCore/AtomCore.framework/AtomCore",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKBySecure/AtomSDK.framework/AtomSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKTunnel/AtomSDKTunnel.framework/AtomSDKTunnel",
@@ -427,6 +429,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDKAnalytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDKTunnel.framework",
