@@ -1,26 +1,27 @@
 # ATOM VPN SDK demo for iOS Applications
+
 This is a demo application for iOS Applications with basic usage of ATOM VPN SDK which will help the developers to create smooth applications over ATOM SDK quickly.
 
 ## SDK Features covered in this Demo
+
 * Connection with Parameters
 * Connection with Dedicated IP
 * Connection with Multiple Protocols (Auto-Retry Functionality)
 * Connection with Real-time Optimized Servers (Countries based on latency from user in Real-time)
 * Connection with Smart Dialing (Use getCountriesForSmartDialing() to get the Advanced VPN Dialing supported countries)
 
-
 ## Compatibility
+
 * Compatible with Xcode 15.3, iOS 12.0 and later
 * Compatible with ATOM SDK Version 5.0 and onwards
 
-
 ## Supported Protocols
+
 * IPSec
 * IKEv2
 * TCP
 * UDP
 * Wireguard
-
 
 ## SDK Installation
 
@@ -34,6 +35,7 @@ pod 'AtomSDKTunnel'
 ```
 
 ### Integrate AtomWireguardTunnel in iOS App for Wireguard Protocol
+
 You can add AtomWireguardTunnel package via Swift Package Manager
 
 1. Open your project in Xcode 15.3 or above
@@ -85,10 +87,10 @@ Once AtomSDKAnalytics is linked to your app, AtomSDK will use it automatically. 
 
 #### Use Cases
 
-| Scenario | Podfile / Dependencies | Result |
-|--------|-------------------------|--------|
-| Reseller wants analytics | `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` + `pod 'AtomSDKAnalytics'` | Events sent to third-party analytics. |
-| Reseller does not want analytics | Only `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` (no AtomSDKAnalytics) | Events silently ignored; no errors. |
+| Scenario                         | Podfile / Dependencies                                                           | Result                                |
+| -------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------- |
+| Reseller wants analytics         | `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` + `pod 'AtomSDKAnalytics'` | Events sent to third-party analytics. |
+| Reseller does not want analytics | Only `pod 'AtomSDKBySecure'` + `pod 'AtomSDKTunnel'` (no AtomSDKAnalytics)   | Events silently ignored; no errors.   |
 
 #### Requirements (when using AtomSDKAnalytics)
 
@@ -100,19 +102,19 @@ Once AtomSDKAnalytics is linked to your app, AtomSDK will use it automatically. 
 For more details, see the AtomSDKAnalytics README and the `AtomAnalyticsProvider` protocol in AtomCore.
 
 # Getting Started with the Code
+
 To add the SDK in Xcode:
 
-1.    Open your Xcode project.
-2.    Add your developer account to Xcode from Preferences -> Account if you didn't add before.
-3.    Select General tab from your app target and then set your developer account details.
-4.    From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilties you are going to use.
-5.    Drag and drop AtomSDK.framework into your project. (Skip if using Cocoapods)
-6.    Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
-8.    After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
-9.    ATOM SDK needs to be initialized with a “SecretKey” provided to you after you buy the subscription which is typically a hex-numeric literal.
+1. Open your Xcode project.
+2. Add your developer account to Xcode from Preferences -> Account if you didn't add before.
+3. Select General tab from your app target and then set your developer account details.
+4. From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilties you are going to use.
+5. Drag and drop AtomSDK.framework into your project. (Skip if using Cocoapods)
+6. Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
+7. After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
+8. ATOM SDK needs to be initialized with a “SecretKey” provided to you after you buy the subscription which is typically a hex-numeric literal.
 
-
-It can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. 
+It can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection.
 
 ```ruby
     AtomConfiguration *atomConfiguration= [[AtomConfiguration alloc] init];
@@ -127,6 +129,7 @@ It can be initialized using an instance of AtomConfiguration. It should have a v
 PS: ATOM SDK is a singleton, and must be initialized before accessing its methods.
 
 ## Enable Local Inventory Support
+
 ATOM SDK offers a feature to enable the local inventory support. This can help Application to fetch Countries and Protocols even when device network is not working.
 
 * To enable it, Log In to the Atom Console
@@ -135,7 +138,9 @@ ATOM SDK offers a feature to enable the local inventory support. This can help A
 * Paste the file in root of your application folder.
 
 ## Delegates to Register
+
 ATOM SDK offers few delegates to register for the ease of the developer.
+
 * atomManagerDidConnect:
 * atomManagerDidDisconnect:
 * atomManagerOnRedialing:
@@ -144,13 +149,15 @@ ATOM SDK offers few delegates to register for the ease of the developer.
 * atomManagerDidReceiveConnectedLocation:
 
 ## StateDidChangedHandler to monitor a VPN connection status
+
 ATOM SDK offers stateDidChangedHandler for the ease of the developer.
+
 ```ruby
 [AtomManager sharedInstance].stateDidChangedHandler = ^(AtomVPNState status) { };
 ```
 
-
 ## VPN Authentication
+
 ATOM SDK provided two ways to authenticate your vpn user.
 First one is to offer VPN Credentials directly to the SDK which you may create through the Admin Panel provided by ATOM.
 
@@ -159,20 +166,26 @@ First one is to offer VPN Credentials directly to the SDK which you may create t
 ```
 
 ## VPN Connection
+
 You need to declare an object of “AtomProperties” Class to define your connection preferences. Details of all the available properties can be seen in the inline documentation of “AtomProperties” Class. For the least, you need to give Country and Protocol with which you want to connect.
 
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<country>" protocol:@"<protocol>"];
 ```
+
 ## Fetch Countries
+
 Countries can be obtained through ATOM SDK as well.
+
 ```ruby
 [[AtomManager sharedInstance] getCountriesWithSuccess:^(NSArray<AtomCountry *> *success) {}
 } errorBlock:^(NSError *error) {}];
 ```
 
 ## Fetch Recommended Country
+
 You can get the Recommended Country for user's location through ATOM SDK.
+
 ```ruby
 [[AtomManager sharedInstance] getRecommendedCountry:^(AtomCountry *country) {
 } errorBlock:^(NSError *error) {
@@ -180,13 +193,16 @@ You can get the Recommended Country for user's location through ATOM SDK.
 ```
 
 ## Fetch Countries For Smart Dialing
+
 You can get the Countries those support Smart Dialing through ATOM SDK.
+
 ```ruby
 [[AtomManager sharedInstance] getCountriesForSmartDialing:^(NSArray<AtomCountry *> *success) {}
 } errorBlock:^(NSError *error) {}];
 ```
 
 ## Fetch Protocols
+
 Protocols can be obtained through ATOM SDK as well.
 
 ```ruby
@@ -195,7 +211,9 @@ errorBlock:^(NSError *error) {}];
 ```
 
 ## VPN Connection Speed
+
 For VPN connection speed you need to registor onPacketsTransmitted handler from AtomManager class to get the VPN connection speed in bytes per second. This callback is recieve only in VPN connected state.
+
 ```ruby
 AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSNumber *bytesSent) {
     NSLog(@"bytesIN: %ld | bytesOUT: %ld ",(long)bytesReceived.integerValue,bytesSent.integerValue);
@@ -203,24 +221,33 @@ AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSN
 ```
 
 ## Protocol switch
+
 You can enable or disable protocol switch from VPNProperties class. By default its value is set to true.
+
 ```ruby
 properties.enableProtocolSwitch = false;
 ```
+
 or
+
 ```ruby
 properties.enableProtocolSwitch = true;
 ```
 
 ## Recommended protocol
+
 If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It will not work for dedicated IP.
 
 ## Use Failover
+
 Failover is a mechanism in which Atom dialed with nearest server if requested server is busy or not found for any reason. You can control this mechanism from VPNPorperties class. By default its value is set to true.
+
 ```ruby
 properties.useFailover = false;
 ```
+
 or
+
 ```ruby
 properties.useFailover = true;
 ```
@@ -229,9 +256,10 @@ properties.useFailover = true;
 
 As soon as you call Connect method, the events you were listening to will get the updates about the states being changed and VPNDialedError  (if any occurs) as well.
 
-
 ### Connection with Parameters
+
 It is the simplest way of connection which is well explained in the steps above. You just need to provide the country and the protocol objects and call the Connect method.
+
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 
@@ -240,7 +268,9 @@ errorBlock:^(NSError *error) {}];
 ```
 
 ### Include or Exclude Server with Nas Identifier
+
 When connecting with parameters, a server can be included or excluded with its Nas Identifier
+
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
@@ -249,10 +279,12 @@ NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
 [properties setServerFilters:serverFilters];
 [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
 errorBlock:^(NSError *error) {}];
-``` 
+```
 
 ### Connection with Dedicated IP
+
 You can also make your user comfortable with this type of connection by just providing them with a Dedicated IP/Host and they will always connect to a dedicated server! For this purpose, ATOM SDK provides you with the following constructor.
+
 ```ruby
 AtomProperties *properties = [[AtomProperties alloc] initWithDedicatedHostName:@"<#DedicatedIP/Host#>" protocol:@"<#protocol#>"];
 
@@ -261,7 +293,9 @@ errorBlock:^(NSError *error) {}];
 ```
 
 ### Connection with Real-time Optimized Servers
+
 This one is same as the first one i.e. “Connection with Parameters” with a slight addition of using Real-time optimized servers best from your user’s location. You just need to set this property to TRUE and rest will be handled by the ATOM SDK.
+
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 [properties setUseOptimization:YES];
@@ -273,7 +307,9 @@ errorBlock:^(NSError *error) {}];
 If you want to show your user the best location for him on your GUI then ATOM SDK have it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn’t blocks any of our datacenters). You can use this property to find the best speed countries from your user’s location.
 
 ### Connection with Smart Dialing
+
 “Connection with Parameters” with a slight addition of using smart dialing to connect. You just need to call "withSmartDialing" and rest will handled by the ATOM SDK.
+
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 [properties setUseSmartDialing:YES];
@@ -284,7 +320,8 @@ errorBlock:^(NSError *error) {}];
 For more information, please see the inline documentation of AtomProperties Class.
 
 ### Connection with Multiple Protocols (Auto-Retry Functionality)
-You can provide three protocols at max so ATOM SDK can attempt automatically on your behalf to get your user connected with the Secondary or Tertiary protocol if your base Protocol fails to connect. 
+
+You can provide three protocols at max so ATOM SDK can attempt automatically on your behalf to get your user connected with the Secondary or Tertiary protocol if your base Protocol fails to connect.
 
 ```ruby
 properties.secondaryProtocol = @"<protocol2>";
@@ -292,16 +329,18 @@ properties.tertiaryProtocol = @"<protocol3>";
 ```
 
 ### Connection with On Demand Custom Rules
+
 On Demand Custom Rules allow you to configure automatic VPN connection and disconnection based on network conditions, Wi-Fi SSIDs, DNS settings, and other network parameters. This feature provides fine-grained control over when the VPN should automatically connect or disconnect.
 
 #### Key Properties
+
 The On Demand Custom Rules feature is controlled through the `AtomOnDemandConfiguration` class with two main properties:
 
 1. **isOnDemandCustomRulesEnabled** (BOOL): A boolean flag that enables or disables the use of custom On-Demand VPN rules. When set to `YES`, the SDK will apply the rules provided in `OnDemandCustomRules`. Default value is `NO`.
-
 2. **OnDemandCustomRules** (NSArray): An array of `AtomOnDemandRule` objects representing custom On-Demand VPN rules. These rules are applied automatically by the SDK when `isOnDemandCustomRulesEnabled` is set to `YES`.
 
 #### Rule Types
+
 ATOM SDK supports four types of On-Demand rules:
 
 1. **AtomOnDemandConnectRule**: Automatically connects the VPN when the rule conditions are met.
@@ -387,6 +426,7 @@ onDemandConfiguration.OnDemandCustomRules = @[evaluateRule];
 ```
 
 #### Interface Types
+
 Rules can be applied to different network interfaces:
 
 - `AtomOnDemandInterfaceTypeAny`: Applies to any network interface (default)
@@ -397,6 +437,7 @@ Rules can be applied to different network interfaces:
 **Note:** The interface type enum values are exposed from Swift to Objective-C. Use the full enum name as shown in the examples above.
 
 #### Complete Example
+
 Here's a complete example showing how to set up On Demand Custom Rules:
 
 ```ruby
@@ -439,6 +480,7 @@ onDemandConfiguration.OnDemandCustomRules = rules;
 ```
 
 #### Important Notes
+
 - Rules are evaluated in the order they are added to the `OnDemandCustomRules` array.
 - If `SSIDMatch` is `nil` or empty, the rule applies to all networks of the specified interface type.
 - The `probeURL` is used to test connectivity before applying connection rules.
@@ -447,32 +489,42 @@ onDemandConfiguration.OnDemandCustomRules = rules;
 For more information, please see the inline documentation of `AtomOnDemandConfiguration` and `AtomOnDemandRule` classes.
 
 ## Cancel VPN Connection
+
 You can cancel connection between dialing process by calling the cancelVPN method.
+
 ```ruby
 [[AtomManager sharedInstance] cancelVPN];
 ```
 
 ## Disconnect VPN Connection
+
 To disconnect, simply call the disconnectVPN method of AtomManager.
+
 ```ruby
 [[AtomManager sharedInstance] disconnectVPN];
 ```
 
 ## Remove VPN Profile
+
 To remove VPN profile, simply call the removeVPNProfileWithCompletion method of AtomManager.
+
 ```ruby
 [[AtomManager sharedInstance] removeVPNProfileWithCompletion:^(BOOL isSuccess) {
 }];
 ```
 
 ## Pause / Resume VPN Connection
+
 This section provides details about the VPN Pause and Resume feature in the Atom SDK, allowing users to temporarily pause VPN connections for a specified duration. This feature is useful when users need to suspend VPN activity without fully disconnecting.
 
 ### Feature Overview
+
 The VPN Pause feature allows pausing a VPN connection under specific conditions and includes one mode:
+
 - **Timed Pause:** Pauses the VPN connection for a preset duration, after which it automatically resumes. Users can’t resume the connection manually before the timer completes.
 
 #### Key Rules and Conditions:
+
 1. VPN can be paused only when it is in Connected state.
 2. VPN can be resumed only when it is in Paused state.
 3. A paused VPN can still be disconnected using the SDK's Disconnect method.
@@ -483,7 +535,9 @@ The VPN Pause feature allows pausing a VPN connection under specific conditions 
 #### Setup Tunnel Delegates:
 
 ##### startTunnel:
+
 This delegate is being invoked when the VPN enters a start state. Implement this delegate in PacketTunnelProvider.swift.
+
 ```
 override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
     super.startTunnel(options: options, completionHandler: completionHandler)
@@ -491,7 +545,9 @@ override func startTunnel(options: [String : NSObject]?, completionHandler: @esc
 ```
 
 ##### stopTunnel:
+
 This delegate is being invoked when the VPN enters a stop state. Implement this delegate in PacketTunnelProvider.swift.
+
 ```
 override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
     super.stopTunnel(with: reason, completionHandler: completionHandler)
@@ -499,7 +555,9 @@ override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @
 ```
 
 ##### handleAppMessage:
+
 This delegate is being invoked for the communication between app and tunnel. Implement this delegate in PacketTunnelProvider.swift.
+
 ```
 override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)? = nil) {
     super.handleAppMessage(messageData, completionHandler: completionHandler)
@@ -507,24 +565,31 @@ override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) 
 ```
 
 #### Pause VPN delegation:
+
 This delegate is being invoked when the VPN enters a pause state. Implement this delegate to handle any pause-specific operations.
+
 ```
 func atomManagerDidPaused(_ atomConnectionDetails: AtomConnectionDetails?) {
 	//
 }
 ```
+
 `atomManagerDidPaused` delegate contains one argument:
+
 - **ConnectionDetails:** Contains the connection related details.
 
 #### Pause / Resume VPN Methods:
 
 ##### Pause VPN
+
 Pauses the VPN connection based on the interval provided. The available values for `PauseVPNTimer` include various timed options (e.g., 5, 10, 15, 20) as defined in the enum below.
+
 ```
 AtomManager.sharedInstance()?.pause(with: .MINUTES_5, withCompletion: { error in
 	//
 })
 ```
+
 ```
 enum PauseVPNTimer 
 {
@@ -533,17 +598,21 @@ enum PauseVPNTimer
 ```
 
 ##### Resume VPN
+
 Resumes the VPN connection if it is in the paused state. On successful resume, `atomManagerDidConnect` delegate will be invoked otherwise in case of an error `atomManagerDialErrorReceived` delegate will be invoked.
+
 ```
 AtomManager.sharedInstance()?.resume(completion: { error in
 	//
 })
 ```
+
 ```
 func atomManagerDidConnect(_ atomConnectionDetails: AtomConnectionDetails?) {
 	//
 }
 ```
+
 ```
 func atomManagerDialErrorReceived(_ error: Error?, with atomConnectionDetails: AtomConnectionDetails?) {
 	//
@@ -551,6 +620,7 @@ func atomManagerDialErrorReceived(_ error: Error?, with atomConnectionDetails: A
 ```
 
 #### VPN State Management:
+
 The SDK provides additional VPN statuses
 
 - **PAUSING**
@@ -563,7 +633,9 @@ AtomManager.sharedInstance()?.getCurrentVPNStatus()
 ```
 
 #### Handle State Changes:
+
 SDK also provides all VPN states via `StateDidChangedHandler` as below
+
 ```
 AtomManager.sharedInstance()?.stateDidChangedHandler = AtomStateListener().stateChanged
 
@@ -573,32 +645,38 @@ fileprivate let stateChanged: StateDidChangedHandler = { atomState in
 ```
 
 #### Pause/Resume Information in Connection Details:
+
 The following properties are available in the connection details related to this feature:
+
 - `pauseVPNTimer`: Returns a `PauseVPNTimer`, indicating the duration for which the VPN is paused.
 - `isVPNAutoResumed`: Returns a boolean indicating whether the VPN was resumed manually or automatically after the pause timer expired.
 
 #### Error Handling:
+
 Following are the error details for this feature:
 
-| Error Code | Error Message | Description |
-| :----------: | ------------- | ----------- |
-| 5194 | Unable to resume, the VPN connection is not in a paused state. | If VPN is not PAUSED and try to resume vpn, the error occurs and is notified via resume method. |
-| 5195 | Unable to pause, the VPN connection is not in a connected state. | If VPN is NOT connected and try to pause vpn, the error occurs and is notified via pause method. |
-| 5197 | Unable to pause, connected protocol is not supported. | If connected protocol is not supported for pause VPN, the error occurs and is notified via pause method. |
-| 5198 | Unable to pause, VPN is already paused. | When try to pause VPN that is already paused, the error occurs and is notified via pause method. |
-| 5199 | Unable to perform operation, invalid tunnel connection. | Error occurred when trying to Pause/Resume connection while tunnel connection is not valid. |
-| 5200 | Unable to perform operation, no response. | Error occurred when trying to Pause/Resume connection while no response occurred. |
-| 5201 | Unable to perform operation, invalid response. | Error occurred when trying to Pause/Resume connection while invalid response occurred. |
+| Error Code | Error Message                                                    | Description                                                                                              |
+| :--------: | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+|    5194    | Unable to resume, the VPN connection is not in a paused state.   | If VPN is not PAUSED and try to resume vpn, the error occurs and is notified via resume method.          |
+|    5195    | Unable to pause, the VPN connection is not in a connected state. | If VPN is NOT connected and try to pause vpn, the error occurs and is notified via pause method.         |
+|    5197    | Unable to pause, connected protocol is not supported.            | If connected protocol is not supported for pause VPN, the error occurs and is notified via pause method. |
+|    5198    | Unable to pause, VPN is already paused.                          | When try to pause VPN that is already paused, the error occurs and is notified via pause method.         |
+|    5199    | Unable to perform operation, invalid tunnel connection.          | Error occurred when trying to Pause/Resume connection while tunnel connection is not valid.              |
+|    5200    | Unable to perform operation, no response.                        | Error occurred when trying to Pause/Resume connection while no response occurred.                        |
+|    5201    | Unable to perform operation, invalid response.                   | Error occurred when trying to Pause/Resume connection while invalid response occurred.                   |
 
 #### Conclusion
+
 The VPN Pause feature in the Atom SDK offers flexible control over VPN connections, allowing timed pausing. By following the integration steps outlined, you can implement this feature in your application and efficiently manage VPN state transitions.
 
 ---
 
 ## Tracker / Ad Blocker
+
 This section provides details about the Tracker and Ad Blocker feature in the Atom VPN SDK. This feature enables VPN applications built with the Atom SDK to block tracking scripts and advertisements, enhancing both privacy and performance.
 
 ### About This Feature
+
 As a VPN service provider, we offer a robust SDK that allows our clients to build custom VPN applications. In our latest release, we’ve introduced support for Tracker and Ad Blocker functionality. When enabled, this feature will actively block trackers and advertisements during a VPN session. It is supported across all connection types provided by the SDK:
 
 1. Connect with Param
@@ -609,19 +687,24 @@ As a VPN service provider, we offer a robust SDK that allows our clients to buil
 ### Integration Guide:
 
 #### Register a Delegate:
+
 Register the `AtomShieldDelegate`:
+
 ```
 atomManager.atomShieldDelegate = AtomShieldStateListener()
 ```
 
 #### Conform to Delegate Methods:
+
 Implement the following methods:
 
 - **Status Updates:** `onAtomShieldStatusChange(status: AtomShieldStatus, error: NSError?, message: String?)`
 - **Data Updates:** `onAtomShieldDataReceived(data: AtomShieldData?)`
 
 #### Request Features:
+
 Pass the feature list in `AtomProperties` when connecting:
+
 ```
 properties.atomShieldFeatureList = [
     NSNumber(value: AtomShieldFeature.TRACKER.rawValue),
@@ -630,7 +713,9 @@ properties.atomShieldFeatureList = [
 ```
 
 #### Sample Code:
+
 Attach the listener:
+
 ```
 private static var atomShieldStateListener: AtomShieldStateListener!
 atomShieldStateListener = AtomShieldStateListener()
@@ -638,6 +723,7 @@ atomManager.atomShieldDelegate = atomShieldStateListener
 ```
 
 #### Data Monitoring:
+
 ```
 class AtomShieldStateListener: NSObject, AtomShieldManagerDelegate {
     func onAtomShieldStatusChange(status: AtomShieldStatus, error: NSError?, message: String?) {
@@ -651,62 +737,74 @@ class AtomShieldStateListener: NSObject, AtomShieldManagerDelegate {
 ```
 
 #### Requested status:
+
 ```
 atomConnectionDetails.isTrackerBlockerRequested
 atomConnectionDetails.isAdBlockerRequested
 ```
 
 **Status Updates (AtomShieldStatus)**
-| Status | Status Params | Description |
-| ------ | ------------- |----------- |
-| **Establishing(String)** | [String] Provide the Tracker/Ad Blocker establishing message. | Connecting the Tracker/Ad Blocker. |
-| **Established(String)** | [String] Provide the Tracker/Ad Blocker established message. | Tracker/Ad Blocker successfully connected. |
-| **Disconnected(String)** | [String] Provide the Tracker/Ad Blocker disconnected message. | Tracker/Ad Blocker disconnected. |
+
+| Status                         | Status Params                                                         | Description                                           |
+| ------------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------- |
+| **Establishing(String)** | [String] Provide the Tracker/Ad Blocker establishing message.         | Connecting the Tracker/Ad Blocker.                    |
+| **Established(String)**  | [String] Provide the Tracker/Ad Blocker established message.          | Tracker/Ad Blocker successfully connected.            |
+| **Disconnected(String)** | [String] Provide the Tracker/Ad Blocker disconnected message.         | Tracker/Ad Blocker disconnected.                      |
 | **Error(AtomException)** | [AtomException] Provide the Tracker/Ad Blocker exception information. | An error occurred. See error codes below for details. |
 
 #### Error Handling:
+
 Following are the error details for this feature:
 
-| Error Code | Error Message | Description |
-| :----------: | ------------- | ----------- |
-| 5179 | Connection type does not support AtomShield | When the VPN connection other than Params, Dedicated IP, Multiple Dedicated IPs and Dedicated VPS. |
-| 5180 | Unable to establish AtomShield connection | When the specified retry count has been attempted to the tracker blocker socket connection. |
-| 5181 | Unable to make request to AtomShield server | When sending request to socket server but socket connection lost/not established OR socket connection closed OR When unexpectedly fails the request Or When VPN disconnected gracefully. |
-| 5182 | Unable to enable AtomShield connection | When request to enable tracker/ad blocker service returns failure from server. |
-| 5183 | Unable to get AtomShield stats | When requested to get the stats of tracker/ad blocker service from the server. |
+| Error Code | Error Message                               | Description                                                                                                                                                                              |
+| :--------: | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    5179    | Connection type does not support AtomShield | When the VPN connection other than Params, Dedicated IP, Multiple Dedicated IPs and Dedicated VPS.                                                                                       |
+|    5180    | Unable to establish AtomShield connection   | When the specified retry count has been attempted to the tracker blocker socket connection.                                                                                              |
+|    5181    | Unable to make request to AtomShield server | When sending request to socket server but socket connection lost/not established OR socket connection closed OR When unexpectedly fails the request Or When VPN disconnected gracefully. |
+|    5182    | Unable to enable AtomShield connection      | When request to enable tracker/ad blocker service returns failure from server.                                                                                                           |
+|    5183    | Unable to get AtomShield stats              | When requested to get the stats of tracker/ad blocker service from the server.                                                                                                           |
 
 #### Tracker / Ad Blocker Information in Connection Details:
+
 The following properties are available in the connection details related to this feature:
+
 - `isTrackerBlockerRequested`: Returns a boolean indicating whether the Tracker Blocker is requested.
 - `isAdBlockerRequested`: Returns a boolean indicating whether the Ad Blocker is requested.
 
 **NOTE:** The Tracker/Ad blocker connection will be established upon successful VPN Connection.
 
 #### Conclusion:
+
 The Tracker and Ad Blocker feature in the Atom SDK allows clients to offer users enhanced privacy and an improved browsing experience. This feature seamlessly integrates with all supported VPN connection types, ensuring consistent functionality across various configurations.
 
 ---
 
 ## LAN Access Feature
+
 Our VPN SDK now includes a new feature that enables users to access their locally connected devices over the internet while maintaining an active VPN connection. This functionality ensures seamless connectivity to local resources without compromising security.
 
 #### How it works:
+
 By default, VPN connections restrict access to locally connected devices. However, our SDK introduces the `allowLocalNetworkTraffic` property within the `AtomProperties` class, allowing users to toggle this capability on or off. You can enable this feature as shown below:
 
 In order to turn `ON` Allow LAN, please use as follows before the connection in Atom Properties:
+
 ```
 atomProperties.featureFlagAllowLocalNetworkTraffic = true
 atomProperties.allowLocalNetworkTraffic = true
 ```
 
 In order to turn `OFF` Allow LAN, please use as follows before the connection in Atom Properties:
+
 ```
 atomProperties.featureFlagAllowLocalNetworkTraffic = false
 atomProperties.allowLocalNetworkTraffic = false
 ```
 
 #### LAN Access Information in Connection Details:
+
 The following properties are available in the connection details related to this feature:
+
 - `isAllowLocalNetworkTrafficRequested`: Returns a boolean indicating whether the LAN access is requested.
 
 **NOTE:** The LAN access feature is available from `iOS 14.2` and `macOS 10.15`.
@@ -716,9 +814,11 @@ The following properties are available in the connection details related to this
 ## How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
 
 ## Compatibility For OpenVPN TCP & OpenVPN UDP
+
 * Compatible with Xcode 15.3, iOS 12.0, macOS 10.15, tvOS 17.0 and later
 
 ## Compatibility For Wireguard
+
 * Compatible with Xcode 15.3, iOS 15.0, macOS 12.0, tvOS 17.0 and later
 
 **Note: Please follow the following steps to create two NetworkExtensions, One for OpenVPN TCP & UDP and other one for Wireguard.**
@@ -726,41 +826,66 @@ The following properties are available in the connection details related to this
 1. Open your Xcode project.
 2. Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 3. Select General tab from your app target and then set your developer account details.
-4. Now add new target “Network extension” in your Xcode project.
-
-![Network Extension](docs/1.png)
-
-
-5. From your app target and Extension target select capabilities tab and enable both Personal VPN and the Network Extension. Then select the capabilities you are going to use. 
-
-![Network Extension](docs/2.png)
-
-
-6. Drag and drop AtomSDK.framework and AtomSDKTunnel.framework into your project. (Skip if using Cocoapods)
-7. Select AtomSDKTunnel.framework for both App target and Extension target in Target Member ship section in right side of Xcode. (Skip if using Cocoapods)
-
-8. Go to your project -> General tab from your app target, add both frameworks using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
-
-![Network Extension](docs/3.png)
-
-
-
-
-9. After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> and <AtomSDKTunnnel/AtomPacketTunnelProvider.h> directives in your App and extension target.
-
-
-10. Now in extension target NEPacketTunnelProvider.h class, inherit class with AtomPacketTunnelProvider instead of NEPacketTunnelProvider.
- 
-![Network Extension](docs/4.1.png)
-
-**with**
-
-![Network Extension](docs/4.2.png)
-
- 
-11. Also in NEPacketTunnelProvider.m file, remove all methods.
-
-![Network Extension](docs/5.png)
+4. The Xcode project must have successfully configured **AtomSDKBySecure(Version must be 6.0.0 or above)** through cocoapods or SPM.
+5. For VPN connections with OVPN Tunnel, you need to add ‘Network Extensions’ separately by adding a new target.
+6. Go to File > New > Target > Select Network Extension in the iOS Section and click on Next.
+   ![Network Extension](docs/image8.png)
+   ![Network Extension](docs/image9.png)
+7. **Product Name:** Provide product name.
+   **Team:** Select the same team on which your main app is configured.
+   **Organization/Bundle Identifier:** Xcode will automatically append your product name here with the main app bundle identifier.
+   **Language:** Select preferred language.
+   **Provider Type:** Select Packet Tunnel as provider type.
+   **Project:** Xcode will automatically select your current project.
+   **Embed In App:** Xcode will automatically select your current app.
+8. When clicking on Finish, It will create a new target in your project settings along with its folder in project navigator.
+   ![Network Extension](docs/image10.png)
+9. For VPN Connections with **Wireguard Tunnel**, Repeat point no 6 to 8 and provide it a separate product name.
+   ![Network Extension](docs/image11.png)
+10. Make sure your **Team Name** must be the same among these targets and **Automatically managed signing** must be checked.
+11. Now, the Xcode Project will have three targets. One is Main Application, Second is OvpnNetworkExtension and third is WireguardNetworkExtension.
+    In each one of these, Go to project settings and select **Signing and Capabilities**, click on + **Capability**, first add **App Groups** and then add **Network Extensions**.
+12. Check mark on Packet Tunnel in Network Extension capability of each of your targets.
+13. Click on + icon in App Groups and provide a unique group identifier. Preferably add a prefix of ‘group’ and your bundle identifier (like group.com.atom.vpn.demo).
+    ![Network Extension](docs/image12.png)
+    ![Network Extension](docs/image13.png)
+    ![Network Extension](docs/image14.png)
+14. Now open the pod file, add a target of OvpnNetwork Extension and add ‘**pod AtomSDKTunnel**’. Run pod install.
+    ![Network Extension](docs/image15.png)
+15. Go to project settings, select main project and click on Package Dependencies. By clicking on + icon, search for ‘**AtomWireguardTunnel**’ or ‘https://github.com/AtomSDK/AtomWireguardTunnel’.
+16. In the **Dependency Rule**, select **Exact Version** and write **2.3.0** in the field. Select your project in **Add to Project**. Click on **Add Package**.
+    ![Network Extension](docs/image16.png)
+17. Now you need to install Go into your mac. To install this, open https://go.dev/doc/install. click on Other Downloads. Go to archived versions. Click on 1.16 or 1.19 and download this go1.16.darwin-amd64.pkg.
+    ![Network Extension](docs/image17.png)
+18. Now open the terminal and write ‘which go’ command. It will show a path where go 1.16 is installed (like /usr/local/go/bin/go).
+19. Go to Project navigator in Xcode. Open Package Dependencies and expand WireguardKit. In the Sources folder, expand WireguardKitGo and right click on Makefile to open it in the finder.
+    ![Network Extension](docs/image18.png)
+20. In line no 13, replace
+    **export PATH := $(PATH):/usr/local/bin:/opt/homebrew/bin:**
+    with
+    **export PATH := $(PATH):/usr/local/bin:/opt/homebrew/bin:/usr/local/go/bin**
+    and save it.
+21. Copy the bridging file from SupportingFiles of Demo Project and place it into your root directory or SupportingFiles folder of your xcode project.
+22. Go to project settings, add a new target by selecting the **Other** section.
+    Select **External Build System** and click Next. Define a Product Name like **WireguardiOS** and select the same team on which all three targets are configured.
+    ![Network Extension](docs/image19.png)
+23. In the **Build Tool**, add **$(SRCROOT)/AtomSDKDemo/build_wireguard_go_bridge.sh** for bridging between Go and Network Extension for Wireguard. Click on finish to add this target into your project.
+    ![Network Extension](docs/image20.png)
+24. Go to your **WireguardNetworkExtension** target and select the **Build Phases** section. In **Target Dependencies** add **WireguardiOS** (External Build System just created above).
+    ![Network Extension](docs/image21.png)
+25. Now select main project settings and go to **Build settings**. Click on + Icon and add ‘**Add user-defined Setting**’. Replace **NEW_SETTING** with **PATH** and in its input field, write **$PATH:/usr/local/go/bin**
+    ![Network Extension](docs/image22.png)
+    ![Network Extension](docs/image23.png)
+26. Go to project settings and select **WireguardNetworkExtension** target. Click on + icon in **Framework and Libraries** section. Add **AtomWireguardTunnel** Library.
+    ![Network Extension](docs/image24.png)
+27. These are some minor steps to configure both network extensions with your vpn app. Now expand **OvpnNetworkExtension** Folder in your project navigator. Open **PacketTunnelProvider.swift** file. Import **AtomSDKTunnel** and inherit **PacketTunnelProvider** class with **AtomSDKTunnelProvider** class.
+    ![Network Extension](docs/image25.png)
+28. Add following line of code into **startTunnel** function in **PacketTunnelProvider** Class for **OvpnNetworkExtension** Folder
+    ![Network Extension](docs/image26.png)
+29. Expand the **WireguardNetworkExtension** folder in your project navigator and open **PacketTunnelProvider.swift** file. Import **AtomWireguardTunnel** and **AtomWireguardAppExtension**. Inherit **PacketTunnelProvider** class with **WireguardPacketTunnelProvider**.
+    ![Network Extension](docs/image27.png)
+30. Add following line of code into **startTunnel** function in **PacketTunnelProvider** Class for **WireguardNetworkExtension** Folder.
+    ![Network Extension](docs/image28.png)
 
 AtomSDK can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. Also, there is tunnelProviderBundleIndentifier in which you have to enter the bundle ID of Network Extension of your project.
 
@@ -773,8 +898,8 @@ atomConfiguration.wireGuardTunnelProviderBundleIdentifier = "ENTER_YOUR_WIREGUAR
 [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration]
 ```
 
-
 ## Note:
+
 The current version of the VPN Atom SDK uses the following library under the hood:
 
 * NEVPNManager
