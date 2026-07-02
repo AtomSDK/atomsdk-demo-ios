@@ -52,7 +52,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 ## Compatibility
 
-* Compatible with Xcode 15.3, iOS 12.0 and later
+* Compatible with Xcode 15.3, iOS 13.0 and later
 * Compatible with ATOM SDK Version 5.0 and onwards
 
 ## Supported Protocols
@@ -855,7 +855,7 @@ The following properties are available in the connection details related to this
 
 ## Compatibility For OpenVPN TCP & OpenVPN UDP
 
-* Compatible with Xcode 15.3, iOS 12.0, macOS 10.15, tvOS 17.0 and later
+* Compatible with Xcode 15.3, iOS 13.0, macOS 10.15, tvOS 17.0 and later
 
 ## Compatibility For Wireguard
 
