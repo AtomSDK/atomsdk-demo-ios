@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30203A4930094F8E00624899 /* AtomSDKAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 30203A4830094F8E00624899 /* AtomSDKAnalytics */; };
+		30203A4C30094FF400624899 /* AtomSDKBySecure in Frameworks */ = {isa = PBXBuildFile; productRef = 30203A4B30094FF400624899 /* AtomSDKBySecure */; };
+		30203A4F3009518500624899 /* AtomSDKTunnel in Frameworks */ = {isa = PBXBuildFile; productRef = 30203A4E3009518500624899 /* AtomSDKTunnel */; };
 		30E0BB672C529CF900B7A187 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
 		30E0BB6A2C529CF900B7A187 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0BB692C529CF900B7A187 /* PacketTunnelProvider.swift */; };
 		30E0BB6F2C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -114,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30203A4F3009518500624899 /* AtomSDKTunnel in Frameworks */,
 				30E0BB672C529CF900B7A187 /* NetworkExtension.framework in Frameworks */,
 				660352CE2F987E220BE95D57 /* Pods_PacketTunnelOpenVPNiOS.framework in Frameworks */,
 			);
@@ -134,7 +138,9 @@
 			files = (
 				BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */,
 				BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */,
+				30203A4C30094FF400624899 /* AtomSDKBySecure in Frameworks */,
 				DF1AC0BB7A822F3869B6DCA6 /* Pods_AtomSDKDemo.framework in Frameworks */,
+				30203A4930094F8E00624899 /* AtomSDKAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,8 +320,6 @@
 				6E5BAD01207386B200895431 /* Frameworks */,
 				6E5BAD02207386B200895431 /* Resources */,
 				B5C851A32254A99E00301F45 /* Embed App Extensions */,
-				B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */,
-				386A1E27E2E06CF7C35BC185 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,6 +375,9 @@
 			mainGroup = 6E5BACFB207386B100895431;
 			packageReferences = (
 				30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */,
+				30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */,
+				30203A4A30094FF400624899 /* XCRemoteSwiftPackageReference "atomsdkbysecure" */,
+				30203A4D3009518500624899 /* XCRemoteSwiftPackageReference "atomsdktunnel" */,
 			);
 			productRefGroup = 6E5BAD05207386B200895431 /* Products */;
 			projectDirPath = "";
@@ -413,34 +420,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		386A1E27E2E06CF7C35BC185 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AtomSDKAnalytics/AtomSDKAnalytics.framework",
-				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomCore/AtomCore.framework/AtomCore",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKBySecure/AtomSDK.framework/AtomSDK",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKTunnel/AtomSDKTunnel.framework/AtomSDKTunnel",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/AtomSDKTunnel/AtomOVPNTunnel.framework/AtomOVPNTunnel",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDKAnalytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomSDKTunnel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AtomOVPNTunnel.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AtomSDKDemo/Pods-AtomSDKDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9320D7B2F338E0440753592B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -484,24 +463,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B59C61A8225725130063DE18 /* Remove Unsupported Architecture From FAT Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Remove Unsupported Architecture From FAT Framework";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FRAMEWORK=\"AtomSDK\"\necho \"Trimming $FRAMEWORK...\"\nFRAMEWORK_EXECUTABLE_PATH=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK\"\nEXTRACTED_ARCHS=()\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH...\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\necho \"Merging binaries...\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\necho \"Done.\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -925,7 +886,7 @@
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
 				);
 				INFOPLIST_FILE = AtomSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -957,7 +918,7 @@
 					"$(PROJECT_DIR)/AtomSDKDemo/AtomSDK",
 				);
 				INFOPLIST_FILE = AtomSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1021,17 +982,56 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bitbucket.org/purevpn/atomsdkanalytics/src/main/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		30203A4A30094FF400624899 /* XCRemoteSwiftPackageReference "atomsdkbysecure" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bitbucket.org/purevpn/atomsdkbysecure";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.0;
+			};
+		};
+		30203A4D3009518500624899 /* XCRemoteSwiftPackageReference "atomsdktunnel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://bitbucket.org/purevpn/atomsdktunnel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 		30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AtomSDK/AtomWireguardTunnel";
 			requirement = {
-				kind = exactVersion;
-				version = 2.3.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		30203A4830094F8E00624899 /* AtomSDKAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */;
+			productName = AtomSDKAnalytics;
+		};
+		30203A4B30094FF400624899 /* AtomSDKBySecure */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30203A4A30094FF400624899 /* XCRemoteSwiftPackageReference "atomsdkbysecure" */;
+			productName = AtomSDKBySecure;
+		};
+		30203A4E3009518500624899 /* AtomSDKTunnel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30203A4D3009518500624899 /* XCRemoteSwiftPackageReference "atomsdktunnel" */;
+			productName = AtomSDKTunnel;
+		};
 		30E0BB852C53BFEB00B7A187 /* AtomWireguardTunnel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */;

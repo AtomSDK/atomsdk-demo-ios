@@ -5,14 +5,14 @@ target 'AtomSDKDemo' do
     # Comment the next line if you don't want to use dynamic frameworks
     use_frameworks!
     
-    pod 'AtomSDKBySecure'
-    pod 'AtomSDKAnalytics'
+#    pod 'AtomSDKBySecure'
+#    pod 'AtomSDKAnalytics'
     
 end
 
 target 'PacketTunnelOpenVPNiOS' do
     # Comment the next line if you don't want to use dynamic frameworks
     use_frameworks!
-    pod 'AtomSDKTunnel'
+#    pod 'AtomSDKTunnel'
     
 end

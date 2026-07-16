@@ -1,6 +1,33 @@
 {
-  "originHash" : "963ae5d78931282391d6a959d7d040ad404d6312b641da82c1c974d395fa65c1",
+  "originHash" : "1f4e2a46ed1c2afecb0bc801c8cbe8b8095cdb6c4934e021d83595a256fe4042",
   "pins" : [
+    {
+      "identity" : "atomcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://bitbucket.org/purevpn/atomcore",
+      "state" : {
+        "revision" : "d7b367fe504233aa2e2d14858817518dd23fed7e",
+        "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "atomsdkbysecure",
+      "kind" : "remoteSourceControl",
+      "location" : "https://bitbucket.org/purevpn/atomsdkbysecure",
+      "state" : {
+        "revision" : "f944142924594093014bb19370cbdfbb7eabe850",
+        "version" : "6.11.0"
+      }
+    },
+    {
+      "identity" : "atomsdktunnel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://syed-faizan-ahmed@bitbucket.org/purevpn/atomsdktunnel.git",
+      "state" : {
+        "revision" : "0e21a52998a01d63e16f313ddf78a2351d7dd3a9",
+        "version" : "4.3.0"
+      }
+    },
     {
       "identity" : "atomwireguardtunnel",
       "kind" : "remoteSourceControl",
@@ -8,6 +35,24 @@
       "state" : {
         "revision" : "8c1755f9756f85e122ce0daee779b33d8421333e",
         "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "main",
+      "kind" : "remoteSourceControl",
+      "location" : "https://bitbucket.org/purevpn/atomsdkanalytics/src/main/",
+      "state" : {
+        "revision" : "ceb9d901975a275b006af2842a969b074a90adf0",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift.git",
+      "state" : {
+        "revision" : "5f3020832a9594d98c129bf010a2bcc9dc4fa959",
+        "version" : "5.2.0"
       }
     },
     {
