@@ -426,12 +426,18 @@
 
 -(void)atomManagerDidConnect:(AtomConnectionDetails *)atomConnectionDetails {
     [self connectedUI];
-    NSString *message = [NSString stringWithFormat:@"CONNECTED with IP\n%@", [[AtomManager sharedInstance] getConnectedIP]];
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"VPN Status" message: message preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [controller addAction:action];
-    [self presentViewController:controller animated:YES completion:nil];
+    [[AtomManager sharedInstance] getConnectedLocation:^(AtomLocation * _Nullable location) {
+        NSString *message = [NSString stringWithFormat:@"CONNECTED with IP\n%@", location.ip];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"VPN Status" message: message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
+    } errorBlock:^(NSError * _Nullable error) {
+        //
+    }];
+    
     NSLog(@"VPN Status: CONNECTED");
 }
 
@@ -450,6 +456,21 @@
         [self normalUI];
 }
 
+- (void)atomManagerDidConnecting:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
+
+- (void)atomManagerDidInitialized:(AtomManager * _Nonnull)sharedInstance { 
+    //
+}
+
+
+- (void)atomManagerDidPaused:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
+
 #pragma mark - Atom Status Handler -
 
 -(void)statusDidChangedHandler {
@@ -462,57 +483,57 @@
             case AtomStatusConnected:
                 [_vpnStatus addObject:@"Connected"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusConnecting:
                 [_vpnStatus addObject:@"Connecting"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusValidating:
                 [_vpnStatus addObject:@"Validating"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusReasserting:
                 [_vpnStatus addObject:@"Reasserting"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusDisconnected:
                 [_vpnStatus addObject:@"Disconnected"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusDisconnecting:
                 [_vpnStatus addObject:@"Disconnecting"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusAuthenticating:
                 [_vpnStatus addObject:@"Authenticating"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusVerifyingHostName:
                 [_vpnStatus addObject:@"Verifying Hostname"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusGettingFastestServer:
                 [_vpnStatus addObject:@"Getting Faster Server"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusOptimizingConnection:
                 [_vpnStatus addObject:@"Optimizing Connection"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             case AtomStatusGeneratingCredentials:
                 [_vpnStatus addObject:@"Generating Credentials"];
                 NSLog(@"%@ - %ld",_vpnStatus,(long)AtomManager.sharedInstance.getCurrentVPNStatus);
-
+                
                 break;
             default:
                 break;

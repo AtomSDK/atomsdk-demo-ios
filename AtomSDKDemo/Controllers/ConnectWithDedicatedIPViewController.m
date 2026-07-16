@@ -312,6 +312,21 @@
     [self normalUI];
 }
 
+- (void)atomManagerDidConnecting:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
+
+- (void)atomManagerDidInitialized:(AtomManager * _Nonnull)sharedInstance { 
+    //
+}
+
+
+- (void)atomManagerDidPaused:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
+
 #pragma mark - Atom Status Handler -
 
 -(void)statusDidChangedHandler {

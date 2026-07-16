@@ -29,7 +29,6 @@
 		6E5BAD26207394D000895431 /* ConnectWithDedicatedIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BAD25207394D000895431 /* ConnectWithDedicatedIPViewController.m */; };
 		6E9779412085ECAC009519EC /* PopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9779402085ECAC009519EC /* PopOverViewController.m */; };
 		BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A28642087D43B008A7D9E /* NetworkExtension.framework */; };
-		BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E60CB9C2074ED9400AA31CA /* MobileCoreServices.framework */; };
 		BA40F63723584F5500D65981 /* ConnectWithChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA40F63623584F5500D65981 /* ConnectWithChannelViewController.m */; };
 		DF1AC0BB7A822F3869B6DCA6 /* Pods_AtomSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */; };
 /* End PBXBuildFile section */
@@ -136,7 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA24258A235754A90058F721 /* MobileCoreServices.framework in Frameworks */,
 				BA242588235754A70058F721 /* NetworkExtension.framework in Frameworks */,
 				30203A4C30094FF400624899 /* AtomSDKBySecure in Frameworks */,
 				DF1AC0BB7A822F3869B6DCA6 /* Pods_AtomSDKDemo.framework in Frameworks */,

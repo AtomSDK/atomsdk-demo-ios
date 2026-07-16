@@ -54,16 +54,23 @@
         break;
             
         case CONNECTED: {
-            NSString *message = [NSString stringWithFormat:@"CONNECTED with IP\n%@", [[AtomManager sharedInstance] getConnectedIP]];
-            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"VPN Status" message: message preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-            UIAlertAction *disconnect = [UIAlertAction actionWithTitle: @"Disconnect" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [[AtomManager sharedInstance] disconnectVPN];
+            __weak typeof(self) weakSelf = self;
+            [[AtomManager sharedInstance] getConnectedLocation:^(AtomLocation * _Nullable location) {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if (strongSelf == nil) return;
+                // Only present if this VC is still the top (user hasn't navigated away)
+                //if (strongSelf.navigationController.topViewController != strongSelf) return;
+                UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Connected Location" message:[NSString stringWithFormat:@"country %@ : ip %@", location.country.name, location.ip] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *disconnect = [UIAlertAction actionWithTitle: @"Disconnect" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    [[AtomManager sharedInstance] disconnectVPN];
+                }];
+                [controller addAction:action];
+                [controller addAction:disconnect];
+                [strongSelf presentViewController:controller animated:YES completion:nil];
+            } errorBlock:^(NSError * _Nullable error) {
+                //
             }];
-            [controller addAction:action];
-            [controller addAction:disconnect];
-            [self presentViewController:controller animated:YES completion:nil];
         }
         break;
         default:

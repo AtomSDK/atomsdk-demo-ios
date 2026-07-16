@@ -534,16 +534,20 @@
 #pragma mark - Atom Manager Delegates
 
 -(void)atomManagerDidConnect:(AtomConnectionDetails *)atomConnectionDetails {
-    //NSLog(@"VPN CONNECTED");
-    
-    
     [self connectedUI];
-    NSString *message = [NSString stringWithFormat:@"CONNECTED with IP\n%@", [[AtomManager sharedInstance] getConnectedIP]];
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"VPN Status" message: message preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [controller addAction:action];
-    [self presentViewController:controller animated:YES completion:nil];
+    [[AtomManager sharedInstance] getConnectedLocation:^(AtomLocation * _Nullable location) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Connected Location" message:[NSString stringWithFormat:@"country %@ : ip %@",location.country.name,location.ip] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            [alert dismissViewControllerAnimated:true completion:nil];
+        }];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } errorBlock:^(NSError * _Nullable error) {
+        //
+    }];
+    
     NSLog(@"VPN Status: CONNECTED");
 }
 
@@ -567,6 +571,21 @@
     if(error.code != 5043 && [[AtomManager sharedInstance]getCurrentVPNStatus] == CONNECTED)
         [self normalUI];
 }
+
+- (void)atomManagerDidConnecting:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
+
+- (void)atomManagerDidInitialized:(AtomManager * _Nonnull)sharedInstance { 
+    //
+}
+
+
+- (void)atomManagerDidPaused:(AtomConnectionDetails * _Nullable)atomConnectionDetails { 
+    //
+}
+
 
 #pragma mark - Atom Status Handler -
 
