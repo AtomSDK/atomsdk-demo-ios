@@ -37,7 +37,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 - [Disconnect VPN Connection](#disconnect-vpn-connection)
 - [Remove VPN Profile](#remove-vpn-profile)
 - [Pause / Resume VPN Connection](#pause--resume-vpn-connection)
-- [Tracker / Ad Blocker](#tracker--ad-blocker)
+- [Tracker And Ad Blocker](#tracker-and-ad-blocker)
 - [LAN Access Feature](#lan-access-feature)
 - [How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP &amp; Wireguard](#how-to-setup-networkextension-for-openvpn-tcp-openvpn-udp--wireguard)
 - [Note](#note)
@@ -711,7 +711,7 @@ The VPN Pause feature in the Atom SDK offers flexible control over VPN connectio
 
 ---
 
-## Tracker / Ad Blocker
+## Tracker And Ad Blocker
 
 This section provides details about the Tracker and Ad Blocker feature in the Atom VPN SDK. This feature enables VPN applications built with the Atom SDK to block tracking scripts and advertisements, enhancing both privacy and performance.
 
@@ -743,14 +743,14 @@ Implement the following methods:
 
 #### Request Features:
 
-Pass the feature list in `AtomProperties` when connecting:
+Pass the feature list in `AtomProperties` when connecting. The Tracker Blocker and Ad Blocker are now a single coupled feature — `TRACKER_AND_AD_BLOCKER` — that enables (or disables) both together. The previous independent `TRACKER` / `AD_BLOCKER` values have been removed:
 
 ```
 properties.atomShieldFeatureList = [
-    NSNumber(value: AtomShieldFeature.TRACKER.rawValue),
-    NSNumber(value: AtomShieldFeature.AD_BLOCKER.rawValue)
+    NSNumber(value: AtomShieldFeature.TRACKER_AND_AD_BLOCKER.rawValue)
 ]
 ```
+To disable AtomShield, pass an empty list (or `nil`).
 
 #### Sample Code:
 
@@ -779,18 +779,17 @@ class AtomShieldStateListener: NSObject, AtomShieldManagerDelegate {
 #### Requested status:
 
 ```
-atomConnectionDetails.isTrackerBlockerRequested
-atomConnectionDetails.isAdBlockerRequested
+atomConnectionDetails.isTrackerAndAdBlockerRequested
 ```
 
 **Status Updates (AtomShieldStatus)**
 
 | Status                         | Status Params                                                         | Description                                           |
 | ------------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------- |
-| **Establishing(String)** | [String] Provide the Tracker/Ad Blocker establishing message.         | Connecting the Tracker/Ad Blocker.                    |
-| **Established(String)**  | [String] Provide the Tracker/Ad Blocker established message.          | Tracker/Ad Blocker successfully connected.            |
-| **Disconnected(String)** | [String] Provide the Tracker/Ad Blocker disconnected message.         | Tracker/Ad Blocker disconnected.                      |
-| **Error(AtomException)** | [AtomException] Provide the Tracker/Ad Blocker exception information. | An error occurred. See error codes below for details. |
+| **Establishing(String)** | [String] Provide the Tracker And Ad Blocker establishing message.         | Connecting the Tracker And Ad Blocker.                    |
+| **Established(String)**  | [String] Provide the Tracker And Ad Blocker established message.          | Tracker And Ad Blocker successfully connected.            |
+| **Disconnected(String)** | [String] Provide the Tracker And Ad Blocker disconnected message.         | Tracker And Ad Blocker disconnected.                      |
+| **Error(AtomException)** | [AtomException] Provide the Tracker And Ad Blocker exception information. | An error occurred. See error codes below for details. |
 
 #### Error Handling:
 
@@ -801,17 +800,16 @@ Following are the error details for this feature:
 |    5179    | Connection type does not support AtomShield | When the VPN connection other than Params, Dedicated IP, Multiple Dedicated IPs and Dedicated VPS.                                                                                       |
 |    5180    | Unable to establish AtomShield connection   | When the specified retry count has been attempted to the tracker blocker socket connection.                                                                                              |
 |    5181    | Unable to make request to AtomShield server | When sending request to socket server but socket connection lost/not established OR socket connection closed OR When unexpectedly fails the request Or When VPN disconnected gracefully. |
-|    5182    | Unable to enable AtomShield connection      | When request to enable tracker/ad blocker service returns failure from server.                                                                                                           |
-|    5183    | Unable to get AtomShield stats              | When requested to get the stats of tracker/ad blocker service from the server.                                                                                                           |
+|    5182    | Unable to enable AtomShield connection      | When request to enable tracker and ad blocker service returns failure from server.                                                                                                           |
+|    5183    | Unable to get AtomShield stats              | When requested to get the stats of tracker and ad blocker service from the server.                                                                                                           |
 
-#### Tracker / Ad Blocker Information in Connection Details:
+#### Tracker And Ad Blocker Information in Connection Details:
 
 The following properties are available in the connection details related to this feature:
 
-- `isTrackerBlockerRequested`: Returns a boolean indicating whether the Tracker Blocker is requested.
-- `isAdBlockerRequested`: Returns a boolean indicating whether the Ad Blocker is requested.
+- `isTrackerAndAdBlockerRequested`: Returns a boolean indicating whether the Tracker And Ad Blocker is requested.
 
-**NOTE:** The Tracker/Ad blocker connection will be established upon successful VPN Connection.
+**NOTE:** The Tracker And Ad blocker connection will be established upon successful VPN Connection.
 
 #### Conclusion:
 
