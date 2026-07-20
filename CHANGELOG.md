@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.12.0
+
+#### Improved
+- Framework reachability improvements.
+
+#### Updated
+- Tracker/Ad Blocker now offered as combined feature (Tracker And Ad Blocker).
+
 ### Version 6.11.0
 
 #### Improved
