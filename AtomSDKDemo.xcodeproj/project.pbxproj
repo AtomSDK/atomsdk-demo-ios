@@ -74,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		0627B3C5F26579BE9C3EB6EC /* Pods_AtomSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AtomSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30DCB3EF300F55070079D348 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		30DCB3F0300F55070079D348 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		30E0BB662C529CF900B7A187 /* PacketTunnelOpenVPNiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnelOpenVPNiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E0BB692C529CF900B7A187 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		30E0BB6B2C529CF900B7A187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,13 +200,15 @@
 		6E5BACFB207386B100895431 = {
 			isa = PBXGroup;
 			children = (
-				30E0BB8C2C53C21A00B7A187 /* SupportingFiles */,
+				30DCB3EF300F55070079D348 /* CHANGELOG.md */,
+				30DCB3F0300F55070079D348 /* README.md */,
 				6E5BAD06207386B200895431 /* AtomSDKDemo */,
+				6E0214612074B39600AB1BE0 /* Frameworks */,
 				30E0BB682C529CF900B7A187 /* PacketTunnelOpenVPNiOS */,
 				30E0BB792C53BF9800B7A187 /* PacketTunnelWireGuardiOS */,
-				6E5BAD05207386B200895431 /* Products */,
-				6E0214612074B39600AB1BE0 /* Frameworks */,
 				00314320C9576CB72957997D /* Pods */,
+				6E5BAD05207386B200895431 /* Products */,
+				30E0BB8C2C53C21A00B7A187 /* SupportingFiles */,
 			);
 			sourceTree = "<group>";
 		};
