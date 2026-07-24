@@ -240,8 +240,8 @@ It can be initialized using an instance of AtomConfiguration. It should have a v
     AtomConfiguration *atomConfiguration= [[AtomConfiguration alloc] init];
     atomConfiguration.secretKey = @"SECRETKEY_GOES_HERE";
     atomConfiguration.vpnInterfaceName = @"Atom";
-    atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR_NETWORK_EXTENSION_BUNDLE_ID”;
-    atomConfiguration.wireGuardTunnelProviderBundleIdentifier = “ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID”;
+    atomConfiguration.tunnelProviderBundleIdentifier = @"ENTER_YOUR_NETWORK_EXTENSION_BUNDLE_ID";
+    atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID";
 
     [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
 ```
@@ -1009,10 +1009,10 @@ AtomSDK can be initialized using an instance of AtomConfiguration. It should hav
 
 ```ruby
 AtomConfiguration *atomConfiguration = [AtomConfiguration alloc]init];
-atomConfiguration.secretKey = @” SECRETKEY_GOES_HERE”;
-atomConfiguration.vpnInterfaceName = @”Atom”;
-atomConfiguration.tunnelProviderBundleIdentifier = “ENTER_YOUR_OPENVPN_NETWORK_EXTENSION_BUNDLE_ID”;
-atomConfiguration.wireGuardTunnelProviderBundleIdentifier = "ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID"
+atomConfiguration.secretKey = @"SECRETKEY_GOES_HERE";
+atomConfiguration.vpnInterfaceName = @"Atom";
+atomConfiguration.tunnelProviderBundleIdentifier = @"ENTER_YOUR_OPENVPN_NETWORK_EXTENSION_BUNDLE_ID";
+atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID";
 [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration]
 ```
 
