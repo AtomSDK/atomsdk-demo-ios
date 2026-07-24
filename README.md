@@ -4,13 +4,15 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 ## Table of Contents
 
+- [How to run this Demo](#how-to-run-this-demo)
 - [SDK Features covered in this Demo](#sdk-features-covered-in-this-demo)
 - [Compatibility](#compatibility)
 - [Supported Protocols](#supported-protocols)
 - [SDK Installation](#sdk-installation)
-  - [CocoaPods](#cocoapods)
-  - [Integrate AtomWireguardTunnel in iOS App for Wireguard Protocol](#integrate-atomwireguardtunnel-in-ios-app-for-wireguard-protocol)
+  - [Integrate AtomSDKBySecure](#integrate-atomsdkbysecure)
   - [Integrate AtomSDKAnalytics](#integrate-atomsdkanalytics)
+  - [Integrate AtomSDKTunnel for OpenVPN (TCP &amp; UDP) Protocols](#integrate-atomsdktunnel-for-openvpn-tcp--udp-protocols)
+  - [Integrate AtomWireguardTunnel for Wireguard Protocol](#integrate-atomwireguardtunnel-for-wireguard-protocol)
 - [Getting Started with the Code](#getting-started-with-the-code)
 - [Enable Local Inventory Support](#enable-local-inventory-support)
 - [Delegates to Register](#delegates-to-register)
@@ -42,6 +44,14 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 - [How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP &amp; Wireguard](#how-to-setup-networkextension-for-openvpn-tcp-openvpn-udp--wireguard)
 - [Note](#note)
 
+## How to run this Demo
+
+### Integration Steps
+1. Download the project.
+2. Change bundle id or enable Automatic Manage Signing in all the targets.
+3. Replace `ENTER_YOUR_ATOM_SDK_SECRET_KEY_HERE` with your secret key in AppDelegate.m.
+4. Replace `com.atom.demo.public.ios.app.packettunnelopenvpn`, `com.atom.demo.public.ios.app.packettunnelwireguard`, and `group.com.atom.demo.public.ios.app` in AppDelegate.m if you have your own bundle id and group id.
+
 ## SDK Features covered in this Demo
 
 * Connection with Parameters
@@ -65,23 +75,36 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 
 ## SDK Installation
 
-### CocoaPods
+### Integrate AtomSDKBySecure
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate AtomSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+#### Installation
+
+**Swift Package Manager (SPM)**
+
+1. Open your project in Xcode.
+2. Select `File` > `Add Package Dependencies...`
+3. Enter the URL of the AtomSDKBySecure repository: `https://bitbucket.org/purevpn/atomsdkbysecure`
+4. Specify the version or branch you want to use:
+   - **Branch Name:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/branch(_:))
+   - **Exact Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/exact(_:))
+   - **Revision:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/revision(_:))
+   - **Up To Next Major Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextmajor(from:))
+   - **Up To Next Minor Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextminor(from:))
+5. Add AtomSDKBySecure to your project.
+
+**CocoaPods**
+
+Add the following to your `Podfile`:
 
 ```ruby
 pod 'AtomSDKBySecure'
-pod 'AtomSDKTunnel'
 ```
 
-### Integrate AtomWireguardTunnel in iOS App for Wireguard Protocol
+Then run:
 
-You can add AtomWireguardTunnel package via Swift Package Manager
-
-1. Open your project in Xcode 15.3 or above
-2. Go to File > Swift Packages > Add Package Dependency...
-3. In the field Enter package repository URL, enter "https://github.com/AtomSDK/AtomWireguardTunnel"
-4. Choose Dependency Rule "Branch", and add the branch name "main"
+```bash
+pod install
+```
 
 ### Integrate AtomSDKAnalytics
 
@@ -94,13 +117,26 @@ AtomSDKAnalytics is a separate module that implements third-party analytics for 
 
 #### Installation
 
+Ensure AtomSDK and AtomCore are already added as required by AtomSDKAnalytics
+
+**Swift Package Manager (SPM)**
+
+1. Open your project in Xcode.
+2. Select `File` > `Add Package Dependencies...`
+3. Enter the URL of the AtomSDKAnalytics repository: `https://bitbucket.org/purevpn/atomsdkanalytics`
+4. Specify the version or branch you want to use:
+   - **Branch Name:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/branch(_:))
+   - **Exact Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/exact(_:))
+   - **Revision:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/revision(_:))
+   - **Up To Next Major Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextmajor(from:))
+   - **Up To Next Minor Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextminor(from:))
+5. Add AtomSDKAnalytics to your project.
+
 **CocoaPods**
 
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'AtomSDKBySecure'
-pod 'AtomSDKTunnel'
 pod 'AtomSDKAnalytics'   # Optional - only if you want analytics
 ```
 
@@ -110,16 +146,12 @@ Then run:
 pod install
 ```
 
-**Swift Package Manager**
-
-Add the AtomSDKAnalytics package dependency (e.g. in Xcode: File → Add Packages..., then add the AtomSDKAnalytics repository with URL: "https://bitbucket.org/purevpn/atomsdkanalytics/src/main/"). Ensure AtomSDK and AtomCore are already added as required by AtomSDKAnalytics.
-
 #### Integration Steps for Resellers
 
 **Step 1: Add the dependency**
 
-- **CocoaPods:** Add `pod 'AtomSDKAnalytics'` to your Podfile and run `pod install`.
 - **Swift Package Manager:** Add the AtomSDKAnalytics package to your project.
+- **CocoaPods:** Add `pod 'AtomSDKAnalytics'` to your Podfile and run `pod install`.
 
 **Step 2: No extra code required**
 
@@ -140,6 +172,54 @@ Once AtomSDKAnalytics is linked to your app, AtomSDK will use it automatically. 
 - Mixpanel SDK 5.1.2+ (or as required by the analytics implementation)
 
 For more details, see the AtomSDKAnalytics README and the `AtomAnalyticsProvider` protocol in AtomCore.
+
+### Integrate AtomSDKTunnel for OpenVPN (TCP & UDP) Protocols
+
+#### Installation
+
+**Swift Package Manager (SPM)**
+
+1. Open your project in Xcode.
+2. Select `File` > `Add Package Dependencies...`
+3. Enter the URL of the AtomSDKTunnel repository: `https://bitbucket.org/purevpn/atomsdktunnel`
+4. Specify the version or branch you want to use:
+   - **Branch Name:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/branch(_:))
+   - **Exact Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/exact(_:))
+   - **Revision:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/revision(_:))
+   - **Up To Next Major Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextmajor(from:))
+   - **Up To Next Minor Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextminor(from:))
+5. Add AtomSDKTunnel to your project.
+
+**CocoaPods**
+
+Add the following to your `Podfile`:
+
+```ruby
+pod 'AtomSDKTunnel'
+```
+
+Then run:
+
+```bash
+pod install
+```
+
+### Integrate AtomWireguardTunnel for Wireguard Protocol
+
+#### Installation
+
+**Swift Package Manager (SPM)**
+
+1. Open your project in Xcode.
+2. Select `File` > `Add Package Dependencies...`
+3. Enter the URL of the AtomWireguardTunnel repository: `https://github.com/AtomSDK/AtomWireguardTunnel`
+4. Specify the version or branch you want to use:
+   - **Branch Name:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/branch(_:))
+   - **Exact Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/exact(_:))
+   - **Revision:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/revision(_:))
+   - **Up To Next Major Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextmajor(from:))
+   - **Up To Next Minor Version:** [Documentation](https://developer.apple.com/documentation/packagedescription/package/dependency/requirement-swift.enum/uptonextminor(from:))
+5. Add AtomWireguardTunnel to your project.
 
 # Getting Started with the Code
 

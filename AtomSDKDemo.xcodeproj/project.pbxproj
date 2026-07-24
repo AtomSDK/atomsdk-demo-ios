@@ -377,7 +377,7 @@
 			mainGroup = 6E5BACFB207386B100895431;
 			packageReferences = (
 				30E0BB842C53BFEB00B7A187 /* XCRemoteSwiftPackageReference "AtomWireguardTunnel" */,
-				30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */,
+				30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "atomsdkanalytics" */,
 				30203A4A30094FF400624899 /* XCRemoteSwiftPackageReference "atomsdkbysecure" */,
 				30203A4D3009518500624899 /* XCRemoteSwiftPackageReference "atomsdktunnel" */,
 			);
@@ -984,9 +984,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */ = {
+		30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "atomsdkanalytics" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://bitbucket.org/purevpn/atomsdkanalytics/src/main/";
+			repositoryURL = "https://bitbucket.org/purevpn/atomsdkanalytics";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.0;
@@ -1002,7 +1002,7 @@
 		};
 		30203A4D3009518500624899 /* XCRemoteSwiftPackageReference "atomsdktunnel" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://bitbucket.org/purevpn/atomsdktunnel.git";
+			repositoryURL = "https://bitbucket.org/purevpn/atomsdktunnel";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.3.0;
@@ -1021,7 +1021,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		30203A4830094F8E00624899 /* AtomSDKAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "main" */;
+			package = 30203A4730094F8E00624899 /* XCRemoteSwiftPackageReference "atomsdkanalytics" */;
 			productName = AtomSDKAnalytics;
 		};
 		30203A4B30094FF400624899 /* AtomSDKBySecure */ = {

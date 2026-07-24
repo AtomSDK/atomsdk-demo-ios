@@ -4,7 +4,7 @@
 
 #import "AppDelegate.h"
 
-#define ATOM_SDK_SECRET_KEY @"ATOM_SDK_SECRET_KEY"
+#define ATOM_SDK_SECRET_KEY @"ENTER_YOUR_ATOM_SDK_SECRET_KEY_HERE"
 
 @interface AppDelegate ()
 
@@ -27,13 +27,13 @@
     
     // In order to configure App Network Extension please follow README.
     // tunnelProviderBundleIdentifier must be provided before connecting with TCP or UDP.
-    atomConfiguration.tunnelProviderBundleIdentifier = @"com.atom.vpn.demo.packettunnelopenvpn";
+    atomConfiguration.tunnelProviderBundleIdentifier = @"com.atom.demo.public.ios.app.packettunnelopenvpn";
     
     // wireGuardTunnelProviderBundleIdentifier must be provided before connecting with WireGuard.
-    atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"com.atom.vpn.demo.packettunnelwireguard";
+    atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"com.atom.demo.public.ios.app.packettunnelwireguard";
     
     // appGroupIdentifier must be provided before connecting with TCP, UPD and WireGuard.
-    atomConfiguration.appGroupIdentifier = @"group.com.atom.vpn.demo";
+    atomConfiguration.appGroupIdentifier = @"group.com.atom.demo.public.ios.app";
     
     [AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
     
