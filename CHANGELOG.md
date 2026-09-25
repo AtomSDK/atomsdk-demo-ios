@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+### Version 6.13.0
+
+#### Improved
+- Improvements for IKEv2 protocol.
+- Improvements for Tracker And Ad Blocker feature.
+
 ### Version 6.12.0
 
 #### Improved
