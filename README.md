@@ -12,7 +12,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
   - [Integrate AtomSDKBySecure](#integrate-atomsdkbysecure)
   - [Integrate AtomSDKAnalytics](#integrate-atomsdkanalytics)
   - [Integrate AtomSDKTunnel for OpenVPN (TCP &amp; UDP) Protocols](#integrate-atomsdktunnel-for-openvpn-tcp--udp-protocols)
-  - [Integrate AtomWireguardTunnel for Wireguard Protocol](#integrate-atomwireguardtunnel-for-wireguard-protocol)
+  - [Integrate AtomWireguardTunnel for WireGuard Protocol](#integrate-atomwireguardtunnel-for-wireguard-protocol)
 - [Getting Started with the Code](#getting-started-with-the-code)
 - [Enable Local Inventory Support](#enable-local-inventory-support)
 - [Delegates to Register](#delegates-to-register)
@@ -41,14 +41,14 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 - [Pause / Resume VPN Connection](#pause--resume-vpn-connection)
 - [Tracker And Ad Blocker](#tracker-and-ad-blocker)
 - [LAN Access Feature](#lan-access-feature)
-- [How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP &amp; Wireguard](#how-to-setup-networkextension-for-openvpn-tcp-openvpn-udp--wireguard)
+- [How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP &amp; WireGuard](#how-to-setup-networkextension-for-openvpn-tcp-openvpn-udp--wireguard)
 - [Note](#note)
 
 ## How to run this Demo
 
 ### Integration Steps
 1. Download the project.
-2. Change bundle id or enable Automatic Manage Signing in all the targets.
+2. Change bundle id or enable Automatically manage signing in all the targets.
 3. Replace `ENTER_YOUR_ATOM_SDK_SECRET_KEY_HERE` with your secret key in AppDelegate.m.
 4. Replace `com.atom.demo.public.ios.app.packettunnelopenvpn`, `com.atom.demo.public.ios.app.packettunnelwireguard`, and `group.com.atom.demo.public.ios.app` in AppDelegate.m if you have your own bundle id and group id.
 
@@ -71,7 +71,7 @@ This is a demo application for iOS Applications with basic usage of ATOM VPN SDK
 * IKEv2
 * TCP
 * UDP
-* Wireguard
+* WireGuard
 
 ## SDK Installation
 
@@ -204,7 +204,7 @@ Then run:
 pod install
 ```
 
-### Integrate AtomWireguardTunnel for Wireguard Protocol
+### Integrate AtomWireguardTunnel for WireGuard Protocol
 
 #### Installation
 
@@ -228,9 +228,9 @@ To add the SDK in Xcode:
 1. Open your Xcode project.
 2. Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 3. Select General tab from your app target and then set your developer account details.
-4. From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilties you are going to use.
-5. Drag and drop AtomSDK.framework into your project. (Skip if using Cocoapods)
-6. Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using Cocoapods)
+4. From your app target select Capabilities tab and select the switch right of the Personal VPN. Then select the capabilities you are going to use.
+5. Drag and drop AtomSDK.framework into your project. (Skip if using CocoaPods)
+6. Go to your project -> General tab from your app target, add the framework using ‘+’ to the Embedded Binaries section. (Skip if using CocoaPods)
 7. After the setup is completed, you should be able to use all the classes from the SDK by including it with the #import <AtomSDK/AtomSDK.h> directive.
 8. ATOM SDK needs to be initialized with a “SecretKey” provided to you after you buy the subscription which is typically a hex-numeric literal.
 
@@ -278,8 +278,8 @@ ATOM SDK offers stateDidChangedHandler for the ease of the developer.
 
 ## VPN Authentication
 
-ATOM SDK provided two ways to authenticate your vpn user.
-First one is to offer VPN Credentials directly to the SDK which you may create through the Admin Panel provided by ATOM.
+ATOM SDK provided one way to authenticate your vpn user.
+To offer VPN Credentials directly to the SDK which you may create through the Admin Panel provided by ATOM.
 
 ```ruby
 [AtomManager sharedInstance].atomCredential = [[AtomCredential alloc] initWithUsername:@"<username>" password:@"<password>"];
@@ -314,7 +314,7 @@ You can get the Recommended Country for user's location through ATOM SDK.
 
 ## Fetch Countries For Smart Dialing
 
-You can get the Countries those support Smart Dialing through ATOM SDK.
+You can get the Countries that support Smart Dialing through ATOM SDK.
 
 ```ruby
 [[AtomManager sharedInstance] getCountriesForSmartDialing:^(NSArray<AtomCountry *> *success) {}
@@ -332,7 +332,7 @@ errorBlock:^(NSError *error) {}];
 
 ## VPN Connection Speed
 
-For VPN connection speed you need to registor onPacketsTransmitted handler from AtomManager class to get the VPN connection speed in bytes per second. This callback is recieve only in VPN connected state.
+For VPN connection speed you need to register onPacketsTransmitted handler from AtomManager class to get the VPN connection speed in bytes per second. This callback is received only in VPN connected state.
 
 ```ruby
 AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSNumber *bytesSent) {
@@ -342,7 +342,7 @@ AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSN
 
 ## Protocol switch
 
-You can enable or disable protocol switch from VPNProperties class. By default its value is set to true.
+You can enable or disable protocol switch from AtomProperties class. By default its value is set to true.
 
 ```ruby
 properties.enableProtocolSwitch = false;
@@ -356,11 +356,11 @@ properties.enableProtocolSwitch = true;
 
 ## Recommended protocol
 
-If you didn't specify the protocol in case of Country, City and Channel dailing then Atom SDK dialed with recommanded protocol according to the specified country, city and channel. It will not work for dedicated IP.
+If you didn't specify the protocol in case of Country, City and Channel dialing then Atom SDK dials with recommended protocol according to the specified country, city and channel. It will not work for dedicated IP.
 
 ## Use Failover
 
-Failover is a mechanism in which Atom dialed with nearest server if requested server is busy or not found for any reason. You can control this mechanism from VPNPorperties class. By default its value is set to true.
+Failover is a mechanism in which Atom dials the nearest server if requested server is busy or not found for any reason. You can control this mechanism from AtomProperties class. By default its value is set to true.
 
 ```ruby
 properties.useFailover = false;
@@ -394,7 +394,7 @@ When connecting with parameters, a server can be included or excluded with its N
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 NSMutableArray<ServerFilter *> *serverFilters = [NSMutableArray new];
-[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here"" andFilter:INCLUDE]];
+[serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here" andFilter:INCLUDE]];
 [serverFilters addObject:[[ServerFilter alloc] initWithNasIdentifier:@"nas-identifier-here" andFilter:EXCLUDE]];
 [properties setServerFilters:serverFilters];
 [[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
@@ -420,15 +420,15 @@ This one is same as the first one i.e. “Connection with Parameters” with a s
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
 [properties setUseOptimization:YES];
 
-[[AtomManager sharedInstance] connectWithPropertiesconnectWithProperties:properties completion:^(NSString *success) {}
+[[AtomManager sharedInstance] connectWithProperties:properties completion:^(NSString *success) {}
 errorBlock:^(NSError *error) {}];
 ```
 
-If you want to show your user the best location for him on your GUI then ATOM SDK have it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn’t blocks any of our datacenters). You can use this property to find the best speed countries from your user’s location.
+If you want to show your user the best location for them on your GUI then ATOM SDK have it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn't block any of our datacenters). You can use this property to find the best speed countries from your user’s location.
 
 ### Connection with Smart Dialing
 
-“Connection with Parameters” with a slight addition of using smart dialing to connect. You just need to call "withSmartDialing" and rest will handled by the ATOM SDK.
+“Connection with Parameters” with a slight addition of using smart dialing to connect. You just need to call "withSmartDialing" and the rest will be handled by the ATOM SDK.
 
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
@@ -641,7 +641,7 @@ This section provides details about the VPN Pause and Resume feature in the Atom
 
 The VPN Pause feature allows pausing a VPN connection under specific conditions and includes one mode:
 
-- **Timed Pause:** Pauses the VPN connection for a preset duration, after which it automatically resumes. Users can’t resume the connection manually before the timer completes.
+- **Timed Pause:** Pauses the VPN connection for a preset duration, after which it automatically resumes. Users can resume the connection manually before the timer completes.
 
 #### Key Rules and Conditions:
 
@@ -929,22 +929,22 @@ The following properties are available in the connection details related to this
 
 ---
 
-## How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & Wireguard
+## How to setup NetworkExtension for OpenVPN TCP, OpenVPN UDP & WireGuard
 
 ## Compatibility For OpenVPN TCP & OpenVPN UDP
 
 * Compatible with Xcode 15.3, iOS 13.0, macOS 10.15, tvOS 17.0 and later
 
-## Compatibility For Wireguard
+## Compatibility For WireGuard
 
 * Compatible with Xcode 15.3, iOS 15.0, macOS 12.0, tvOS 17.0 and later
 
-**Note: Please follow the following steps to create two NetworkExtensions, One for OpenVPN TCP & UDP and other one for Wireguard.**
+**Note: Please follow the following steps to create two NetworkExtensions, One for OpenVPN TCP & UDP and other one for WireGuard.**
 
 1. Open your Xcode project.
 2. Add your developer account to Xcode from Preferences -> Account if you didn't add before.
 3. Select General tab from your app target and then set your developer account details.
-4. The Xcode project must have successfully configured **AtomSDKBySecure(Version must be 6.0.0 or above)** through cocoapods or SPM.
+4. The Xcode project must have successfully configured **AtomSDKBySecure(Version must be 6.0.0 or above)** through CocoaPods or SPM.
 5. For VPN connections with OVPN Tunnel, you need to add ‘Network Extensions’ separately by adding a new target.
 6. Go to File > New > Target > Select Network Extension in the iOS Section and click on Next.
    ![Network Extension](docs/image8.png)
@@ -956,9 +956,9 @@ The following properties are available in the connection details related to this
    **Provider Type:** Select Packet Tunnel as provider type.
    **Project:** Xcode will automatically select your current project.
    **Embed In App:** Xcode will automatically select your current app.
-8. When clicking on Finish, It will create a new target in your project settings along with its folder in project navigator.
+8. When clicking on Finish, it will create a new target in your project settings along with its folder in project navigator.
    ![Network Extension](docs/image10.png)
-9. For VPN Connections with **Wireguard Tunnel**, Repeat point no 6 to 8 and provide it a separate product name.
+9. For VPN Connections with **WireGuard Tunnel**, Repeat point no 6 to 8 and provide it a separate product name.
    ![Network Extension](docs/image11.png)
 10. Make sure your **Team Name** must be the same among these targets and **Automatically managed signing** must be checked.
 11. Now, the Xcode Project will have three targets. One is Main Application, Second is OvpnNetworkExtension and third is WireguardNetworkExtension.
@@ -987,7 +987,7 @@ The following properties are available in the connection details related to this
 22. Go to project settings, add a new target by selecting the **Other** section.
     Select **External Build System** and click Next. Define a Product Name like **WireguardiOS** and select the same team on which all three targets are configured.
     ![Network Extension](docs/image19.png)
-23. In the **Build Tool**, add **$(SRCROOT)/AtomSDKDemo/build_wireguard_go_bridge.sh** for bridging between Go and Network Extension for Wireguard. Click on finish to add this target into your project.
+23. In the **Build Tool**, add **$(SRCROOT)/AtomSDKDemo/build_wireguard_go_bridge.sh** for bridging between Go and Network Extension for WireGuard. Click on finish to add this target into your project.
     ![Network Extension](docs/image20.png)
 24. Go to your **WireguardNetworkExtension** target and select the **Build Phases** section. In **Target Dependencies** add **WireguardiOS** (External Build System just created above).
     ![Network Extension](docs/image21.png)
@@ -1005,15 +1005,15 @@ The following properties are available in the connection details related to this
 30. Add following line of code into **startTunnel** function in **PacketTunnelProvider** Class for **WireguardNetworkExtension** Folder.
     ![Network Extension](docs/image28.png)
 
-AtomSDK can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. Also, there is tunnelProviderBundleIndentifier in which you have to enter the bundle ID of Network Extension of your project.
+AtomSDK can be initialized using an instance of AtomConfiguration. It should have a vpnInterfaceName which will be used to create the Network Interface for VPN connection. Also, there is tunnelProviderBundleIdentifier in which you have to enter the bundle ID of Network Extension of your project.
 
 ```ruby
-AtomConfiguration *atomConfiguration = [AtomConfiguration alloc]init];
+AtomConfiguration *atomConfiguration = [[AtomConfiguration alloc] init];
 atomConfiguration.secretKey = @"SECRETKEY_GOES_HERE";
 atomConfiguration.vpnInterfaceName = @"Atom";
 atomConfiguration.tunnelProviderBundleIdentifier = @"ENTER_YOUR_OPENVPN_NETWORK_EXTENSION_BUNDLE_ID";
 atomConfiguration.wireGuardTunnelProviderBundleIdentifier = @"ENTER_YOUR_WIREGUARD_NETWORK_EXTENSION_BUNDLE_ID";
-[AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration]
+[AtomManager sharedInstanceWithAtomConfiguration:atomConfiguration];
 ```
 
 ## Note:
