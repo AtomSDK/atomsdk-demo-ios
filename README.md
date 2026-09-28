@@ -259,7 +259,7 @@ ATOM SDK offers a feature to enable the local inventory support. This can help A
 
 ## Delegates to Register
 
-ATOM SDK offers few delegates to register for the ease of the developer.
+ATOM SDK offers a few delegates to register for the ease of the developer.
 
 * atomManagerDidConnect:
 * atomManagerDidDisconnect:
@@ -278,8 +278,7 @@ ATOM SDK offers stateDidChangedHandler for the ease of the developer.
 
 ## VPN Authentication
 
-ATOM SDK provided one way to authenticate your vpn user.
-To offer VPN Credentials directly to the SDK which you may create through the Admin Panel provided by ATOM.
+ATOM SDK provides one way to authenticate your VPN user: by passing VPN credentials directly to the SDK. You can create these credentials through the Admin Panel provided by ATOM.
 
 ```ruby
 [AtomManager sharedInstance].atomCredential = [[AtomCredential alloc] initWithUsername:@"<username>" password:@"<password>"];
@@ -299,7 +298,7 @@ Countries can be obtained through ATOM SDK as well.
 
 ```ruby
 [[AtomManager sharedInstance] getCountriesWithSuccess:^(NSArray<AtomCountry *> *success) {}
-} errorBlock:^(NSError *error) {}];
+errorBlock:^(NSError *error) {}];
 ```
 
 ## Fetch Recommended Country
@@ -318,7 +317,7 @@ You can get the Countries that support Smart Dialing through ATOM SDK.
 
 ```ruby
 [[AtomManager sharedInstance] getCountriesForSmartDialing:^(NSArray<AtomCountry *> *success) {}
-} errorBlock:^(NSError *error) {}];
+errorBlock:^(NSError *error) {}];
 ```
 
 ## Fetch Protocols
@@ -336,7 +335,7 @@ For VPN connection speed you need to register onPacketsTransmitted handler from 
 
 ```ruby
 AtomManager.sharedInstance.onPacketsTransmitted = ^(NSNumber *bytesReceived, NSNumber *bytesSent) {
-    NSLog(@"bytesIN: %ld | bytesOUT: %ld ",(long)bytesReceived.integerValue,bytesSent.integerValue);
+    NSLog(@"bytesIN: %ld | bytesOUT: %ld ", (long)bytesReceived.integerValue, (long)bytesSent.integerValue);
 };
 ```
 
@@ -414,7 +413,7 @@ errorBlock:^(NSError *error) {}];
 
 ### Connection with Real-time Optimized Servers
 
-This one is same as the first one i.e. “Connection with Parameters” with a slight addition of using Real-time optimized servers best from your user’s location. You just need to set this property to TRUE and rest will be handled by the ATOM SDK.
+This one is the same as the first one i.e. “Connection with Parameters” with a slight addition of using Real-time optimized servers best from your user’s location. You just need to set this property to TRUE and rest will be handled by the ATOM SDK.
 
 ```ruby
 AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country#>" protocol:@"<#protocol#>"];
@@ -424,7 +423,7 @@ AtomProperties* properties = [[AtomProperties alloc] initWithCountry:@"<#country
 errorBlock:^(NSError *error) {}];
 ```
 
-If you want to show your user the best location for them on your GUI then ATOM SDK have it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn't block any of our datacenters). You can use this property to find the best speed countries from your user’s location.
+If you want to show your user the best location for them on your GUI then ATOM SDK has it ready for you as well! ATOM SDK has a method exposed namely “getOptimizedCountries” which adds a property “RoundTripTime” in the country object which has the real-time latency of all countries from your user’s location (only if ping is enabled on your user’s system and ISP doesn't block any of our datacenters). You can use this property to find the best speed countries from your user’s location.
 
 ### Connection with Smart Dialing
 
@@ -958,7 +957,7 @@ The following properties are available in the connection details related to this
    **Embed In App:** Xcode will automatically select your current app.
 8. When clicking on Finish, it will create a new target in your project settings along with its folder in project navigator.
    ![Network Extension](docs/image10.png)
-9. For VPN Connections with **WireGuard Tunnel**, Repeat point no 6 to 8 and provide it a separate product name.
+9. For VPN Connections with **WireGuard Tunnel**, repeat steps 6 to 8 and provide it a separate product name.
    ![Network Extension](docs/image11.png)
 10. Make sure your **Team Name** must be the same among these targets and **Automatically managed signing** must be checked.
 11. Now, the Xcode Project will have three targets. One is Main Application, Second is OvpnNetworkExtension and third is WireguardNetworkExtension.
@@ -973,7 +972,7 @@ The following properties are available in the connection details related to this
 15. Go to project settings, select main project and click on Package Dependencies. By clicking on + icon, search for ‘**AtomWireguardTunnel**’ or ‘https://github.com/AtomSDK/AtomWireguardTunnel’.
 16. In the **Dependency Rule**, select **Exact Version** and write **2.3.0** in the field. Select your project in **Add to Project**. Click on **Add Package**.
     ![Network Extension](docs/image16.png)
-17. Now you need to install Go into your mac. To install this, open https://go.dev/doc/install. click on Other Downloads. Go to archived versions. Click on 1.16 or 1.19 and download this go1.16.darwin-amd64.pkg.
+17. Now you need to install Go into your mac. To install this, open https://go.dev/doc/install. Click on Other Downloads. Go to archived versions. Click on 1.16 or 1.19 and download this go1.16.darwin-amd64.pkg.
     ![Network Extension](docs/image17.png)
 18. Now open the terminal and write ‘which go’ command. It will show a path where go 1.16 is installed (like /usr/local/go/bin/go).
 19. Go to Project navigator in Xcode. Open Package Dependencies and expand WireguardKit. In the Sources folder, expand WireguardKitGo and right click on Makefile to open it in the finder.
