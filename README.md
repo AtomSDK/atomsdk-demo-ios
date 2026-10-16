@@ -24,7 +24,6 @@ This demo application shows basic usage of the ATOM VPN SDK, to help developers 
     - [Fetch Recommended Location](#fetch-recommended-location)
     - [Recommended Protocol](#recommended-protocol)
     - [Fetch Countries](#fetch-countries)
-    - [Fetch Optimized Countries](#fetch-optimized-countries)
     - [Fetch Protocols](#fetch-protocols)
     - [Protocol Switch](#protocol-switch)
     - [Use Failover](#use-failover)
@@ -449,22 +448,6 @@ Countries can be obtained through ATOM SDK.
 [[AtomManager sharedInstance] getCountriesWithSuccess:^(NSArray<AtomCountry *> *success) {}
 errorBlock:^(NSError *error) {}];
 ```
-
-### Fetch Optimized Countries
-You can get all the countries available to you, sorted by real-time latency from your user's network. The ATOM SDK pings our datacenters from the user's device and sets the `latency` property on each `AtomCountry` object to the lowest latency measured among that country's datacenters.
-
-```ruby
-[[AtomManager sharedInstance] getOptimizedCountriesWithSuccess:^(NSArray<AtomCountry *> *optimizedCountriesList) {
-    // optimizedCountriesList is already sorted: lowest latency first
-    for (AtomCountry *country in optimizedCountriesList) {
-        NSLog(@"%@ - %ld", country.name, (long)country.latency);
-    }
-} errorBlock:^(NSError *error) {}];
-```
-
-**Things to know:**
-* The list comes back already sorted, lowest latency first. You don't need to sort it yourself.
-* A `latency` of `0` means the country could not be measured. This can happen when ping (ICMP) is blocked on the user's network, or when the ISP blocks some of our datacenters. These countries are placed at the **end** of the list. Do not treat `0` as the fastest.
 
 ### Fetch Protocols
 
