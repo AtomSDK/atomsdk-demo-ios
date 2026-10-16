@@ -39,7 +39,7 @@ This demo application shows basic usage of the ATOM VPN SDK, to help developers 
 - [Disconnect VPN Connection](#disconnect-vpn-connection)
 - [Remove VPN Profile](#remove-vpn-profile)
 - [Tracker / Ad Blocker](#tracker--ad-blocker)
-    - [Overview](#overview)
+    - [Overview](#overview-1)
     - [Enabling Tracker / Ad Blocker](#enabling-tracker--ad-blocker)
     - [Observe Connection Status and Data](#observe-connection-status-and-data)
     - [Troubleshooting](#troubleshooting)
