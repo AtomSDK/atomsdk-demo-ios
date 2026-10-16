@@ -509,14 +509,14 @@ Atom SDK includes a feature that enables users to access their locally connected
 
 In order to turn `ON` Allow LAN, please use as follows before the connection in Atom Properties:
 
-```
+```ruby
 atomProperties.featureFlagAllowLocalNetworkTraffic = true
 atomProperties.allowLocalNetworkTraffic = true
 ```
 
 In order to turn `OFF` Allow LAN, please use as follows before the connection in Atom Properties:
 
-```
+```ruby
 atomProperties.featureFlagAllowLocalNetworkTraffic = false
 atomProperties.allowLocalNetworkTraffic = false
 ```
